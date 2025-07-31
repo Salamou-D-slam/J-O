@@ -24,9 +24,9 @@ def add_epreuve_if_not_exists(nom_epreuve, date_epreuve,prix_solo, prix_duo, pri
 
     #Crée les offres liées
 
-    solo = Offre(type_offre='solo', nombre_personne=1, prix=prix_solo)
-    duo = Offre(type_offre='duo', nombre_personne=2, prix=prix_duo)
-    family = Offre(type_offre='family', nombre_personne=4, prix=prix_family)
+    solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo)
+    duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo)
+    family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family)
 
     new_epreuve.offres.extend([solo, duo, family])
 
@@ -98,23 +98,44 @@ def get_epreuve_by_id(epreuve_id):
         print("epreuve non trouvé")
 
 
-#READ ALL
-def get_all_epreuves():
-    return Epreuve.query.all()
-
-
-
 #UPDATE
-def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_image_filename=None):
+def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_filename=None, new_prix_solo=None, new_prix_duo=None, new_prix_family=None):
     epreuve = Epreuve.query.get(epreuve_id)
+
     if epreuve:
-        if new_nom_epreuve: epreuve.nom_epreuve = new_nom_epreuve
-        if new_date_epreuve: epreuve.date_epreuve = new_date_epreuve
-        if new_image_filename: epreuve.image_filename = new_image_filename
+        # Mise à jour des champs de l’épreuve
+        if new_nom_epreuve:
+            epreuve.nom_epreuve = new_nom_epreuve
+
+            # mettre à jour les types_offre
+            for offre in epreuve.offres:
+                if 'solo' in offre.type_offre:
+                    offre.type_offre = f'{new_nom_epreuve} solo'
+                elif 'duo' in offre.type_offre:
+                    offre.type_offre = f'{new_nom_epreuve} duo'
+                elif 'family' in offre.type_offre:
+                    offre.type_offre = f'{new_nom_epreuve} family'
+
+        if new_date_epreuve:
+            epreuve.date_epreuve = new_date_epreuve
+        if new_filename:
+            epreuve.image_filename = new_filename
+
+        # Mise à jour des prix des offres liées
+        for offre in epreuve.offres:
+            if 'solo' in offre.type_offre and new_prix_solo is not None:
+                offre.prix = new_prix_solo
+            elif 'duo' in offre.type_offre and new_prix_duo is not None:
+                offre.prix = new_prix_duo
+            elif 'family' in offre.type_offre and new_prix_family is not None:
+                offre.prix = new_prix_family
+
+
         db.session.commit()
         print(f"Mise à jour de l'épreuve ID {epreuve_id}")
     else:
-        print("Livre non trouvé.")
+        print(f"Epreuve ID {epreuve_id} non trouvée.")
+
 
 #DELETE
 def delete_epreuve(epreuve_id):
