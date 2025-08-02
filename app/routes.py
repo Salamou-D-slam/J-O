@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app
 from .models import Epreuve
 from .extensions import db
-from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve #,add_default_offres_for_epreuve
+from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve #add_default_offres_for_epreuve
 from werkzeug.utils import secure_filename
 import os
 
@@ -21,8 +21,8 @@ def home():
     return render_template('index.html', epreuves=epreuves)
 
 #PAGE ADD
-@main_routes.route('/add', methods=["GET", "POST"])
-def add():
+@main_routes.route('/epreuves', methods=["GET", "POST"])
+def add_epreuves():
     if request.method == "POST":
 
         #Ramene les "name" des input HTML
@@ -99,3 +99,20 @@ def update(epreuve_id):
 def delete(epreuve_id):
     delete_epreuve(epreuve_id)
     return redirect(url_for('main.home'))
+
+
+
+@main_routes.route('/epreuves/<nom_epreuve>', methods=['GET', 'POST'])
+def epreuve_details(nom_epreuve):
+
+    epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
+    if not epreuve:
+        return "Epreuve non trouvée", 404
+
+    return render_template('epreuve.html', epreuve=epreuve)
+
+
+
+
+
+

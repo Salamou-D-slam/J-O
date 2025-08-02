@@ -98,6 +98,18 @@ def get_epreuve_by_id(epreuve_id):
         print("epreuve non trouvé")
 
 
+def get_epreuve_by_nom_epreuve(nom_epreuve):
+    epreuve = db.session.get(Epreuve, nom_epreuve)  # cherche l'épreuve avec nom_epreuve
+    if epreuve:
+        print(f"Epreuve: {epreuve.nom_epreuve}, Date: {epreuve.date_epreuve}, Image_url: {epreuve.image_filename}")
+        print("Offres associées :")
+
+        for offre in epreuve.offres: #Jointure
+            print(f"- {offre.type_offre}, {offre.nombre_personne} pers, {offre.prix} €")
+    else:
+        print("epreuve non trouvé")
+
+
 #UPDATE
 def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_filename=None, new_prix_solo=None, new_prix_duo=None, new_prix_family=None):
     epreuve = Epreuve.query.get(epreuve_id)
