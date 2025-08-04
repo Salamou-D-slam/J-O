@@ -4,12 +4,12 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from dotenv import load_dotenv
 from flask_bootstrap import Bootstrap
-from app.extensions import db
-from app.routes import main_routes, auth_routes
-
+from app.extensions import db, login_manager
+from app.routes import main_routes
+from app.admin.routes import admin_routes
 
 def create_app():
-    load_dotenv()  # Charge les variables du .env
+    load_dotenv()  # Charge des variables du .env
 
     app = Flask(__name__)
 
@@ -23,10 +23,11 @@ def create_app():
 
 
     db.init_app(app)
+    login_manager.init_app(app)
     bootstrap = Bootstrap(app)
 
     app.register_blueprint(main_routes)
-    app.register_blueprint(auth_routes)
+    app.register_blueprint(admin_routes, url_prefix='/admin')
 
     with app.app_context():
         db.create_all()

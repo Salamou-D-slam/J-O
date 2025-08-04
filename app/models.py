@@ -1,7 +1,20 @@
 from sqlalchemy import Integer, String, Float, CheckConstraint, DateTime, ForeignKey
+from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .extensions import db
+
+
+class User(UserMixin, db.Model):
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
+    password: Mapped[str] = mapped_column(String(100), nullable=False)
+    nom: Mapped[str] = mapped_column(String(1000), nullable=False)
+    prenom: Mapped[str] = mapped_column(String(1000), nullable=False)
+    role: Mapped[str] = mapped_column(String(20), nullable=False, default='utilisateur')
+    #cle:
+
+
 
 class Epreuve(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

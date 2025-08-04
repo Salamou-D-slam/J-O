@@ -8,23 +8,23 @@
     <form method="POST" enctype="multipart/form-data">
 
         <label>Nom:</label>
-        <input type="text" name="nom_epreuve"><br>
+        <input type="text" name="nom_epreuve" required><br>
 
         <label>Date:</label>
 
-        <input type="date" name="date_epreuve"><br>
+        <input type="date" name="date_epreuve" required><br>
 
         <label>Prix Solo:</label>
-        <input type="number" name="prix_solo"><br>
+        <input type="number" name="prix_solo" required><br>
 
         <label>Prix Duo:</label>
-        <input type="number" name="prix_duo"><br>
+        <input type="number" name="prix_duo" required><br>
 
         <label>Prix Family:</label>
-        <input type="number" name="prix_family"><br>
+        <input type="number" name="prix_family" required><br>
 
         <label>Image:</label>
-        <input type="file" name="image"><br>
+        <input type="file" name="image" required><br>
 
         <button type="submit">Ajouter</button>
     </form>

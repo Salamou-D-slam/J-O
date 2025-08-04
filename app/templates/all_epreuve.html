@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Liste des épreuves</title>
+</head>
+<body>
+    <h1>Epreuves</h1>
+    <a href="{{ url_for('main.add_epreuves') }}">Ajouter une épreuve</a>
+    <ul>
+        {% for epreuve in epreuves %}
+        <li>
+            <strong>{{ epreuve.nom_epreuve }}</strong> ({{ epreuve.date_epreuve}})
+            <ul>
+<!--                {% for offre in epreuve.offres %}-->
+<!--                <li>{{ offre.type_offre }} - {{ offre.nombre_personne }} pers - {{ offre.prix }} €</li>-->
+<!--                {% endfor %}-->
+            </ul>
+            {% if epreuve.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/' + epreuve.image_filename) }}" width="150">
+            {% endif %}
+        </li>
+        <a href="{{ url_for('main.epreuve_details', nom_epreuve=epreuve.nom_epreuve) }}">Plus de détails</a>
+        {% endfor %}
+    </ul>
+</body>
+</html>

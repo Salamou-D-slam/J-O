@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<h1>Inscription</h1>
+<form method="POST">
+  <label>Nom :</label><br>
+  <input type="text" name="nom" required><br><br>
+
+    <label>Prenom :</label><br>
+  <input type="text" name="prenom" required><br><br>
+
+  <label>Email :</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <label>Mot de passe :</label><br>
+  <input type="password" name="password" required><br><br>
+
+  <button type="submit">S’inscrire</button>
+</form>
+{% endblock %}

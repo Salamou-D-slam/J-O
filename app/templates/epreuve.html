@@ -21,6 +21,8 @@
             <li>
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </li>
+
+        <a href="{{ url_for('main.paiement_epreuve', offre_id=offre.id) }}">Acheter</a>
         {% endfor %}
     </ul>
 
@@ -29,6 +31,8 @@
         <button type="submit">Supprimer</button>
       </form>
 
-    <a href="{{ url_for('main.home') }}">Retour à l'accueil</a>
+
+
+    <a href="{{ url_for('main.all_epreuve') }}">Retour à l'accueil</a>
 </body>
 </html>

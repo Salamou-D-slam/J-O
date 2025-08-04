@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Admin{% endblock %}
+
+{% block content %}
+<h1>Dashboard Admin</h1>
+
+<form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
+  <input type="text" name="q" placeholder="Rechercher un utilisateur" value="{{ search_query }}">
+  <button type="submit">Rechercher</button>
+  {% if search_query %}
+    <a href="{{ url_for('admin.admin_dashboard') }}">Réinitialiser</a>
+  {% endif %}
+</form>
+
+<h2>Créer un utilisateur</h2>
+<form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}">
+  <input type="hidden" name="create_user" value="1">
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br>
+  <label>Nom:</label><br>
+  <input type="text" name="nom" required><br>
+  <label>Prenom:</label><br>
+  <input type="text" name="prenom" required><br>
+  <label>Mot de passe:</label><br>
+  <input type="password" name="password" required><br>
+  <label>Rôle:</label><br>
+  <select name="role" required>
+    <option value="utilisateur">Utilisateur</option>
+    <option value="employe">Employé</option>
+    <option value="admin">Admin</option>
+  </select><br><br>
+  <button type="submit">Créer</button>
+</form>
+
+<hr>
+
+<h2>Liste des utilisateurs</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Email</th>
+    <th>Rôle</th>
+    <th>Changer rôle</th>
+    <th>Supprimer</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td>{{ user.id }}</td>
+    <td>{{ user.nom }}</td>
+    <td>{{ user.prenom }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.role }}</td>
+    <td>
+      <form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}" style="display:inline;">
+        <input type="hidden" name="change_role" value="1">
+        <input type="hidden" name="user_id" value="{{ user.id }}">
+        <select name="role">
+          <option value="utilisateur" {% if user.role == 'utilisateur' %}selected{% endif %}>Utilisateur</option>
+          <option value="employe" {% if user.role == 'employe' %}selected{% endif %}>Employé</option>
+          <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+        </select>
+        <button type="submit">Mettre à jour</button>
+      </form>
+    </td>
+    <td>
+      {% if user.id != current_user.id %}
+      <form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
+        <input type="hidden" name="delete_user" value="1">
+        <input type="hidden" name="user_id" value="{{ user.id }}">
+        <button type="submit" style="color:red;">Supprimer</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
