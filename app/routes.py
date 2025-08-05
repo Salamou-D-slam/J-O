@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app
+from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app, abort
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve #add_default_offres_for_epreuve
@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import os
 from .models import Epreuve, Offre, User
 from .extensions import db, login_manager
+from functools import wraps
 
 main_routes = Blueprint('main', __name__)
 
@@ -20,6 +21,19 @@ def allowed_file(filename):
 def load_user(user_id):
     return db.session.get(User, int(user_id))
 
+def roles_required(*roles):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if not current_user.is_authenticated:
+                flash("Connexion requise.")
+                return redirect(url_for('auth.login'))
+            if current_user.role not in roles:
+                flash("Accès refusé.")
+                return redirect(url_for('main.home'))
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
 
 #-------------------------------------------------PAGE D'ACCUEIL--------------------------
 
@@ -71,7 +85,7 @@ def login():
             if user.role == 'admin':
                 return redirect(url_for('admin.admin_dashboard'))
             elif user.role == 'employe':
-                return redirect(url_for('admin.employe_panel'))
+                return redirect(url_for('employe.employe_dashboard'))
             else:
                 return redirect(url_for('main.home'))
         else:
@@ -91,19 +105,25 @@ def logout():
 # @main_routes.route('/create-admin')
 # def create_admin():
 #     hashed_password = generate_password_hash("joadmin2024", method='pbkdf2:sha256', salt_length=8)
-#     admin = User(email="admin@gmail.com", nom="Jose", prenom="Admin", password=hashed_password, role="admin")
+#     admin = User(email="jose@gmail.com", nom="Jose", prenom="Admin", password=hashed_password, role="admin")
 #     db.session.add(admin)
 #     db.session.commit()
 #     return "✅ Admin créé avec succès !"
+
+
 #-------------------------------------------------EPREUVES-------------------------------
 # PAGE ALL EPREUVES
 @main_routes.route('/epreuves')
+@login_required
+@roles_required('admin', 'employe')
 def all_epreuve():
     epreuves = Epreuve.query.all()
     return render_template('all_epreuve.html', epreuves=epreuves)
 
 #PAGE ADD epreuves
 @main_routes.route('/epreuves', methods=["GET", "POST"])
+@login_required
+@roles_required('admin', 'employe')
 def add_epreuves():
     if request.method == "POST":
 
@@ -138,6 +158,8 @@ def add_epreuves():
 #PAGE D'EPREUVE DETAILS
 
 @main_routes.route('/epreuves-<nom_epreuve>', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin', 'employe')
 def epreuve_details(nom_epreuve):
 
     epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -149,6 +171,8 @@ def epreuve_details(nom_epreuve):
 
 #PAGE DE UPADATE
 @main_routes.route('/update/<int:epreuve_id>', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin', 'employe')
 def update(epreuve_id):
     epreuve = get_epreuve_by_id(epreuve_id)
     if request.method == 'POST':
@@ -190,6 +214,8 @@ def update(epreuve_id):
 
 #DELETE
 @main_routes.route('/delete/<int:epreuve_id>', methods=['POST'])
+@login_required
+@roles_required('admin', 'employe')
 def delete(epreuve_id):
     delete_epreuve(epreuve_id)
     return redirect(url_for('main.all_epreuve'))
@@ -198,6 +224,7 @@ def delete(epreuve_id):
 
 #PAGE DE PAYEMENT
 @main_routes.route('/paiement/<int:offre_id>')
+@login_required
 def paiement_epreuve(offre_id):
     return render_template('paiement.html')
 

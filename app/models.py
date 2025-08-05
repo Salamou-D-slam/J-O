@@ -1,8 +1,15 @@
-from sqlalchemy import Integer, String, Float, CheckConstraint, DateTime, ForeignKey
+from sqlalchemy import Integer, String, Float, CheckConstraint, DateTime, ForeignKey, event
 from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .extensions import db
+import secrets
+import string
+
+def generate_random_clef_user(length=22):
+    alphabet = string.ascii_letters + string.digits + "!@#$%^&*()-_=+"
+    return ''.join(secrets.choice(alphabet) for _ in range(length))
+
 
 
 class User(UserMixin, db.Model):
@@ -12,8 +19,19 @@ class User(UserMixin, db.Model):
     nom: Mapped[str] = mapped_column(String(1000), nullable=False)
     prenom: Mapped[str] = mapped_column(String(1000), nullable=False)
     role: Mapped[str] = mapped_column(String(20), nullable=False, default='utilisateur')
-    #cle:
+    clef_user: Mapped[str] = mapped_column(String(22), unique=True, nullable=False, default=None)
 
+
+@event.listens_for(User, 'before_insert')
+def receive_before_insert(mapper, connection, target):
+    while True:
+        new_clef_user = generate_random_clef_user(22)
+        existing = connection.execute(
+            db.select(User).where(User.clef_user == new_clef_user)
+        ).scalar()
+        if not existing:
+            break
+    target.clef_user = new_clef_user
 
 
 class Epreuve(db.Model):

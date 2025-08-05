@@ -7,6 +7,8 @@ from flask_bootstrap import Bootstrap
 from app.extensions import db, login_manager
 from app.routes import main_routes
 from app.admin.routes import admin_routes
+from app.employe.routes import employe_bp
+
 
 def create_app():
     load_dotenv()  # Charge des variables du .env
@@ -28,6 +30,8 @@ def create_app():
 
     app.register_blueprint(main_routes)
     app.register_blueprint(admin_routes, url_prefix='/admin')
+    app.register_blueprint(employe_bp, url_prefix='/employe')
+
 
     with app.app_context():
         db.create_all()

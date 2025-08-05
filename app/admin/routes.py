@@ -3,24 +3,17 @@ from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from ..models import User
 from ..extensions import db
+from ..routes import roles_required
+from functools import wraps
 
 admin_routes = Blueprint('admin', __name__)
 
-def role_required(role):
-    def decorator(f):
-        from functools import wraps
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            if not current_user.is_authenticated or current_user.role != role:
-                abort(403)
-            return f(*args, **kwargs)
-        return decorated_function
-    return decorator
+
 
 
 @admin_routes.route('/')
 @login_required
-@role_required('admin')
+@roles_required('admin')
 def admin_dashboard():
     search_query = request.args.get('q', '')
     if search_query:
@@ -37,7 +30,7 @@ def admin_dashboard():
 
 @admin_routes.route('/', methods=['POST'])
 @login_required
-@role_required('admin')
+@roles_required('admin')
 def admin_dashboard_post():
     if 'create_user' in request.form:
         email = request.form.get('email')
@@ -87,8 +80,4 @@ def admin_dashboard_post():
             flash("Utilisateur non trouvé.")
         return redirect(url_for('admin.admin_dashboard'))
 
-    @admin_routes.route('/')
-    @login_required
-    @role_required('employe')
-    def employe_panel():
-        render_template("employe.html")
+
