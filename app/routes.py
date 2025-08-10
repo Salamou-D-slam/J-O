@@ -116,7 +116,7 @@ def logout():
 # PAGE ALL EPREUVES
 @main_routes.route('/epreuves')
 @login_required
-@roles_required('admin', 'employe')
+#@roles_required('admin', 'employe')
 def all_epreuve():
     epreuves = Epreuve.query.all()
     return render_template('all_epreuve.html', epreuves=epreuves)
@@ -124,7 +124,7 @@ def all_epreuve():
 #PAGE ADD epreuves
 @main_routes.route('/add_epreuves', methods=["GET", "POST"])
 @login_required
-@roles_required('admin', 'employe')
+#roles_required('admin', 'employe')
 def add_epreuves():
     if request.method == "POST":
 
@@ -160,7 +160,7 @@ def add_epreuves():
 
 @main_routes.route('/epreuves-<nom_epreuve>', methods=['GET', 'POST'])
 @login_required
-@roles_required('admin', 'employe')
+#@roles_required('admin', 'employe')
 def epreuve_details(nom_epreuve):
 
     epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -223,15 +223,7 @@ def delete(epreuve_id):
 
 
 
-#PAGE DE PAYEMENT
-@main_routes.route('/paiement/<type_offre>' )
-@login_required
-def paiement_epreuve(type_offre):
-    #offre = get_offre_by_id(offre_id)
-    offre = Offre.query.filter_by(type_offre=type_offre).first()
-    if not offre:
-        return "offre non trouvée", 404
-    return render_template('paiement.html', offre=offre)
+
 
 
 

@@ -3,10 +3,10 @@ from flask_login import login_required, current_user
 from ..routes import roles_required
 from functools import wraps
 
-employe_bp = Blueprint('employe', __name__)
+employe_routes = Blueprint('employe', __name__)
 
 
-@employe_bp.route('/')
+@employe_routes.route('/')
 @login_required
 @roles_required('employe')
 def employe_dashboard():
