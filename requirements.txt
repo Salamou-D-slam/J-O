@@ -2,3 +2,9 @@ Flask
 Flask-SQLAlchemy
 psycopg2-binary
 SQLAlchemy
+Flask-Migrate
+Flask-Login
+Flask-Bootstrap5
+email-validator
+python-dotenv
+

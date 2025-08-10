@@ -6,6 +6,7 @@ from .extensions import db
 import secrets
 import string
 
+# Pour générer aléatoirement une clé de 22 caractere qui inclus les lettre, chiffre et caractère spéciaux préciser
 def generate_random_clef_user(length=22):
     alphabet = string.ascii_letters + string.digits + "!@#$%^&*()-_=+"
     return ''.join(secrets.choice(alphabet) for _ in range(length))
@@ -22,6 +23,7 @@ class User(UserMixin, db.Model):
     clef_user: Mapped[str] = mapped_column(String(22), unique=True, nullable=False, default=None)
 
 
+# Pour vérifier la clef existe déja pour renforcer l'"unique"
 @event.listens_for(User, 'before_insert')
 def receive_before_insert(mapper, connection, target):
     while True:
@@ -40,7 +42,7 @@ class Epreuve(db.Model):
     date_epreuve: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     image_filename: Mapped[str] = mapped_column(String(250), nullable=True)  # chemin ou nom du fichier image
 
-    # Une épreuve a plusieurs offres
+    # Jointure --> Une épreuve a plusieurs offres
     offres = relationship("Offre", back_populates="epreuve", cascade="all, delete-orphan")
 
 
@@ -57,7 +59,7 @@ class Offre(db.Model):
     prix: Mapped[float] = mapped_column(Float, nullable=True)
     id_epreuve: Mapped[int] = mapped_column(Integer, ForeignKey('epreuve.id'), nullable=False)
 
-    # L’offre appartient à une épreuve
+    # Jointure --> L’offre appartient à une épreuve
     epreuve = relationship("Epreuve", back_populates="offres")
 
     def __repr__(self):

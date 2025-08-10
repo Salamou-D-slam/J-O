@@ -28,10 +28,10 @@ def add_epreuve_if_not_exists(nom_epreuve, date_epreuve,prix_solo, prix_duo, pri
     duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo)
     family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family)
 
-    new_epreuve.offres.extend([solo, duo, family])
+    new_epreuve.offres.extend([solo, duo, family]) # Gestion de jointure
 
-    db.session.add(new_epreuve)
-    db.session.commit()
+    db.session.add(new_epreuve) # Formule de création dans la bdd
+    db.session.commit() # Le commit --> l'éxecution
     print(f"Epreuve '{nom_epreuve}' et ses offres créées.")
 
 
@@ -178,11 +178,11 @@ def delete_epreuve(epreuve_id):
 
 # READ ONE
 def get_offre_by_id(offre_id):
-    offre = db.session.get(Epreuve, offre_id)  # cherche le livre avec id=1
+    offre = db.session.get(Epreuve, offre_id)  # cherche l'offre avec id=1
     if offre:
         print(offre.type_offre, offre.nombre_personne, offre.prix)
     else:
-        print("Livre non trouvé")
+        print("Offre non trouvé")
 
 
 # READ ALL

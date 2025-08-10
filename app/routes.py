@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app, abort
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve #add_default_offres_for_epreuve
+from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve, get_offre_by_id
 from werkzeug.utils import secure_filename
 import os
 from .models import Epreuve, Offre, User
@@ -21,6 +21,7 @@ def allowed_file(filename):
 def load_user(user_id):
     return db.session.get(User, int(user_id))
 
+# Fonction pour autoriser un ou plusieurs rôles à accéder à la page
 def roles_required(*roles):
     def decorator(f):
         @wraps(f)
@@ -121,7 +122,7 @@ def all_epreuve():
     return render_template('all_epreuve.html', epreuves=epreuves)
 
 #PAGE ADD epreuves
-@main_routes.route('/epreuves', methods=["GET", "POST"])
+@main_routes.route('/add_epreuves', methods=["GET", "POST"])
 @login_required
 @roles_required('admin', 'employe')
 def add_epreuves():
@@ -223,10 +224,14 @@ def delete(epreuve_id):
 
 
 #PAGE DE PAYEMENT
-@main_routes.route('/paiement/<int:offre_id>')
+@main_routes.route('/paiement/<type_offre>' )
 @login_required
-def paiement_epreuve(offre_id):
-    return render_template('paiement.html')
+def paiement_epreuve(type_offre):
+    #offre = get_offre_by_id(offre_id)
+    offre = Offre.query.filter_by(type_offre=type_offre).first()
+    if not offre:
+        return "offre non trouvée", 404
+    return render_template('paiement.html', offre=offre)
 
 
 
