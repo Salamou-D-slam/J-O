@@ -124,20 +124,21 @@
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </h3>
         <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate >
+
             <h4>Personne n°1:</h4>
           <div class="mb-3">
             <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="pers1_prenom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="pers1_nom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com">
+            <input type="email" class="form-control" id="email" placeholder="vous@example.com" name="pers1_email">
             <div class="invalid-feedback">Email invalide.</div>
           </div>
           <hr class="my-3">
@@ -146,18 +147,13 @@
                         <h4>Personne n°2:</h4>
             <div class="mb-3">
             <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="pers2_prenom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="pers2_nom" required>
             <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com">
-            <div class="invalid-feedback">Email invalide.</div>
           </div>
           <hr class="my-3">
 
@@ -167,18 +163,13 @@
 
             <div class="mb-3">
             <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="pers2_prenom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="pers2_nom" required>
             <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com">
-            <div class="invalid-feedback">Email invalide.</div>
           </div>
           <hr class="my-3">
 
@@ -186,36 +177,26 @@
 
             <div class="mb-3">
             <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="pers3_prenom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="pers3_nom" required>
             <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com">
-            <div class="invalid-feedback">Email invalide.</div>
           </div>
           <hr class="my-3">
 
                         <h4>Personne n°4:</h4>
             <div class="mb-3">
             <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <input type="text" class="form-control" id="firstName" name="pers4_prenom" required>
             <div class="invalid-feedback">Champ requis.</div>
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <input type="text" class="form-control" id="lastName" name="pers4_nom" required>
             <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com">
-            <div class="invalid-feedback">Email invalide.</div>
           </div>
           <hr class="my-3">
 

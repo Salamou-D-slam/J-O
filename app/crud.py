@@ -1,12 +1,12 @@
 from flask import current_app
-from app.models import Epreuve, Offre
+from .models import Epreuve, Offre, User, Ticket
 from app.extensions import db
 
 
 #------------------------------------------------EPREUVE----------------------------------------
 
 #CREATE une éprevue s'elle n'existe pas
-def add_epreuve_if_not_exists(nom_epreuve, date_epreuve,prix_solo, prix_duo, prix_family, filename=None):
+def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, prix_family, filename=None):
 
     # Vérifier si l’épreuve existe déjà
     existing_epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -217,3 +217,30 @@ def delete_offre(offre_id):
 
 
 # ------------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------TICKET--------------------------------------------------
+
+#CREATE une éprevue s'elle n'existe pas
+# def creation_ticket(pers1, pers2, pers3, pers4):
+#
+#     prenom1 =
+#
+#     #Crée l’épreuve
+#
+#     new_epreuve = Epreuve(
+#         nom_epreuve = nom_epreuve,
+#         date_epreuve = date_epreuve,
+#         image_filename = filename
+#     )
+#
+#     #Crée les offres liées
+#
+#     solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo)
+#     duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo)
+#     family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family)
+#
+#     new_epreuve.offres.extend([solo, duo, family]) # Gestion de jointure
+#
+#     db.session.add(new_epreuve) # Formule de création dans la bdd
+#     db.session.commit() # Le commit --> l'éxecution
+#     print(f"Epreuve '{nom_epreuve}' et ses offres créées.")

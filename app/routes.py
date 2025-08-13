@@ -47,7 +47,7 @@ def home():
 
 #-------------------------------------------------AUTHENTIFICAATION-------------------------------
 
-# LOGIN
+# REGISTER
 @main_routes.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def register():
     return render_template('register.html')
 
 
-# REGISTER
+# LOGIN
 @main_routes.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

@@ -6,6 +6,14 @@ from .extensions import db
 import secrets
 import string
 import qrcode
+import uuid
+import os
+from sqlalchemy import JSON
+from sqlalchemy.dialects.postgresql import JSONB
+
+
+
+
 
 
 # Pour générer aléatoirement une clé de 22 caractere qui inclus les lettre, chiffre et caractère spéciaux préciser
@@ -13,24 +21,6 @@ def generate_random_clef_user(length=22):
     alphabet = string.ascii_letters + string.digits + "!@#$%^&*()-_=+"
     return ''.join(secrets.choice(alphabet) for _ in range(length))
 
-
-# Pour creer le qr code
-def generate_qr_code(data, file_path):
-    # Création du QRCode
-    qr = qrcode.QRCode(
-        version=1,  # taille du QR
-        error_correction=qrcode.constants.ERROR_CORRECT_L,  # niveau de correction d'erreur
-        box_size=10,  # taille des carré
-        border=4,  # taille des carré des bordures blanched autour du QR code
-    )
-    qr.add_data(data)  # ajout des données à encoder
-    qr.make(fit=True)  # génère la matrice du QR code
-
-    # Génération de l'image PIL
-    img = qr.make_image(fill_color="black", back_color="white")
-
-    # Sauvegarde de l'image dans un fichier
-    img.save(file_path)
 
 
 class User(UserMixin, db.Model):
@@ -89,26 +79,80 @@ class Offre(db.Model):
 
 class Ticket(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey('user.id'), nullable=False)
     offre_id: Mapped[int] = mapped_column(Integer, ForeignKey('offre.id'), nullable=False)
-    date_achat: Mapped[datetime] = mapped_column(DateTime, nullable=False)
-    qr_code = mapped_column(String(250), nullable=False)
-    status: Mapped[str] = mapped_column(String(250), nullable=False)
-    clef_ticket: Mapped[str] = mapped_column(String(22), unique=True, nullable=False, default=None)
 
+    pers_data = mapped_column(JSONB, nullable=True)
+    # pers1_nom: Mapped[str] = mapped_column(String(1000), nullable=False)
+    # pers1_prenom: Mapped[str] = mapped_column(String(1000), nullable=False)
+    # pers1_email: Mapped[str] = mapped_column(String(100), nullable=False)
+    #
+    # pers2_nom: Mapped[str] = mapped_column(String(1000), nullable=True)
+    # pers2_prenom: Mapped[str] = mapped_column(String(1000), nullable=True)
+    #
+    # pers3_nom: Mapped[str] = mapped_column(String(1000), nullable=True)
+    # pers3_prenom: Mapped[str] = mapped_column(String(1000), nullable=True)
+    #
+    # pers4_nom: Mapped[str] = mapped_column(String(1000), nullable=True)
+    # pers4_prenom: Mapped[str] = mapped_column(String(1000), nullable=True)
 
-    # Pour vérifier la clef existe déja pour renforcer l'"unique"
-    @event.listens_for(User, 'before_insert')
-    def receive_before_insert(mapper, connection, target):
-        while True:
-            new_clef_ticket = generate_random_clef_user(22)
-            existing = connection.execute(
-                db.select(User).where(User.clef_user == new_clef_ticket)
-            ).scalar()
-            if not existing:
-                break
-        target.clef_ticket = new_clef_ticket
+    date_achat: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.utcnow)
+    qr_code: Mapped[str] = mapped_column(String(250), nullable=False)
+    status: Mapped[str] = mapped_column(String(250), nullable=False, default='valide')
 
+    # Cration de clef unique ticket
+    clef_ticket: Mapped[str] = mapped_column(String(36), unique=True, nullable=False, default=lambda: str(uuid.uuid4()))
+
+    # Pour stocker les infos en Json utile pour stocker plusieur infos en une seule colonne
+    # pers1: Mapped[dict] = mapped_column(JSONB, nullable=True)
+    # pers2: Mapped[dict] = mapped_column(JSONB, nullable=True)
+    # pers3: Mapped[dict] = mapped_column(JSONB, nullable=True)
+    # pers4: Mapped[dict] = mapped_column(JSONB, nullable=True)
+
+    # Pour Génèrer un QR code avec clef_user + clef_ticket
+    # def generate_qr_code(self):
+    #
+    #     if not self.user or not self.clef_ticket:
+    #         raise ValueError("Impossible de générer le QR code : utilisateur ou clef_ticket manquant.")
+    #
+    #     # Données à mettre dans le QR
+    #     data_qr = f"{self.user.clef_user}:{self.clef_ticket}"
+    #
+    #     # Dossier de stockage
+    #     output_dir = "static/qrcodes"
+    #     os.makedirs(output_dir, exist_ok=True)
+    #
+    #     # Chemin complet du fichier
+    #     file_path = os.path.join(output_dir, f"{self.ticket_key}.png")
+    #
+    #     # Création du QR code
+    #     qr = qrcode.QRCode(
+    #         version=1,
+    #         error_correction=qrcode.constants.ERROR_CORRECT_L,
+    #         box_size=10,
+    #         border=4
+    #     )
+    #     qr.add_data(data_qr)
+    #     qr.make(fit=True)
+    #
+    #     img = qr.make_image(fill_color="black", back_color="white")
+    #     img.save(file_path)
+    #
+    #      # On enregistre le chemin dans la BDD
+    #      self.qr_code_path = file_path
 
     user = relationship("User", back_populates="tickets")
     offre = relationship("Offre", back_populates="tickets")
+
+# class Reservation(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     personnes = db.relationship("Personne", back_populates="reservation")
+#
+# class Personne(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     prenom = db.Column(db.String(50))
+#     nom = db.Column(db.String(50))
+#     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
+#     reservation_id = db.Column(db.Integer, db.ForeignKey("reservation.id"))
+#     reservation = db.relationship("Reservation", back_populates="personnes")

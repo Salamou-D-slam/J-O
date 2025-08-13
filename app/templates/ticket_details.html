@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Détails du Ticket</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 1rem; }
+        h1 { text-align: center; }
+        .ticket-info { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+        .section { margin-bottom: 1.5rem; }
+        .section h2 { border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; margin-bottom: 0.5rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.5rem; border-bottom: 1px solid #eee; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Ticket n°{{ ticket.id }}</h1>
+
+    <div class="ticket-info">
+
+        <div class="section">
+            <h2>Informations Utilisateur</h2>
+            <p><strong>Nom :</strong> {{ ticket.user.nom }} {{ ticket.user.prenom }}</p>
+            <p><strong>Email :</strong> {{ ticket.user.email }}</p>
+        </div>
+
+        <div class="section">
+            <h2>Offre et Épreuve</h2>
+            <p><strong>Offre :</strong> {{ ticket.offre.type_offre }}</p>
+            <p><strong>Épreuve :</strong> {{ ticket.offre.epreuve.nom_epreuve }}</p>
+            <p><strong>Date de l'épreuve :</strong> {{ ticket.offre.epreuve.date_epreuve.strftime('%d/%m/%Y %H:%M') }}</p>
+            <p><strong>Prix :</strong> {{ ticket.offre.prix }} €</p>
+        </div>
+
+        <div class="section">
+            <h2>Personnes associées</h2>
+            {% if ticket.pers_data %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th><th>Prénom</th><th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pers in ticket.pers_data %}
+                        <tr>
+                            <td>{{ pers.nom or '—' }}</td>
+                            <td>{{ pers.prenom or '—' }}</td>
+                            <td>{{ pers.email or '—' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Aucune personne renseignée.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>QR Code</h2>
+            {% if ticket.qr_code %}
+                <img src="{{ url_for('static', filename=ticket.qr_code) }}" alt="QR Code Ticket" width="200" height="200" />
+            {% else %}
+                <p>QR Code non généré.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <p><strong>Status :</strong> {{ ticket.status }}</p>
+            <p><strong>Date d'achat :</strong> {{ ticket.date_achat.strftime('%d/%m/%Y %H:%M') }}</p>
+        </div>
+
+    </div>
+
+
+<form action="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id)') }}" method="post">
+    <button type="submit">Télécharger le PDF</button>
+</form>
+
+</body>
+</html>

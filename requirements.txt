@@ -1,3 +1,4 @@
+weasyprint
 Flask
 Flask-SQLAlchemy
 psycopg2-binary
