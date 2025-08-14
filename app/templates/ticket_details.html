@@ -59,7 +59,8 @@
         <div class="section">
             <h2>QR Code</h2>
             {% if ticket.qr_code %}
-                <img src="{{ url_for('static', filename=ticket.qr_code) }}" alt="QR Code Ticket" width="200" height="200" />
+<!--                <img src="file://{{ qr_code }}" alt="QR Code Ticket" width="200" height="200" />-->
+              <img src="{{ url_for('static', filename=ticket.qr_code) }}" alt="QR Code Ticket" width="200" height="200" />
             {% else %}
                 <p>QR Code non généré.</p>
             {% endif %}
@@ -73,7 +74,7 @@
     </div>
 
 
-<form action="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id)') }}" method="post">
+<form action="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id) }}" method="post">
     <button type="submit">Télécharger le PDF</button>
 </form>
 

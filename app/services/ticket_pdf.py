@@ -1,0 +1,46 @@
+from flask import Blueprint, render_template, request, make_response, current_app, send_file
+import os
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import mm
+
+
+
+def generer_ticket_pdf(ticket):
+
+    # Crée le dossier pour les tickets s'il n'existe pas
+    pdf_folder = os.path.join(current_app.static_folder, 'uploads', 'tickets')
+    os.makedirs(pdf_folder, exist_ok=True)
+
+    pdf_filename = f"ticket_{ticket.id}.pdf"
+    pdf_path = os.path.join(pdf_folder, pdf_filename)
+
+    # Création du PDF
+    c = canvas.Canvas(pdf_path, pagesize=A4)
+    width, height = A4
+
+    # Infos Ticket
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(20 * mm, height - 30 * mm, f"Ticket n°{ticket.id}")
+
+    c.setFont("Helvetica", 12)
+    c.drawString(20 * mm, height - 45 * mm, f"Nom : {ticket.user.nom} {ticket.user.prenom}")
+    c.drawString(20 * mm, height - 55 * mm, f"Email : {ticket.user.email}")
+    c.drawString(20 * mm, height - 70 * mm, f"Offre : {ticket.offre.type_offre}")
+    c.drawString(20 * mm, height - 80 * mm, f"Épreuve : {ticket.offre.epreuve.nom_epreuve}")
+    c.drawString(20 * mm, height - 90 * mm, f"Date : {ticket.offre.epreuve.date_epreuve.strftime('%d/%m/%Y %H:%M')}")
+    c.drawString(20 * mm, height - 100 * mm, f"Prix : {ticket.offre.prix} €")
+    c.drawString(20 * mm, height - 120 * mm, f"Personnes concernés : {ticket.pers_data}")
+
+
+    # QR Code
+    qr_path = os.path.join(current_app.static_folder, 'uploads', 'qrcodes', f"ticket_{ticket.id}.png") #vu que le qr code est déja crée dans la route du paiement, je dois juste le trouver grace aux chemin
+
+
+    # Insérer QR code dans le PDF
+    c.drawImage(qr_path, 150 * mm, height - 80 * mm, width=40 * mm, height=40 * mm)
+
+    c.showPage()
+    c.save()
+
+    return f"uploads/tickets/{pdf_filename}"

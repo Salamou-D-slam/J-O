@@ -1,7 +1,7 @@
 import os
 import qrcode
 
-def generate_and_save_qr_code(data: str, filename: str, base_path: str):
+def generate_qr_code(data: str, filename: str, base_path: str):
     """
     Génère un QR code pour la data, et sauvegarde dans base_path/filename
 

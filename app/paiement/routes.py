@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, send_file
 from flask_login import login_user, logout_user, login_required, current_user
 import qrcode
 import os
@@ -7,8 +7,10 @@ from datetime import datetime
 
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.paiement_mock import FakePaymentGateway
-from ..services.qrcode import generate_and_save_qr_code
+from ..services.qrcode import generate_qr_code
 from ..extensions import db
+from ..services.ticket_pdf import generer_ticket_pdf
+
 
 
 
@@ -75,7 +77,6 @@ def paiement_epreuve(type_offre):
                 #
                 # pers4_nom = pers4_nom,
                 # pers4_prenom = pers4_prenom,
-
                 qr_code=""  # provisoire, on le remplira après génération
             )
 
@@ -86,11 +87,12 @@ def paiement_epreuve(type_offre):
             qr_data = f"clef_user:{ticket.user.clef_user}|clef_ticket:{ticket.clef_ticket}"
             filename = f"ticket_{ticket.id}.png"
             base_path = os.path.join(current_app.root_path, 'static', 'uploads', 'qrcodes')
-            generate_and_save_qr_code(qr_data, filename, base_path)
+            generate_qr_code(qr_data, filename, base_path)
 
             # Stocker le chemin relatif dans le ticket
             ticket.qr_code = f"uploads/qrcodes/{filename}"
             db.session.commit()
+
 
             return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code ) #transaction_id=result["transaction_id"]
         else:
