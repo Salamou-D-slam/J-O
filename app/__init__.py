@@ -18,7 +18,7 @@ def create_app():
 
     app = Flask(__name__)
 
-    app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads') # Config le chemin des envoi des images
+    app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads/image') # Config le chemin des envoi des images
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # La taille maximal (max 16MB)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI') # Config la bdd

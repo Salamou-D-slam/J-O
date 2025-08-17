@@ -6,7 +6,7 @@ from app.extensions import db
 #------------------------------------------------EPREUVE----------------------------------------
 
 #CREATE une éprevue s'elle n'existe pas
-def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, prix_family, filename=None):
+def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, prix_family, nbr_place_solo, nbr_place_duo, nbr_place_family, filename=None):
 
     # Vérifier si l’épreuve existe déjà
     existing_epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -24,9 +24,9 @@ def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, pr
 
     #Crée les offres liées
 
-    solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo)
-    duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo)
-    family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family)
+    solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo, bi_restant=nbr_place_solo)
+    duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo, bi_restant=nbr_place_duo)
+    family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family, bi_restant=nbr_place_family)
 
     new_epreuve.offres.extend([solo, duo, family]) # Gestion de jointure
 

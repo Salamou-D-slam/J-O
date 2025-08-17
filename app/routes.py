@@ -137,6 +137,10 @@ def add_epreuves():
         prix_duo = float(request.form['prix_duo'])
         prix_family = float(request.form['prix_family'])
 
+        nbr_place_solo = int(request.form['nbr_place_solo'])
+        nbr_place_duo = int(request.form['nbr_place_duo'])
+        nbr_place_family = int(request.form['nbr_place_family'])
+
         #Met la sécurité et le chemin des images uploads
         filename = secure_filename(image.filename)
         image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
@@ -149,7 +153,11 @@ def add_epreuves():
 
             prix_solo = prix_solo,
             prix_duo = prix_duo,
-            prix_family = prix_family
+            prix_family = prix_family,
+
+            nbr_place_solo = nbr_place_solo,
+            nbr_place_duo =nbr_place_duo,
+            nbr_place_family = nbr_place_family
         )
 
         return redirect(url_for('main.all_epreuve'))

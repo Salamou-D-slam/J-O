@@ -67,6 +67,9 @@ class Offre(db.Model):
     prix: Mapped[float] = mapped_column(Float, nullable=True)
     id_epreuve: Mapped[int] = mapped_column(Integer, ForeignKey('epreuve.id'), nullable=False)
 
+    bi_restant: Mapped[int] = mapped_column(Integer, nullable=False)
+    bi_vendu: Mapped[int] = mapped_column(Integer, nullable=False, default= 0)
+
     # Jointure --> L’offre appartient à une épreuve
     epreuve = relationship("Epreuve", back_populates="offres")
     tickets = relationship("Ticket", back_populates="offre", cascade="all, delete-orphan")

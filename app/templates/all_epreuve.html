@@ -16,7 +16,7 @@
 <!--                {% endfor %}-->
             </ul>
             {% if epreuve.image_filename %}
-            <img src="{{ url_for('static', filename='uploads/' + epreuve.image_filename) }}" width="150">
+            <img src="{{ url_for('static', filename='uploads/image/' + epreuve.image_filename) }}" width="150">
             {% endif %}
         </li>
         <a href="{{ url_for('main.epreuve_details', nom_epreuve=epreuve.nom_epreuve) }}">Plus de détails</a>
