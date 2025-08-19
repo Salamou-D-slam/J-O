@@ -106,6 +106,7 @@ class Ticket(db.Model):
 
     # Cration de clef unique ticket
     clef_ticket: Mapped[str] = mapped_column(String(36), unique=True, nullable=False, default=lambda: str(uuid.uuid4()))
+    # str(uuid.uuid4()): Crée une clé aléatoire, méthode différente de la précedente
 
     # Pour stocker les infos en Json utile pour stocker plusieur infos en une seule colonne
     # pers1: Mapped[dict] = mapped_column(JSONB, nullable=True)

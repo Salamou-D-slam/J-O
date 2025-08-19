@@ -1,18 +1,10 @@
 from flask import Blueprint, render_template, request, current_app, send_file
 from flask_login import login_user, logout_user, login_required, current_user
-import qrcode
 import os
-import json
-from datetime import datetime
-
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.paiement_mock import FakePaymentGateway
 from ..services.qrcode import generate_qr_code
 from ..extensions import db
-from ..services.ticket_pdf import generer_ticket_pdf
-
-
-
 
 paiement_routes = Blueprint('paiement', __name__)
 
@@ -29,7 +21,7 @@ def paiement_epreuve(type_offre):
         montant = offre.prix
 
         # Création du mock
-        gateway = FakePaymentGateway(force_result="success")
+        gateway = FakePaymentGateway() # " force_result="success" " Pour forcer le resultat en success
         result = gateway.process_paiement(card_number, montant) # Prend le prix direct de la bdd
 
         if result["status"] == "success":
@@ -86,7 +78,7 @@ def paiement_epreuve(type_offre):
                     #
                     # pers4_nom = pers4_nom,
                     # pers4_prenom = pers4_prenom,
-                    qr_code=""  # provisoire, on le remplira après génération
+                    qr_code=""
                 )
 
                 db.session.add(ticket)
@@ -105,7 +97,7 @@ def paiement_epreuve(type_offre):
                 db.session.commit()
 
 
-                return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code ) #transaction_id=result["transaction_id"]
+                return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code )
         else:
             return render_template('paiement_failure.html', error=result["error"])
 

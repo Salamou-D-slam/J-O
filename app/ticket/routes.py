@@ -1,11 +1,8 @@
-from flask import Blueprint, render_template, request, make_response, current_app, send_file
+from flask import Blueprint, render_template,send_file
 from flask_login import login_required
-import base64
-from weasyprint import HTML
 import os
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.ticket_pdf import generer_ticket_pdf
-
 
 
 ticket_routes = Blueprint('ticket', __name__)

@@ -10,7 +10,7 @@
     <p>Date de l'épreuve : {{ epreuve.date_epreuve.strftime('%d/%m/%Y') }}</p>
 
     {% if epreuve.image_filename %}
-        <img src="{{ url_for('static', filename='uploads/' ~ epreuve.image_filename) }}" alt="Image de l'épreuve" style="max-width: 400px;">
+        <img src="{{ url_for('static', filename='uploads/image/' ~ epreuve.image_filename) }}" alt="Image de l'épreuve" style="max-width: 400px;">
     {% else %}
         <p>Aucune image disponible</p>
     {% endif %}

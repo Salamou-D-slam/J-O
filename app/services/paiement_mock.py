@@ -1,7 +1,4 @@
 import random
-from ..models import Epreuve, Offre, User
-from ..extensions import db, login_manager
-
 
 class FakePaymentGateway:
     def __init__(self, force_result=None): # force_result: "success" ou "failure" ou None pour aléatoire
@@ -17,6 +14,6 @@ class FakePaymentGateway:
             success = random.choice([True, False])
 
         if success:
-            return {"status": "success", "transaction_id": f"TXN{random.randint(100000, 999999)}"}
+            return {"status": "success"}
         else:
             return {"status": "failure", "error": "Paiement refusé"}
