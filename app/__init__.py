@@ -10,6 +10,7 @@ from app.admin.routes import admin_routes
 from app.employe.routes import employe_routes
 from app.paiement.routes import paiement_routes
 from app.ticket.routes import ticket_routes
+from app.scan.routes import scan_routes
 
 
 
@@ -36,6 +37,7 @@ def create_app():
     app.register_blueprint(employe_routes, url_prefix='/employe')
     app.register_blueprint(paiement_routes, url_prefix='/paiement')
     app.register_blueprint(ticket_routes, url_prefix='/ticket')
+    app.register_blueprint(scan_routes)
 
     # Crée toutes les tables
     with app.app_context():

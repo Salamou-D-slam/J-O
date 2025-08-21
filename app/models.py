@@ -102,7 +102,10 @@ class Ticket(db.Model):
 
     date_achat: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.utcnow)
     qr_code: Mapped[str] = mapped_column(String(250), nullable=False)
+
     status: Mapped[str] = mapped_column(String(250), nullable=False, default='valide')
+    status_tent: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    used_at = db.Column(db.DateTime, nullable=True)
 
     # Cration de clef unique ticket
     clef_ticket: Mapped[str] = mapped_column(String(36), unique=True, nullable=False, default=lambda: str(uuid.uuid4()))

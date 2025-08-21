@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, current_app, send_file
 from flask_login import login_user, logout_user, login_required, current_user
 import os
+import hashlib
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.paiement_mock import FakePaymentGateway
 from ..services.qrcode import generate_qr_code
@@ -23,6 +24,7 @@ def paiement_epreuve(type_offre):
         # Création du mock
         gateway = FakePaymentGateway() # " force_result="success" " Pour forcer le resultat en success
         result = gateway.process_paiement(card_number, montant) # Prend le prix direct de la bdd
+
 
         if result["status"] == "success":
 
@@ -85,7 +87,14 @@ def paiement_epreuve(type_offre):
                 db.session.commit()
 
                 # Génération QR code
-                qr_data = f"clef_user:{ticket.user.clef_user}|clef_ticket:{ticket.clef_ticket}"
+
+                # Hash de la clef_user
+                clef_user_hashed = hashlib.sha256(ticket.user.clef_user.encode()).hexdigest()
+
+                # Hash de la clef_ticket
+                clef_ticket_hashed = hashlib.sha256(ticket.clef_ticket.encode()).hexdigest()
+
+                qr_data = f"clef_user:{clef_user_hashed}|clef_ticket:{clef_ticket_hashed}"
                 filename = f"ticket_{ticket.id}.png"
                 base_path = os.path.join(current_app.root_path, 'static', 'uploads', 'qrcodes')
                 generate_qr_code(qr_data, filename, base_path)
@@ -99,6 +108,9 @@ def paiement_epreuve(type_offre):
 
                 return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code )
         else:
+            if offre.bi_restant < 0:
+                offre.bi_restant = 0
+                return ("Dommage, il ne reste plus de place!")
             return render_template('paiement_failure.html', error=result["error"])
 
 

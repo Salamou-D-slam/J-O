@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan QR code</title>
+</head>
+<body>
+    <h2>Contrôle des tickets</h2>
+
+<input type="text" id="ticket_id" placeholder="Colle ou scanne le QR code">
+<button onclick="simulateScan()">Vérifier</button>
+
+<div id="result"></div>
+
+<script>
+  function simulateScan() {
+      const ticketId = document.getElementById("ticket_id").value;
+      fetch(`/api/validate_ticket/${ticketId}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("result").innerText = data.message;
+        });
+  }
+</script>
+</body>
+
+</html>
