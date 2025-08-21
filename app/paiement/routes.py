@@ -106,7 +106,7 @@ def paiement_epreuve(type_offre):
                 db.session.commit()
 
 
-                return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code )
+                return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code)
         else:
             if offre.bi_restant < 0:
                 offre.bi_restant = 0

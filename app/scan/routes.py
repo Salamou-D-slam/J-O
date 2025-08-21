@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, send_file, jsonify
-from datetime import datetime
-from ..models import Epreuve, Offre, User, Ticket
+from flask import Blueprint, render_template, jsonify
+from ..models import Ticket
 from app.extensions import db, login_manager
 
 
@@ -32,13 +31,15 @@ def validate_ticket(ticket_id):
     # if not ticket:
     #     return jsonify({"valid": None, "message": "Ticket invalide"}), 404
 
+    # Si le ticket n'existe pas
     if not ticket:
         return jsonify({"valid": False, "message": "Ticket inexistant"}), 404
 
+    # Si le ticket a déja été utilisé
     if ticket.status == "invalide":
         return jsonify({"valid": False, "message": "Ticket déjà utilisé"}), 400
 
-        # Si le ticket est valide -> on le rend invalide
+    # Si le ticket est valide -> on le rend invalide
     ticket.status = "invalide"
     db.session.commit()
 
