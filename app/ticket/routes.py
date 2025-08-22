@@ -8,12 +8,12 @@ from ..services.ticket_pdf import generer_ticket_pdf
 ticket_routes = Blueprint('ticket', __name__)
 
 
-#PAGE DE PAIEMENT
-@ticket_routes.route('/<int:ticket_id>', methods=['GET', 'POST'] )
-@login_required
-def ticket_detail(ticket_id):
-    ticket = Ticket.query.get_or_404(ticket_id)
-    return render_template('ticket_details.html', ticket=ticket)
+# #PAGE DE PAIEMENT
+# @ticket_routes.route('/<int:ticket_id>', methods=['GET', 'POST'] )
+# @login_required
+# def ticket_detail(ticket_id):
+#     ticket = Ticket.query.get_or_404(ticket_id)
+#     return render_template('ticket_details.html', ticket=ticket)
 
 
 @ticket_routes.route('/<int:ticket_id>/pdf', methods=['POST'])

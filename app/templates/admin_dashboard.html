@@ -5,13 +5,38 @@
 {% block content %}
 <h1>Dashboard Admin</h1>
 
-<form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
-  <input type="text" name="q" placeholder="Rechercher un utilisateur" value="{{ search_query }}">
-  <button type="submit">Rechercher</button>
-  {% if search_query %}
-    <a href="{{ url_for('admin.admin_dashboard') }}">Réinitialiser</a>
-  {% endif %}
-</form>
+<h2>Informations personnelles</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Email</th>
+  </tr>
+        <tr>
+    <td>{{ current_user.nom }}</td>
+    <td>{{ current_user.prenom }}</td>
+    <td>{{ current_user.email }}</td>
+</tr>
+        </table>
+            <form method="post" action="{{ url_for('admin.admin_dashboard_post') }}">
+
+                <input type="hidden" name="update_admin" value="1">
+                <input type="hidden" name="user_id" value="{{ current_user.id }}">
+
+
+              <label>Nouveau Email:</label><br>
+              <input type="email" name="new_email"><br>
+
+              <label>Nouveau Nom:</label><br>
+              <input type="text" name="new_nom"><br>
+
+              <label>Nouveau Prenom:</label><br>
+              <input type="text" name="new_prenom"><br><br>
+
+              <button type="submit">Modifier</button>
+            </form>
+<br>
+<hr>
 
 <h2>Créer un utilisateur</h2>
 <form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}">
@@ -36,6 +61,14 @@
 <hr>
 
 <h2>Liste des utilisateurs</h2>
+<form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
+  <input type="text" name="q" placeholder="Rechercher un utilisateur" value="{{ search_query }}">
+  <button type="submit">Rechercher</button>
+  {% if search_query %}
+    <a href="{{ url_for('admin.admin_dashboard') }}">Réinitialiser</a>
+  {% endif %}
+</form>
+<br>
 <table border="1" cellpadding="5" cellspacing="0">
   <tr>
     <th>ID</th>

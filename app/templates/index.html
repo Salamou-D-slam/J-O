@@ -4,9 +4,5 @@
 
 {% block content %}
   <h1>Bienvenue sur le site</h1>
-  {% if current_user.is_authenticated %}
-    <p>Vous êtes connecté en tant que {{ current_user.nom }} {{ current_user.prenom }} ({{ current_user.role }})</p>
-  {% else %}
     <p>Merci de vous connecter ou de vous inscrire.</p>
-  {% endif %}
 {% endblock %}

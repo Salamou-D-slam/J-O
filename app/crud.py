@@ -155,9 +155,9 @@ def delete_epreuve(epreuve_id):
     if epreuve:
         db.session.delete(epreuve)
         db.session.commit()
-        print(f"Livre ID {epreuve_id} supprimé.")
+        print(f"epreuve ID {epreuve_id} supprimé.")
     else:
-        print("Livre non trouvé.")
+        print("epreuve non trouvé.")
 
 #------------------------------------------------------------------------------------------------------
 
@@ -198,9 +198,9 @@ def update_offre(offre_id, new_type_offre=None, new_nombre_personne=None, new_pr
         if new_nombre_personne: offre.nombre_personne = new_nombre_personne
         if new_prix: offre.priw = new_prix
         db.session.commit()
-        print(f"Mise à jour du livre ID {offre_id}")
+        print(f"Mise à jour du offre ID {offre_id}")
     else:
-        print("Livre non trouvé.")
+        print("offre non trouvé.")
 
 
 # DELETE
@@ -209,12 +209,24 @@ def delete_offre(offre_id):
     if offre:
         db.session.delete(offre)
         db.session.commit()
-        print(f"Livre ID {offre_id} supprimé.")
+        print(f"offre ID {offre_id} supprimé.")
     else:
-        print("Livre non trouvé.")
+        print("offre non trouvé.")
 
 
 
+
+# UPDATE ADMIN
+def update_admin(user_id, new_email=None, new_nom=None, new_prenom=None):
+    user = User.query.get(User, user_id)
+    if user:
+        if new_email: user.email = new_email
+        if new_nom: user.nom = new_nom
+        if new_prenom: user.prenom = new_prenom
+        db.session.commit()
+        print(f"Mise à jour de l'user ID {user_id}")
+    else:
+        print("user non trouvé.")
 
 # ------------------------------------------------------------------------------------------------------
 

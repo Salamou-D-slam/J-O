@@ -11,6 +11,7 @@ from app.employe.routes import employe_routes
 from app.paiement.routes import paiement_routes
 from app.ticket.routes import ticket_routes
 from app.scan.routes import scan_routes
+from app.utilisateur.routes import utilisateur_routes
 
 
 
@@ -35,6 +36,7 @@ def create_app():
     app.register_blueprint(main_routes)
     app.register_blueprint(admin_routes, url_prefix='/admin')
     app.register_blueprint(employe_routes, url_prefix='/employe')
+    app.register_blueprint(utilisateur_routes, url_prefix='/utilisateur')
     app.register_blueprint(paiement_routes, url_prefix='/paiement')
     app.register_blueprint(ticket_routes, url_prefix='/ticket')
     app.register_blueprint(scan_routes)

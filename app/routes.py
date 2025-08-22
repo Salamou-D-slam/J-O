@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import os
 from .models import Epreuve, Offre, User
 from .extensions import db, login_manager
+from .crud import update_epreuve
 from functools import wraps
 
 main_routes = Blueprint('main', __name__)
@@ -88,7 +89,7 @@ def login():
             elif user.role == 'employe':
                 return redirect(url_for('employe.employe_dashboard'))
             else:
-                return redirect(url_for('main.home'))
+                return redirect(url_for('utilisateur.utilisateur_dashboard'))
         else:
             flash("Email ou mot de passe incorrect.")
     return render_template('login.html')
