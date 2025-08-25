@@ -16,6 +16,7 @@ ticket_routes = Blueprint('ticket', __name__)
 #     return render_template('ticket_details.html', ticket=ticket)
 
 
+
 @ticket_routes.route('/<int:ticket_id>/pdf', methods=['POST'])
 @login_required
 def ticket_pdf(ticket_id):

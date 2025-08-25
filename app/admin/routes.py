@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
-from ..models import User
+from ..models import User, Ticket
 from ..extensions import db
 from ..routes import roles_required
 
@@ -16,6 +16,7 @@ admin_routes = Blueprint('admin', __name__)
 @roles_required('admin')
 def admin_dashboard():
     user_info = db.session.query(User).filter_by(id=current_user.id).scalar()
+    ticket = Ticket.query.filter_by(user_id=current_user.id).all()
     search_query = request.args.get('q', '')
     if search_query:
         users = db.session.execute(
@@ -25,7 +26,7 @@ def admin_dashboard():
         ).scalars().all()
     else:
         users = db.session.execute(db.select(User)).scalars().all()
-    return render_template('admin_dashboard.html',user_info=user_info, users=users, current_user=current_user, search_query=search_query)
+    return render_template('admin_dashboard.html',user_info=user_info, users=users, current_user=current_user, search_query=search_query,tickets=ticket)
 
 
 
@@ -120,6 +121,12 @@ def admin_dashboard_post():
 
 
 
+#PAGE DE TICKET
+@admin_routes.route('/ticket/<int:ticket_id>', methods=['GET', 'POST'] )
+@login_required
+def ticket_detail(ticket_id):
+    ticket = Ticket.query.get_or_404(ticket_id)
+    return render_template('ticket_details.html', ticket=ticket)
 # @admin_routes.route('/', methods=['POST', 'GET'])
 # @login_required
 # @roles_required('admin')

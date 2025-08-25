@@ -39,11 +39,18 @@
   <h2>Mes Billets</h2>
 
 <ul>
-    {% for ticket in tickets %}
+  {% for ticket in tickets %}
     <li>
-        <a href="{{url_for ('utilisateur.ticket_detail' , ticket_id = ticket.id)}}">Voir mon ticket</a>
+      <a href="{{ url_for('utilisateur.ticket_detail', ticket_id=ticket.id) }}">
+        Voir mon ticket n°{{ ticket.id }}
+      </a>
     </li>
-    {% endfor %}
+  {% else %}
+    <li>Aucun billet acheté.</li>
+  {% endfor %}
 </ul>
+
+
+
 
 {% endblock %}

@@ -17,10 +17,10 @@ utilisateur_routes = Blueprint('utilisateur', __name__)
 def utilisateur_dashboard():
     #ticket = Ticket.query.all()
     #ticket = Ticket.query.get_or_404(ticket_id)
-    ticket = Ticket.query.filter_by(user_id=current_user.id).first()
+    ticket = Ticket.query.filter_by(user_id=current_user.id).all()
     # ticket = db.session.query(Ticket).filter_by(ticket_id=ticket.user_id).scalar()
 
-    return render_template('profil.html',ticket=ticket, ticket_id=ticket.id) #, ticket=ticket
+    return render_template('profil.html',tickets=ticket)  #ticket_id=ticket.id, ticket=ticket
 
 #PAGE DE PAIEMENT
 @utilisateur_routes.route('/ticket/<int:ticket_id>', methods=['GET', 'POST'] )
