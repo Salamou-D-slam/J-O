@@ -6,7 +6,6 @@ class FakePaymentGateway:
         self.force_result = force_result
 
     def process_paiement(self, card_number, montant):
-        print(f"[MOCK] Simulation paiement de {montant}€ avec carte {card_number}")
 
         if self.force_result is not None:
             success = self.force_result == "success"

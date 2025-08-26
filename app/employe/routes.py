@@ -58,9 +58,9 @@ def employe_dashboard_post():
 
         return redirect(url_for('employe.employe_dashboard'))
 
-    # PAGE DE TICKET
-    @employe_routes.route('/ticket/<int:ticket_id>', methods=['GET', 'POST'])
-    @login_required
-    def ticket_detail(ticket_id):
-        ticket = Ticket.query.get_or_404(ticket_id)
-        return render_template('ticket_details.html', ticket=ticket)
+# PAGE DE TICKET
+@employe_routes.route('/ticket/<int:ticket_id>', methods=['GET', 'POST'])
+@login_required
+def ticket_detail(ticket_id):
+    ticket = Ticket.query.get_or_404(ticket_id)
+    return render_template('ticket_details.html', ticket=ticket)

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, current_app, send_file
+from flask import Blueprint, render_template, request, current_app, send_file, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 import os
 import hashlib
@@ -33,7 +33,6 @@ def paiement_epreuve(type_offre):
             offre.bi_vendu += 1
 
             if offre.bi_restant < 0:
-                offre.bi_restant = 0
                 return ("Dommage, il ne reste plus de place!")
 
 
@@ -105,8 +104,14 @@ def paiement_epreuve(type_offre):
                 ticket.qr_code = f"uploads/qrcodes/{filename}"
                 db.session.commit()
 
-
-                return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code)
+                flash("Paiement accepté ✅")
+                #return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code)
+                if current_user.role == 'utilisateur':
+                    return redirect(url_for('utilisateur.utilisateur_dashboard'))
+                elif current_user.role == 'admin':
+                    return redirect(url_for('admin.admin_dashboard'))
+                elif current_user.role == 'employe':
+                    return redirect(url_for('employe.employe_dashboard'))
         else:
             if offre.bi_restant < 0:
                 offre.bi_restant = 0

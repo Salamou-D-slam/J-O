@@ -40,8 +40,8 @@
 <ul>
   {% for ticket in tickets %}
     <li>
-      <a href="{{ url_for('employe.ticket_detail', ticket_id=ticket.id) }}">
-        Voir mon ticket n°{{ ticket.id }}
+      <a href="{{ url_for('employe.ticket_detail', ticket_id=ticket.id) }}" target="_blank">
+         Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>
   {% else %}
