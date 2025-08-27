@@ -241,13 +241,13 @@ def contact():
         message_user = request.form.get("message")
 
         msg = Message(
-            subject=f"Nouveau message de {nom}",
+            subject=f"Nouveau message de {nom}", # L'objet du mail
             recipients=[os.getenv('MAIL_JO')],  # Adresse de l'entreprise (adresse qui reçoit le mail)
-            body=f"De: {nom} <{email}>\n\n{message_user}"
+            body=f"De: {nom} <{email}>\n\n{message_user}" # le message
         )
-        msg.reply_to = email
+        msg.reply_to = email # Pour que l'email de l'utilisateur sera utilisé comme destinataire en cas de réponse
 
-        mail.send(msg)
+        mail.send(msg) # Pour envoyer l'email
         flash("Votre message a bien été envoyé ✅")
         return redirect(url_for("main.contact"))
 

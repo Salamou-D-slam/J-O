@@ -123,7 +123,7 @@
             <h3>
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </h3>
-        <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate >
+        <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate onsubmit="return fermerPopup();">
 
             <h4>Personne n°1:</h4>
           <div class="mb-3">
@@ -261,6 +261,7 @@
 document.querySelector('.theme-toggle').addEventListener('click', () => {
   document.body.classList.toggle('light-mode');
 });
+
 </script>
 </body>
 </html>

@@ -35,6 +35,7 @@ def generer_ticket_pdf(ticket):
 
     # Rendre ma table qui en jsonb en liste python
     personnes = ticket.pers_data or []
+    emails = ticket.pers_data or []
 
     c.setFont("Helvetica-Bold", 14)
     c.drawString(20 * mm, height - 120 * mm, "Personnes concernées :")
@@ -45,8 +46,18 @@ def generer_ticket_pdf(ticket):
     for p in personnes:
         nom = p.get("nom", "")
         prenom = p.get("prenom", "")
-        c.drawString(25 * mm, y_position, f"- {prenom} {nom}")
+        email = p.get("email", "")
+
+        # Afficher seulement si au moins nom ou prénom
+        if nom or prenom:
+            text = f"- {prenom} {nom}"
+            if email:  # ajouter l'email si présent
+                text += f" - {email}"
+
+        c.drawString(25 * mm, y_position, f"- {prenom} {nom} - {email}")
         y_position -= 8 * mm
+        c.drawString(20 * mm, height - 60 * mm, f"Email de réception du ticket : {email}")
+
 
     # QR Code
     qr_path = os.path.join(current_app.static_folder, 'uploads', 'qrcodes', f"ticket_{ticket.id}.png")

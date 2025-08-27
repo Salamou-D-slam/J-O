@@ -5,7 +5,12 @@ import hashlib
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.paiement_mock import FakePaymentGateway
 from ..services.qrcode import generate_qr_code
-from ..extensions import db
+from ..services.ticket_pdf import generer_ticket_pdf
+# from ..services.ticket_mail import send_ticket_email
+from ..extensions import db,mail
+from flask_mail import Message
+
+
 
 paiement_routes = Blueprint('paiement', __name__)
 
@@ -54,7 +59,7 @@ def paiement_epreuve(type_offre):
                 for i in range(1, 5):
                     nom = request.form.get(f"pers{i}_nom")
                     prenom = request.form.get(f"pers{i}_prenom")
-                    email = request.form.get(f"pers{i}_email")  # optionnel pour i>1
+                    email = request.form.get(f"pers{i}_email")
                     if nom and prenom:  # on ajoute seulement si remplis
                         participant = {"nom": nom, "prenom": prenom}
                         if email:
@@ -102,6 +107,28 @@ def paiement_epreuve(type_offre):
 
                 # Stocker le chemin relatif dans le ticket
                 ticket.qr_code = f"uploads/qrcodes/{filename}"
+                db.session.commit()  # commit avant envoi mail
+                pdf_path = generer_ticket_pdf(ticket)
+                #send_ticket_email(ticket.user, pdf_path)
+
+
+                email = request.form.get("pers1_email")
+
+                msg = Message(
+                    subject="reception de votre paiement et ticket JO 2024",
+                    recipients=[email],
+                    body="Bonjour, ci-joint votre ticket pour l'événement.",
+                )
+
+                # Attacher le PDF depuis le disque
+                full_pdf_path = os.path.join(current_app.static_folder, pdf_path)
+                with open(full_pdf_path, "rb") as f:
+                    msg.attach(
+                        filename=f"ticket_{ticket.user.nom}_{ticket.offre.type_offre}_{ticket.id}.pdf",
+                        content_type="application/pdf",
+                        data=f.read()
+                    )
+                mail.send(msg)
                 db.session.commit()
 
                 flash("Paiement accepté ✅")
