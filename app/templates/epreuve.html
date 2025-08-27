@@ -22,7 +22,9 @@
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </li>
 
-        <a href="{{ url_for('paiement.paiement_epreuve', type_offre=offre.type_offre) }}">Acheter</a>
+        <a href="{{ url_for('paiement.paiement_epreuve', type_offre=offre.type_offre) }}">
+            Acheter
+        </a>
         {% endfor %}
     </ul>
 

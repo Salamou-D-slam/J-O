@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template,send_file
-from flask_login import login_required
+from flask_login import login_required, current_user
 import os
+from flask_mail import Message
+from ..extensions import mail
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.ticket_pdf import generer_ticket_pdf
+#from ..paiement.routes import pdf_path
 
 
 ticket_routes = Blueprint('ticket', __name__)
@@ -25,5 +28,6 @@ def ticket_pdf(ticket_id):
     return send_file(os.path.join("static", pdf_path),
                      as_attachment=True,
                      download_name=f"ticket_{ticket.user.nom}_{ticket.offre.type_offre}_{ticket.id}.pdf")
+
 
 
