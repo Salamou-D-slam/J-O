@@ -1,10 +1,10 @@
 from flask import Flask
 import os
+from dotenv import load_dotenv
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from dotenv import load_dotenv
 from flask_bootstrap import Bootstrap
-from app.extensions import db, login_manager
+from app.extensions import db, login_manager, mail
 from app.routes import main_routes
 from app.admin.routes import admin_routes
 from app.employe.routes import employe_routes
@@ -20,6 +20,7 @@ def create_app():
 
     app = Flask(__name__)
 
+
     app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads/image') # Config le chemin des envoi des images
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # La taille maximal (max 16MB)
 
@@ -28,6 +29,16 @@ def create_app():
 
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+    # Configure les infos pour le mail de l'entreprise
+    app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER') # L’adresse du serveur SMTP (celui qui envoie les mails)
+    app.config['MAIL_PORT'] = int(os.getenv("MAIL_PORT")) # Le port de communication avec le serveur SMTP.
+    app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') # Active la sécurité TLS (Transport Layer Security).
+    app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME') # L’adresse mail expéditrice (l'adresse qui envoie les mails)
+    app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD') # Mot de passe ddu compte expéditrice Gmail
+    app.config['MAIL_DEFAULT_SENDER'] = ('Site JO', os.getenv('MAIL_DEFAULT_SENDER'))# Nom affiché dans la boîte mail
+
+    # initialise l'extensions
+    mail.init_app(app)
 
     db.init_app(app)
     login_manager.init_app(app) # Un gestionnaire d’authentification fourni par Flask-Login

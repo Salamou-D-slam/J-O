@@ -4,8 +4,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve, get_offre_by_id
 from werkzeug.utils import secure_filename
 import os
+from flask_mail import Message
 from .models import Epreuve, Offre, User
-from .extensions import db, login_manager
+from .extensions import db, login_manager, mail
 from .crud import update_epreuve
 from functools import wraps
 
@@ -222,7 +223,7 @@ def update(epreuve_id):
         return redirect(url_for('main.all_epreuve'))
     return render_template('update.html', epreuve=epreuve)
 
-#DELETE
+# DELETE
 @main_routes.route('/delete/<int:epreuve_id>', methods=['POST'])
 @login_required
 @roles_required('admin', 'employe')
@@ -230,6 +231,27 @@ def delete(epreuve_id):
     delete_epreuve(epreuve_id)
     return redirect(url_for('main.all_epreuve'))
 
+
+# PAGE DE CONTACT
+@main_routes.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        nom = request.form.get("nom")
+        email = request.form.get("email")
+        message_user = request.form.get("message")
+
+        msg = Message(
+            subject=f"Nouveau message de {nom}",
+            recipients=[os.getenv('MAIL_JO')],  # Adresse de l'entreprise (adresse qui reçoit le mail)
+            body=f"De: {nom} <{email}>\n\n{message_user}"
+        )
+        msg.reply_to = email
+
+        mail.send(msg)
+        flash("Votre message a bien été envoyé ✅")
+        return redirect(url_for("main.contact"))
+
+    return render_template("contact.html")
 
 
 
