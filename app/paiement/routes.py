@@ -109,7 +109,6 @@ def paiement_epreuve(type_offre):
                 ticket.qr_code = f"uploads/qrcodes/{filename}"
                 db.session.commit()  # commit avant envoi mail
                 pdf_path = generer_ticket_pdf(ticket)
-                #send_ticket_email(ticket.user, pdf_path)
 
 
                 email = request.form.get("pers1_email")
@@ -121,12 +120,12 @@ def paiement_epreuve(type_offre):
                 )
 
                 # Attacher le PDF depuis le disque
-                full_pdf_path = os.path.join(current_app.static_folder, pdf_path)
+                full_pdf_path = os.path.join(current_app.static_folder, pdf_path) # Trovuer le fichier pdf son fichier
                 with open(full_pdf_path, "rb") as f:
                     msg.attach(
                         filename=f"ticket_{ticket.user.nom}_{ticket.offre.type_offre}_{ticket.id}.pdf",
-                        content_type="application/pdf",
-                        data=f.read()
+                        content_type="application/pdf", # Type du fichier (PDF)
+                        data=f.read() # Lit tout le contenu du fichier
                     )
                 mail.send(msg)
                 db.session.commit()
