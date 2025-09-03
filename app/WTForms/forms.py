@@ -29,54 +29,47 @@ class ContactForm(FlaskForm):
     submit = SubmitField("Envoyer")
 
 # Dashboards
-class UpdateinfoForm(FlaskForm):
-    update_admin = HiddenField(default='update_admin')
-    update_info_user_id = HiddenField()
-
-    new_nom = StringField("Nouveau Nom:",)
-    new_prenom = StringField("Nouveau Prenom:",)
-    new_email = StringField("Nouveau Email:", validators=[Email()])
-    submit = SubmitField("Modifier")
+class AdminrechercheForm(FlaskForm):
+    query = StringField("Recherche")
+    submit = SubmitField("Rechercher")
 
 
-# COTE ADMIN
 class CreateuserForm(FlaskForm):
-    create_user = HiddenField(default='create_user')
-
-    nom = StringField("Nom:", validators=[DataRequired()])
-    prenom = StringField("Prenom:", validators=[DataRequired()])
-    email = StringField("Email:", validators=[DataRequired(), Email()])
-    password = PasswordField("Mot de passe:", validators=[DataRequired(), Length(min=6)])
-    confirm_password = PasswordField("Confirmer le mot de passe:", validators=[DataRequired(), EqualTo('password')])
-    role = SelectField("Rôle:", choices=[
+    create_user = HiddenField(default="create_user")
+    nom = StringField("Nom", validators=[DataRequired()])
+    prenom = StringField("Prénom", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField("Mot de passe", validators=[DataRequired()])
+    role = SelectField("Rôle", choices=[
         ("utilisateur", "Utilisateur"),
         ("employe", "Employe"),
-        ("admin", "Administrateur")
-    ], validators=[DataRequired()])
-    submit = SubmitField("Crée un nouvel utilisateur")
+        ("admin", "Administrateur")], validators=[DataRequired()])
+    submit = SubmitField("Créer utilisateur")
 
-# Maj des roles utilisateurs
+
 class UpdateroleForm(FlaskForm):
-
-    update_role = HiddenField(default='update_role')
+    update_role = HiddenField(default="change_role")
     update_role_user_id = HiddenField()
-
-    new_role = SelectField("Rôle:", choices=[
+    new_role = SelectField("Nouveau rôle", choices=[
         ("utilisateur", "Utilisateur"),
         ("employe", "Employe"),
-        ("admin", "Administrateur")
-    ], validators=[DataRequired()])
-    submit = SubmitField("Mettre à jours")
+        ("admin", "Administrateur")], validators=[DataRequired()])
+    submit = SubmitField("Changer rôle")
+
 
 class DeleteuserForm(FlaskForm):
-    delete_user = HiddenField(default='delete_user')
+    delete_user = HiddenField(default="delete_user")
     delete_user_user_id = HiddenField()
     delete = SubmitField("Supprimer")
 
-# Barre de recharche des utilisateurs
-class AdminrechercheForm(FlaskForm):
-    query = StringField()
-    submit = SubmitField("Rechercher")
+
+class UpdateinfoForm(FlaskForm):
+    update_admin = HiddenField(default="update_admin")
+    update_info_user_id = HiddenField()
+    new_nom = StringField("Nouveau nom")
+    new_prenom = StringField("Nouveau prénom")
+    new_email = StringField("Nouvel email", validators=[Email()])
+    submit = SubmitField("Mettre à jour profil")
 
 
 # EPREUVES FORMS
