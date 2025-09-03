@@ -4,16 +4,22 @@
 
 <h2>Contactez-nous</h2>
 <form method="POST">
-  <label>Nom :</label><br>
-  <input type="text" name="nom" required><br><br>
+    {{ form.hidden_tag() }}
+    {{ form.nom.label }} {{ form.nom() }}
+    {{ form.email.label }} {{ form.email() }}
+    {{ form.message.label }} {{ form.message() }}
+    {{ form.submit() }}
 
-  <label>Email :</label><br>
-  <input type="email" name="email" required><br><br>
+<!--  <label>Nom :</label><br>-->
+<!--  <input type="text" name="nom" required><br><br>-->
 
-  <label>Message :</label><br>
-  <textarea name="message" rows="5" required></textarea><br><br>
+<!--  <label>Email :</label><br>-->
+<!--  <input type="email" name="email" required><br><br>-->
 
-  <button type="submit">Envoyer</button>
+<!--  <label>Message :</label><br>-->
+<!--  <textarea name="message" rows="5" required></textarea><br><br>-->
+
+<!--  <button type="submit">Envoyer</button>-->
 </form>
 
 {% endblock %}

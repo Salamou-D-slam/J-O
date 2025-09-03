@@ -5,18 +5,25 @@
 {% block content %}
 <h1>Inscription</h1>
 <form method="POST">
-  <label>Nom :</label><br>
-  <input type="text" name="nom" required><br><br>
 
-    <label>Prenom :</label><br>
-  <input type="text" name="prenom" required><br><br>
+    {{ form.hidden_tag() }}
 
-  <label>Email :</label><br>
-  <input type="email" name="email" required><br><br>
+    {{ form.nom.label }}
+    {{ form.nom() }}
 
-  <label>Mot de passe :</label><br>
-  <input type="password" name="password" required><br><br>
+    {{ form.prenom.label }}
+    {{ form.prenom() }}
 
-  <button type="submit">S’inscrire</button>
+    {{ form.email.label }}
+    {{ form.email() }}
+
+    {{ form.password.label }}
+    {{ form.password() }}
+
+    {{ form.confirm_password.label }}
+    {{ form.confirm_password() }}
+
+    {{ form.submit }}
+
 </form>
 {% endblock %}

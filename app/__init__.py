@@ -1,10 +1,8 @@
 from flask import Flask
 import os
 from dotenv import load_dotenv
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
 from flask_bootstrap import Bootstrap
-from app.extensions import db, login_manager, mail
+from app.extensions import db, login_manager, mail, csrf
 from app.routes import main_routes
 from app.admin.routes import admin_routes
 from app.employe.routes import employe_routes
@@ -39,6 +37,9 @@ def create_app():
 
     # initialise l'extensions
     mail.init_app(app)
+
+    # intialise CSRF pour WTForms
+    csrf.init_app(app)
 
     db.init_app(app)
     login_manager.init_app(app) # Un gestionnaire d’authentification fourni par Flask-Login

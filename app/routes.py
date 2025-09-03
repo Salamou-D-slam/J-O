@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app, abort
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.crud import add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve , get_epreuve_by_nom_epreuve, get_offre_by_id
 from werkzeug.utils import secure_filename
+from functools import wraps
 import os
 from flask_mail import Message
 from .models import Epreuve, Offre, User
 from .extensions import db, login_manager, mail
-from .crud import update_epreuve
-from functools import wraps
+from .crud import update_epreuve, add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve
+from .WTForms.forms import LoginForm, RegisterForm, AddepreuvesForm, UpdateepreuvesForm, ContactForm, EpreuvedetailForm
 
 main_routes = Blueprint('main', __name__)
 
@@ -52,11 +52,19 @@ def home():
 # REGISTER
 @main_routes.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        nom = request.form.get('nom')
-        prenom = request.form.get('prenom')
-        password = request.form.get('password')
+    form = RegisterForm()
+    # if request.method == 'POST':
+    if form.validate_on_submit():
+        # email = request.form.get('email')
+        # nom = request.form.get('nom')
+        # prenom = request.form.get('prenom')
+        # password = request.form.get('password')
+
+        nom = form.nom.data
+        prenom = form.prenom.data
+        email = form.email.data
+        password = form.password.data
+        confirm_password = form.confirm_password.data
 
         existing_user = db.session.execute(db.select(User).where(User.email == email)).scalar()
         if existing_user:
@@ -71,15 +79,21 @@ def register():
         flash("Inscription réussie!")
         return redirect(url_for('main.home'))
 
-    return render_template('register.html')
+    return render_template('register.html', form=form)
 
 
 # LOGIN
 @main_routes.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+    form = LoginForm()
+    # if request.method == 'POST':
+    if form.validate_on_submit():  # Vérifie si POST + validation
+        # email = request.form.get('email')
+        # password = request.form.get('password')
+
+        email = form.email.data
+        password = form.password.data
+
         user = db.session.execute(db.select(User).where(User.email == email)).scalar()
         if user and check_password_hash(user.password, password):
             login_user(user)
@@ -93,7 +107,7 @@ def login():
                 return redirect(url_for('utilisateur.utilisateur_dashboard'))
         else:
             flash("Email ou mot de passe incorrect.")
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
 # LOGOUT
 @main_routes.route('/logout')
@@ -128,20 +142,35 @@ def all_epreuve():
 @login_required
 #roles_required('admin', 'employe')
 def add_epreuves():
-    if request.method == "POST":
+    form = AddepreuvesForm()
+    # if request.method == "POST":
+    if form.validate_on_submit():
 
         #Ramene les "name" des input HTML
-        nom_epreuve = request.form.get('nom_epreuve')
-        date_epreuve = request.form.get('date_epreuve')
-        image = request.files.get('image')
+        # nom_epreuve = request.form.get('nom_epreuve')
+        # date_epreuve = request.form.get('date_epreuve')
+        # image = request.files.get('image')
 
-        prix_solo = float(request.form['prix_solo'])
-        prix_duo = float(request.form['prix_duo'])
-        prix_family = float(request.form['prix_family'])
+        nom_epreuve = form.nom_epreuve.data
+        date_epreuve = form.date_epreuve.data
+        image = form.image.data
 
-        nbr_place_solo = int(request.form['nbr_place_solo'])
-        nbr_place_duo = int(request.form['nbr_place_duo'])
-        nbr_place_family = int(request.form['nbr_place_family'])
+        # prix_solo = float(request.form['prix_solo'])
+        # prix_duo = float(request.form['prix_duo'])
+        # prix_family = float(request.form['prix_family'])
+
+        prix_solo = form.prix_solo.data
+        prix_duo = form.prix_duo.data
+        prix_family = form.prix_family.data
+
+
+        # nbr_place_solo = int(request.form['nbr_place_solo'])
+        # nbr_place_duo = int(request.form['nbr_place_duo'])
+        # nbr_place_family = int(request.form['nbr_place_family'])
+
+        nbr_place_solo = form.nbr_place_solo.data
+        nbr_place_duo = form.nbr_place_duo.data
+        nbr_place_family = form.nbr_place_family.data
 
         #Met la sécurité et le chemin des images uploads
         filename = secure_filename(image.filename)
@@ -163,7 +192,7 @@ def add_epreuves():
         )
 
         return redirect(url_for('main.all_epreuve'))
-    return render_template('add.html')
+    return render_template('add.html', form=form)
 
 
 #PAGE D'EPREUVE DETAILS
@@ -172,12 +201,12 @@ def add_epreuves():
 @login_required
 #@roles_required('admin', 'employe')
 def epreuve_details(nom_epreuve):
-
+    form = EpreuvedetailForm()
     epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
     if not epreuve:
         return "Epreuve non trouvée", 404
 
-    return render_template('epreuve.html', epreuve=epreuve)
+    return render_template('epreuve.html', epreuve=epreuve, form=form)
 
 
 #PAGE DE UPADATE
@@ -185,13 +214,15 @@ def epreuve_details(nom_epreuve):
 @login_required
 @roles_required('admin', 'employe')
 def update(epreuve_id):
+    form = UpdateepreuvesForm()
     epreuve = get_epreuve_by_id(epreuve_id)
-    if request.method == 'POST':
+    # if request.method == 'POST':
+    if form.validate_on_submit():
 
-        #Ramene les "name" des input HTML
-        new_nom_epreuve = request.form.get('nom_epreuve')
-        new_date_epreuve = request.form.get('date_epreuve')
-        new_image = request.files.get('image')
+
+        new_nom_epreuve = form.new_nom_epreuve.data
+        new_date_epreuve = form.new_date_epreuve.data
+        new_image = form.new_image.data
 
         # Met la sécurité et le chemin des images uploads
         new_filename = None
@@ -199,9 +230,10 @@ def update(epreuve_id):
             new_filename = secure_filename(new_image.filename)
             new_image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], new_filename))
 
-        new_prix_solo = request.form.get('prix_solo')
-        new_prix_duo = request.form.get('prix_duo')
-        new_prix_family = request.form.get('prix_family')
+
+        new_prix_solo = form.new_prix_solo.data
+        new_prix_duo = form.new_prix_duo.data
+        new_prix_family = form.new_prix_family.data
 
         # Les convertir en float si présents
         new_prix_solo = float(new_prix_solo) if new_prix_solo else None
@@ -221,7 +253,7 @@ def update(epreuve_id):
 
         )
         return redirect(url_for('main.all_epreuve'))
-    return render_template('update.html', epreuve=epreuve)
+    return render_template('update.html', epreuve=epreuve, form=form)
 
 # DELETE
 @main_routes.route('/delete/<int:epreuve_id>', methods=['POST'])
@@ -235,10 +267,11 @@ def delete(epreuve_id):
 # PAGE DE CONTACT
 @main_routes.route("/contact", methods=["GET", "POST"])
 def contact():
+    form = ContactForm()
     if request.method == "POST":
-        nom = request.form.get("nom")
-        email = request.form.get("email")
-        message_user = request.form.get("message")
+        nom = form.nom.data
+        email = form.email.data
+        message_user = form.message.data
 
         msg = Message(
             subject=f"Nouveau message de {nom}", # L'objet du mail
@@ -251,7 +284,7 @@ def contact():
         flash("Votre message a bien été envoyé ✅")
         return redirect(url_for("main.contact"))
 
-    return render_template("contact.html")
+    return render_template("contact.html", form=form)
 
 
 

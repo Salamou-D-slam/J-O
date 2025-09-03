@@ -74,9 +74,9 @@
     </div>
 
 
-<form action="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id) }}" method="post">
-    <button type="submit">Télécharger le PDF: {{ ticket.offre.type_offre}}</button>
-</form>
+<a href="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id) }}">
+    Télécharger PDF
+</a>
 
 </body>
 </html>

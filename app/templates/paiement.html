@@ -123,38 +123,32 @@
             <h3>
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </h3>
-        <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate onsubmit="return fermerPopup();">
+        <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate>
+
+            {{ form.hidden_tag() }}
 
             <h4>Personne n°1:</h4>
-          <div class="mb-3">
-            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="pers1_prenom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" name="pers1_nom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>
-            <input type="email" class="form-control" id="email" placeholder="vous@example.com" name="pers1_email">
-            <div class="invalid-feedback">Email invalide.</div>
-          </div>
-          <hr class="my-3">
+
+                <div  class="mb-3">
+                      {{ form.pers1_nom.label(class="form-label") }} {{ form.pers1_nom(class="form-control") }}
+                </div>
+                <div  class="mb-3">
+                    {{ form.pers1_prenom.label(class="form-label") }} {{ form.pers1_prenom(class="form-control") }}
+                </div>
+                <div  class="mb-3">
+                    {{ form.pers1_email.label(class="form-label") }} {{ form.pers1_email(class="form-control", placeholder="vous@example.com") }}
+                </div>
+            <hr class="my-3">
+
+
 
             {% if offre.nombre_personne == 2 %}
                         <h4>Personne n°2:</h4>
-            <div class="mb-3">
-            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="pers2_prenom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" name="pers2_nom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
+                <div class="mb-3">
+                      {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
+                      {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
+                </div>
+
           <hr class="my-3">
 
             {% elif offre.nombre_personne == 4 %}
@@ -162,79 +156,42 @@
             <h4>Personne n°2:</h4>
 
             <div class="mb-3">
-            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="pers2_prenom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" name="pers2_nom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <hr class="my-3">
+                  {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
+                  {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
+            </div>
 
             <h4>Personne n°3:</h4>
 
             <div class="mb-3">
-            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="pers3_prenom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" name="pers3_nom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <hr class="my-3">
+                  {{ form.pers3_nom.label(class="form-label") }} {{ form.pers3_nom(class="form-control") }}
+                  {{ form.pers3_prenom.label(class="form-label") }} {{ form.pers3_prenom(class="form-control") }}
+            </div>
 
-                        <h4>Personne n°4:</h4>
+            <h4>Personne n°4:</h4>
+
             <div class="mb-3">
-            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="pers4_prenom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>
-            <input type="text" class="form-control" id="lastName" name="pers4_nom" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <hr class="my-3">
+                  {{ form.pers4_nom.label(class="form-label") }} {{ form.pers4_nom(class="form-control") }}
+                  {{ form.pers4_prenom.label(class="form-label") }} {{ form.pers4_prenom(class="form-control") }}
+            </div>
 
+                {% endif %}
+
+            <div>
+                  {{ form.nom_card.label(class="form-label") }} {{ form.nom_card(class="form-control") }}
+                  {{ form.card_number.label(class="form-label") }} {{ form.card_number(class="form-control") }}
+                  {{ form.expiration_card.label(class="form-label") }} {{ form.expiration_card(class="form-control") }}
+                  {{ form.CVV_card.label(class="form-label") }} {{ form.CVV_card(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+
+            {% if error %}
+              <div class="error">{{ error }}</div>
             {% endif %}
 
-          <div class="form-check mb-2">
-            <input id="credit" name="card_number" type="radio" class="form-check-input" checked required>
-            <label class="form-check-label" for="credit"><i class="fa fa-credit-card form-icon"></i>Crédit</label>
-          </div>
-          <div class="mb-3">
-            <label for="cc-name" class="form-label"><i class="fa fa-id-card form-icon"></i>Nom sur la carte</label>
-            <input type="text" class="form-control" id="cc-name" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="mb-3">
-            <label for="cc-number" class="form-label"><i class="fa fa-credit-card form-icon"></i>Numéro</label>
-            <input type="text" class="form-control" id="cc-number" required>
-            <div class="invalid-feedback">Champ requis.</div>
-          </div>
-          <div class="row">
-            <div class="col-6 mb-3">
-              <label for="cc-expiration" class="form-label"><i class="fa fa-calendar form-icon"></i>Expiration</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="MM/AA" required>
-              <div class="invalid-feedback">Champ requis.</div>
-            </div>
-            <div class="col-6 mb-3">
-              <label for="cc-cvv" class="form-label"><i class="fa fa-lock form-icon"></i>CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" required>
-              <div class="invalid-feedback">Champ requis.</div>
-            </div>
-          </div>
-          <div class="d-grid mt-3">
-            <button class="btn btn-primary btn-lg" type="submit">Valider</button>
-          </div>
 
-          {% if error %}
-  <div class="error">{{ error }}</div>
-{% endif %}
+
+
+
 
         </form>
       </div>
@@ -257,6 +214,7 @@
     }, false);
   });
 })();
+
 
 document.querySelector('.theme-toggle').addEventListener('click', () => {
   document.body.classList.toggle('light-mode');

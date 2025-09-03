@@ -9,6 +9,8 @@ from ..services.ticket_pdf import generer_ticket_pdf
 # from ..services.ticket_mail import send_ticket_email
 from ..extensions import db,mail
 from flask_mail import Message
+from ..WTForms.forms import ParticipantForm
+
 
 
 
@@ -20,10 +22,15 @@ paiement_routes = Blueprint('paiement', __name__)
 @login_required
 def paiement_epreuve(type_offre):
 
+    form = ParticipantForm()
     offre = Offre.query.filter_by(type_offre=type_offre).first()
 
-    if request.method == 'POST':
-        card_number = request.form.get('card_number')
+    # if request.method == 'POST':
+    if request.method == "POST" and form.validate(offre.nombre_personne):
+
+        # card_number = request.form.get('card_number')
+        card_number = form.card_number.data
+
         montant = offre.prix
 
         # Création du mock
@@ -40,26 +47,17 @@ def paiement_epreuve(type_offre):
             if offre.bi_restant < 0:
                 return ("Dommage, il ne reste plus de place!")
 
-
             else:
-                # pers1_nom = request.form.get("pers1_nom")
-                # pers1_prenom = request.form.get("pers1_prenom")
-                # pers1_email = request.form.get("pers1_email")
-                #
-                # pers2_nom = request.form.get("pers2_nom")
-                # pers2_prenom = request.form.get("pers2_prenom")
-                #
-                # pers3_nom = request.form.get("pers3_nom")
-                # pers3_prenom = request.form.get("pers3_prenom")
-                #
-                # pers4_nom = request.form.get("pers4_nom")
-                # pers4_prenom = request.form.get("pers4_prenom")
                 participants = []
-
                 for i in range(1, 5):
-                    nom = request.form.get(f"pers{i}_nom")
-                    prenom = request.form.get(f"pers{i}_prenom")
-                    email = request.form.get(f"pers{i}_email")
+                    nom_field = getattr(form, f"pers{i}_nom", None)
+                    prenom_field = getattr(form, f"pers{i}_prenom", None)
+                    email_field = getattr(form, f"pers{i}_email", None)
+
+                    nom = nom_field.data if nom_field else None
+                    prenom = prenom_field.data if prenom_field else None
+                    email = email_field.data if email_field else None
+
                     if nom and prenom:  # on ajoute seulement si remplis
                         participant = {"nom": nom, "prenom": prenom}
                         if email:
@@ -90,7 +88,6 @@ def paiement_epreuve(type_offre):
                 db.session.add(ticket)
                 db.session.commit()
 
-                # Génération QR code
 
                 # Hash de la clef_user
                 clef_user_hashed = hashlib.sha256(ticket.user.clef_user.encode()).hexdigest()
@@ -111,7 +108,8 @@ def paiement_epreuve(type_offre):
                 pdf_path = generer_ticket_pdf(ticket)
 
 
-                email = request.form.get("pers1_email")
+                # email = request.form.get("pers1_email")
+                email = form.pers1_email.data
 
                 msg = Message(
                     subject="reception de votre paiement et ticket JO 2024",
@@ -147,4 +145,4 @@ def paiement_epreuve(type_offre):
 
 
 
-    return render_template('paiement.html', offre=offre, error="Merci de saisir un numéro de carte valide.")
+    return render_template('paiement.html', offre=offre, form=form, error="Merci de saisir un numéro de carte valide.")
