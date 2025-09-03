@@ -9,6 +9,7 @@ scan_routes = Blueprint("scan", __name__)
 
 @scan_routes.route("/scan")
 def scan():
+
     return render_template("scan.html")
 
 

@@ -2,9 +2,13 @@ from flask import Blueprint, render_template,send_file
 from flask_login import login_required, current_user
 import os
 from flask_mail import Message
+
+from ..WTForms.forms import TicketForm
 from ..extensions import mail
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.ticket_pdf import generer_ticket_pdf
+from ..WTForms.forms import TicketForm
+
 #from ..paiement.routes import pdf_path
 
 
@@ -20,14 +24,13 @@ ticket_routes = Blueprint('ticket', __name__)
 
 
 
-@ticket_routes.route('/<int:ticket_id>/pdf', methods=['POST'])
+@ticket_routes.route('/<int:ticket_id>/pdf')
 @login_required
 def ticket_pdf(ticket_id):
     ticket = Ticket.query.get_or_404(ticket_id)
     pdf_path = generer_ticket_pdf(ticket)
     return send_file(os.path.join("static", pdf_path),
-                     as_attachment=True,
-                     download_name=f"ticket_{ticket.user.nom}_{ticket.offre.type_offre}_{ticket.id}.pdf")
-
+                 as_attachment=True,
+                 download_name=f"ticket_{ticket.user.nom}_{ticket.offre.type_offre}_{ticket.id}.pdf")
 
 

@@ -8,26 +8,7 @@
     <h1>Modifier l'épreuve</h1>
 
     <form method="post" enctype="multipart/form-data">
-<!--        <label>Nom:</label>-->
-<!--        <input type="text" name="nom_epreuve" value="{{ epreuve.nom_epreuve }}" ><br>-->
 
-<!--        <label>Date:</label>-->
-<!--        <input type="date" name="date_epreuve" value="{{ epreuve.date_epreuve }}"><br>-->
-
-<!--        <label>Prix Solo:</label>-->
-<!--        <input type="number" step="0.1" name="prix_solo" value="{% for offre in epreuve.offres if offre.type_offre=='solo' %}{{ offre.prix }}{% endfor %}"><br>-->
-
-<!--        <label>Prix Duo:</label>-->
-<!--        <input type="number" step="0.1" name="prix_duo" value="{% for offre in epreuve.offres if offre.type_offre=='duo' %}{{ offre.prix }}{% endfor %}"><br>-->
-
-<!--        <label>Prix Family:</label>-->
-<!--        <input type="number" step="0.1" name="prix_family" value="{% for offre in epreuve.offres if offre.type_offre=='family' %}{{ offre.prix }}{% endfor %}"><br>-->
-
-<!--        <label>Nouvelle image:</label>-->
-<!--        <input type="file" name="image"><br>-->
-<!--        <small>Image actuelle : {{ epreuve.image_filename }}</small><br>-->
-
-<!--        <button type="submit">Enregistrer les modifications</button>-->
 
         {{ form.hidden_tag() }}
 
@@ -36,7 +17,6 @@
 
 
         {{ form.new_date_epreuve.label }}
-<!--        {{ form.new_date_epreuve(class="form-control", type="datetime-local") }}-->
         {{ form.new_date_epreuve() }}
 
 
@@ -59,12 +39,8 @@
         {{ form.new_image.label }}
         {{ form.new_image() }}
 
-
-
-
-
-<!--        <button type="submit">Ajouter</button>-->
-        {{ form.new_submit }}
+        {{ form.new_submit() }}
+        {{ form.delete() }}
     </form>
 
     <a href="{{ url_for('main.all_epreuve') }}">Retour</a>

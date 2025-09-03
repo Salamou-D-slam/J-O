@@ -128,10 +128,12 @@ class UpdateepreuvesForm(FlaskForm):
 
     new_image = FileField("Image de l’epreuve:", validators=[Optional(),
         FileAllowed(['jpg', 'png', 'jpeg'], "Seulement des images JPG/PNG"),
-        FileRequired("Une image est obligatoire")
     ])
 
     new_submit = SubmitField("Modifier")
+
+class EpreuvedetailForm(FlaskForm):
+    submit = SubmitField("Suprrimer")
 
 # FORMULAIRE DE PAIEMENT
 class ParticipantForm(FlaskForm):
@@ -184,6 +186,13 @@ class ParticipantForm(FlaskForm):
                 self.pers4_prenom.errors.append("Requis pour cette offre")
                 return False
         return True
+
+# TICKET PDF DL
+class TicketForm(FlaskForm):
+    ticket_id = HiddenField()
+    submit = SubmitField("Valider")
+
+
 
 
 

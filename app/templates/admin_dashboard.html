@@ -75,6 +75,31 @@
       {% endfor %}
     </table>
 
+<br>
+<hr>
+<br>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>ID</th>
+    <th>Nom de l'offre (type_offre)</th>
+    <th>Nombre de personne maximum</th>
+    <th>Prix</th>
+    <th>Billet restant</th>
+    <th>Billet vendu</th>
+  </tr>
+  {% for offre in offres %}
+  <tr>
+    <td>{{ offre.id }}</td>
+    <td>{{ offre.type_offre }}</td>
+    <td>{{ offre.nombre_personne }} personne(s)</td>
+    <td>{{ offre.prix }} euro</td>
+    <td>{{ offre.bi_restant }}</td>
+    <td>{{ offre.bi_vendu }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
 
 
 

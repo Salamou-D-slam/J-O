@@ -8,7 +8,7 @@ from flask_mail import Message
 from .models import Epreuve, Offre, User
 from .extensions import db, login_manager, mail
 from .crud import update_epreuve, add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve
-from .WTForms.forms import LoginForm, RegisterForm, AddepreuvesForm, UpdateepreuvesForm
+from .WTForms.forms import LoginForm, RegisterForm, AddepreuvesForm, UpdateepreuvesForm, ContactForm, EpreuvedetailForm
 
 main_routes = Blueprint('main', __name__)
 
@@ -201,12 +201,12 @@ def add_epreuves():
 @login_required
 #@roles_required('admin', 'employe')
 def epreuve_details(nom_epreuve):
-
+    form = EpreuvedetailForm()
     epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
     if not epreuve:
         return "Epreuve non trouvée", 404
 
-    return render_template('epreuve.html', epreuve=epreuve)
+    return render_template('epreuve.html', epreuve=epreuve, form=form)
 
 
 #PAGE DE UPADATE
@@ -220,9 +220,9 @@ def update(epreuve_id):
     if form.validate_on_submit():
 
         #Ramene les "name" des input HTML
-        new_nom_epreuve = request.form.get('nom_epreuve')
-        new_date_epreuve = request.form.get('date_epreuve')
-        new_image = request.files.get('image')
+        # new_nom_epreuve = request.form.get('nom_epreuve')
+        # new_date_epreuve = request.form.get('date_epreuve')
+        # new_image = request.files.get('image')
 
         new_nom_epreuve = form.new_nom_epreuve.data
         new_date_epreuve = form.new_date_epreuve.data
@@ -234,9 +234,13 @@ def update(epreuve_id):
             new_filename = secure_filename(new_image.filename)
             new_image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], new_filename))
 
-        new_prix_solo = request.form.get('prix_solo')
-        new_prix_duo = request.form.get('prix_duo')
-        new_prix_family = request.form.get('prix_family')
+        # new_prix_solo = request.form.get('prix_solo')
+        # new_prix_duo = request.form.get('prix_duo')
+        # new_prix_family = request.form.get('prix_family')
+
+        new_prix_solo = form.new_prix_solo.data
+        new_prix_duo = form.new_prix_duo.data
+        new_prix_family = form.new_prix_family.data
 
         # Les convertir en float si présents
         new_prix_solo = float(new_prix_solo) if new_prix_solo else None
@@ -270,10 +274,17 @@ def delete(epreuve_id):
 # PAGE DE CONTACT
 @main_routes.route("/contact", methods=["GET", "POST"])
 def contact():
+    form = ContactForm()
     if request.method == "POST":
-        nom = request.form.get("nom")
-        email = request.form.get("email")
-        message_user = request.form.get("message")
+        # nom = request.form.get("nom")
+        # email = request.form.get("email")
+        # message_user = request.form.get("message")
+
+        nom = form.nom.data
+        email = form.email.data
+        message_user = form.message.data
+
+
 
         msg = Message(
             subject=f"Nouveau message de {nom}", # L'objet du mail
@@ -286,7 +297,7 @@ def contact():
         flash("Votre message a bien été envoyé ✅")
         return redirect(url_for("main.contact"))
 
-    return render_template("contact.html")
+    return render_template("contact.html", form=form)
 
 
 
