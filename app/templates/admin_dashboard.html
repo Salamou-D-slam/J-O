@@ -18,21 +18,23 @@
     <td>{{ current_user.email }}</td>
 </tr>
         </table>
-            <form method="post" action="{{ url_for('admin.admin_dashboard_post') }}">
-            {{ form.hidden_tag() }}
+            <form method="post" action="{{ url_for('admin.admin_dashboard') }}">
+            {{ update_admin_form.hidden_tag() }}
 
 
-                {{ form.update_admin_hidden(value="1")}}
-                {{ form.update_user_id(value="current_user.id")}}
+                {{ update_admin_form.update_admin(value="update_admin")}}
+                {{ update_admin_form.update_info_user_id(value=current_user.id|string)}}
+<!--                    {{ update_admin_form.update_info_user_id() }}-->
+
 <!--                <input type="hidden" name="update_admin" value="1">-->
 <!--                <input type="hidden" name="user_id" value="{{ current_user.id }}">-->
 
 
-                {{ form.new_nom.label }} {{ form.new_nom() }}
-                {{ form.new_prenom.label }} {{ form.new_prenom() }}
-                {{ form.new_email.label }} {{ form.new_email() }}
+                {{ update_admin_form.new_nom.label }} {{ update_admin_form.new_nom() }}
+                {{ update_admin_form.new_prenom.label }} {{ update_admin_form.new_prenom() }}
+                {{ update_admin_form.new_email.label }} {{ update_admin_form.new_email() }}
 
-                {{ form.submit() }}
+                {{ update_admin_form.submit() }}
 
 <!--              <label>Nouveau Email:</label><br>-->
 <!--              <input type="email" name="new_email"><br>-->
@@ -50,21 +52,21 @@
 
 <h2>Créer un utilisateur</h2>
 
-<form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}">
-    {{ form.hidden_tag() }}
+<form method="POST" action="{{ url_for('admin.admin_dashboard') }}">
+    {{ create_user_form.hidden_tag() }}
 
-    {{ form.create_user(value="1")}}
+    {{ create_user_form.create_user(value="create_user")}}
 
-    {{ form.nom.label }} {{ form.nom() }}
-    {{ form.prenom.label }} {{ form.prenom() }}
-    {{ form.email.label }} {{ form.email() }}
+    {{ create_user_form.nom.label }} {{ create_user_form.nom() }}
+    {{ create_user_form.prenom.label }} {{ create_user_form.prenom() }}
+    {{ create_user_form.email.label }} {{ create_user_form.email() }}
 
-    {{ form.password.label }} {{ form.password() }}
-    {{ form.confirm_password.label }} {{ form.confirm_password() }}
+    {{ create_user_form.password.label }} {{ create_user_form.password() }}
+    {{ create_user_form.confirm_password.label }} {{ create_user_form.confirm_password() }}
 
-    {{ form.role.label }} {{ form.role() }}
+    {{ create_user_form.role.label }} {{ create_user_form.role() }}
 
-    {{ form.submit() }}
+    {{ create_user_form.submit() }}
 
 
 <!--  <input type="hidden" name="create_user" value="1">-->
@@ -90,10 +92,10 @@
 <h2>Liste des utilisateurs</h2>
 <form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
 
-    {{ form.hidden_tag() }}
+    {{ admin_recherche_form.hidden_tag() }}
 
-    {{ form.query() }}
-    {{ form.submit() }}
+    {{ admin_recherche_form.query() }}
+    {{ admin_recherche_form.submit() }}
 
 <!--    <input type="text" name="q" placeholder="Rechercher un utilisateur" value="{{ search_query }}">-->
 <!--  <button type="submit">Rechercher</button>-->
@@ -120,14 +122,14 @@
     <td>{{ user.email }}</td>
     <td>{{ user.role }}</td>
     <td>
-      <form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}" style="display:inline;">
-          {{ form.hidden_tag() }}
+      <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
+          {{ update_role_form.hidden_tag() }}
 
-          {{ form.update_role(value="update_role")}}
-          {{ form.user_id(value="user_id")}}
+          {{ update_role_form.update_role(value="update_role")}}
+          {{ update_role_form.update_role_user_id(value=user.id|string) }}
 
-          {{ form.new_role.label }} {{ form.new_role() }}
-          {{ form.submit() }}
+          {{ update_role_form.new_role.label }} {{ update_role_form.new_role() }}
+          {{ update_role_form.submit() }}
 <!--        <input type="hidden" name="update_role" value="1">-->
 <!--        <input type="hidden" name="user_id" value="{{ user.id }}">-->
 <!--        <select name="role">-->
@@ -140,13 +142,14 @@
     </td>
     <td>
       {% if user.id != current_user.id %}
-      <form method="POST" action="{{ url_for('admin.admin_dashboard_post') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
-          {{ form.hidden_tag() }}
+      <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
+          {{ delete_user_form.hidden_tag() }}
 
-          {{ form.delete_user(value="delete_user")}}
-          {{ form.user_id(value="user_id")}}
+          {{ delete_user_form.delete_user(value="delete_user")}}
+          {{ delete_user_form.delete_user_user_id(value=user.id|string) }}
 
-          {{ form.delete() }}
+
+          {{ delete_user_form.delete(class="btn btn-danger") }}
 <!--        <input type="hidden" name="delete_user" value="1">-->
 <!--        <input type="hidden" name="user_id" value="{{ user.id }}">-->
 <!--        <button type="submit" style="color:red;">Supprimer</button>-->

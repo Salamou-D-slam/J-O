@@ -31,7 +31,7 @@ class ContactForm(FlaskForm):
 # Dashboards
 class UpdateinfoForm(FlaskForm):
     update_admin = HiddenField(default='update_admin')
-    user_id = HiddenField(default='user_id')
+    update_info_user_id = HiddenField()
 
     new_nom = StringField("Nouveau Nom:",)
     new_prenom = StringField("Nouveau Prenom:",)
@@ -59,7 +59,7 @@ class CreateuserForm(FlaskForm):
 class UpdateroleForm(FlaskForm):
 
     update_role = HiddenField(default='update_role')
-    user_id = HiddenField(default='user_id')
+    update_role_user_id = HiddenField()
 
     new_role = SelectField("Rôle:", choices=[
         ("utilisateur", "Utilisateur"),
@@ -70,7 +70,7 @@ class UpdateroleForm(FlaskForm):
 
 class DeleteuserForm(FlaskForm):
     delete_user = HiddenField(default='delete_user')
-    user_id = HiddenField(default='user_id')
+    delete_user_user_id = HiddenField()
     delete = SubmitField("Supprimer")
 
 # Barre de recharche des utilisateurs
