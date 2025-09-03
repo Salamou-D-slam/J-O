@@ -219,10 +219,6 @@ def update(epreuve_id):
     # if request.method == 'POST':
     if form.validate_on_submit():
 
-        #Ramene les "name" des input HTML
-        # new_nom_epreuve = request.form.get('nom_epreuve')
-        # new_date_epreuve = request.form.get('date_epreuve')
-        # new_image = request.files.get('image')
 
         new_nom_epreuve = form.new_nom_epreuve.data
         new_date_epreuve = form.new_date_epreuve.data
@@ -234,9 +230,6 @@ def update(epreuve_id):
             new_filename = secure_filename(new_image.filename)
             new_image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], new_filename))
 
-        # new_prix_solo = request.form.get('prix_solo')
-        # new_prix_duo = request.form.get('prix_duo')
-        # new_prix_family = request.form.get('prix_family')
 
         new_prix_solo = form.new_prix_solo.data
         new_prix_duo = form.new_prix_duo.data
@@ -276,15 +269,9 @@ def delete(epreuve_id):
 def contact():
     form = ContactForm()
     if request.method == "POST":
-        # nom = request.form.get("nom")
-        # email = request.form.get("email")
-        # message_user = request.form.get("message")
-
         nom = form.nom.data
         email = form.email.data
         message_user = form.message.data
-
-
 
         msg = Message(
             subject=f"Nouveau message de {nom}", # L'objet du mail

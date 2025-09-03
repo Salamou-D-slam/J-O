@@ -7,34 +7,6 @@
     <h1>Nouvelle épreuve</h1>
     <form method="POST" enctype="multipart/form-data">
 
-<!--        <label>Nom:</label>-->
-<!--        <input type="text" name="nom_epreuve" required><br>-->
-
-<!--        <label>Date:</label>-->
-
-<!--        <input type="date" name="date_epreuve" required><br>-->
-
-<!--        <label>Prix Solo:</label>-->
-<!--        <input type="number" name="prix_solo" required><br>-->
-
-<!--        <label>Nombre de place:</label>-->
-<!--        <input type="number" name="nbr_place_solo" required><br>-->
-
-<!--        <label>Prix Duo:</label>-->
-<!--        <input type="number" name="prix_duo" required><br>-->
-
-<!--        <label>Nombre de place:</label>-->
-<!--        <input type="number" name="nbr_place_duo" required><br>-->
-
-<!--        <label>Prix Family:</label>-->
-<!--        <input type="number" name="prix_family" required><br>-->
-
-<!--        <label>Nombre de place:</label>-->
-<!--        <input type="number" name="nbr_place_family" required><br>-->
-
-<!--        <label>Image:</label>-->
-<!--        <input type="file" name="image" required><br>-->
-
         {{ form.hidden_tag() }}
 
         {{ form.nom_epreuve.label }}
@@ -42,7 +14,6 @@
 
 
         {{ form.date_epreuve.label }}
-<!--        {{ form.date_epreuve(class="form-control", type="datetime-local") }}-->
         {{ form.date_epreuve() }}
 
 
@@ -66,10 +37,6 @@
         {{ form.image() }}
 
 
-
-
-
-<!--        <button type="submit">Ajouter</button>-->
         {{ form.submit }}
     </form>
 </body>

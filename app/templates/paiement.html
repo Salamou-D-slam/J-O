@@ -128,77 +128,59 @@
             {{ form.hidden_tag() }}
 
             <h4>Personne n°1:</h4>
-<!--          <div class="mb-3">-->
-<!--            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>-->
-<!--            <input type="text" class="form-control" id="firstName" name="pers1_prenom" required>-->
-<!--            <div class="invalid-feedback">Champ requis.</div>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>-->
-<!--            <input type="text" class="form-control" id="lastName" name="pers1_nom" required>-->
-<!--            <div class="invalid-feedback">Champ requis.</div>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="email" class="form-label"><i class="fa fa-envelope form-icon"></i>Email</label>-->
-<!--            <input type="email" class="form-control" id="email" placeholder="vous@example.com" name="pers1_email">-->
-<!--            <div class="invalid-feedback">Email invalide.</div>-->
-<!--          </div>-->
-<!--          <hr class="my-3">-->
 
-                <div>
-                      {{ form.pers1_nom.label }} {{ form.pers1_nom() }}
-                      {{ form.pers1_prenom.label }} {{ form.pers1_prenom() }}
-                      {{ form.pers1_email.label }} {{ form.pers1_email() }}
+                <div  class="mb-3">
+                      {{ form.pers1_nom.label(class="form-label") }} {{ form.pers1_nom(class="form-control") }}
                 </div>
+                <div  class="mb-3">
+                    {{ form.pers1_prenom.label(class="form-label") }} {{ form.pers1_prenom(class="form-control") }}
+                </div>
+                <div  class="mb-3">
+                    {{ form.pers1_email.label(class="form-label") }} {{ form.pers1_email(class="form-control", placeholder="vous@example.com") }}
+                </div>
+            <hr class="my-3">
+
+
 
             {% if offre.nombre_personne == 2 %}
                         <h4>Personne n°2:</h4>
-                <div>
-                      {{ form.pers2_nom.label }} {{ form.pers2_nom() }}
-                      {{ form.pers2_prenom.label }} {{ form.pers2_prenom() }}
+                <div class="mb-3">
+                      {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
+                      {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
                 </div>
-<!--            <div class="mb-3">-->
-<!--            <label for="firstName" class="form-label"><i class="fa fa-user form-icon"></i>Prénom</label>-->
-<!--            <input type="text" class="form-control" id="firstName" name="pers2_prenom" required>-->
-<!--            <div class="invalid-feedback">Champ requis.</div>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label for="lastName" class="form-label"><i class="fa fa-user form-icon"></i>Nom</label>-->
-<!--            <input type="text" class="form-control" id="lastName" name="pers2_nom" required>-->
-<!--            <div class="invalid-feedback">Champ requis.</div>-->
-<!--          </div>-->
-<!--          <hr class="my-3">-->
+
+          <hr class="my-3">
 
             {% elif offre.nombre_personne == 4 %}
 
             <h4>Personne n°2:</h4>
 
-            <div>
-                  {{ form.pers2_nom.label }} {{ form.pers2_nom() }}
-                  {{ form.pers2_prenom.label }} {{ form.pers2_prenom() }}
+            <div class="mb-3">
+                  {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
+                  {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
             </div>
 
             <h4>Personne n°3:</h4>
 
-            <div>
-                  {{ form.pers3_nom.label }} {{ form.pers3_nom() }}
-                  {{ form.pers3_prenom.label }} {{ form.pers3_prenom() }}
+            <div class="mb-3">
+                  {{ form.pers3_nom.label(class="form-label") }} {{ form.pers3_nom(class="form-control") }}
+                  {{ form.pers3_prenom.label(class="form-label") }} {{ form.pers3_prenom(class="form-control") }}
             </div>
 
             <h4>Personne n°4:</h4>
 
-            <div>
-                  {{ form.pers4_nom.label }} {{ form.pers4_nom() }}
-                  {{ form.pers4_prenom.label }} {{ form.pers4_prenom() }}
+            <div class="mb-3">
+                  {{ form.pers4_nom.label(class="form-label") }} {{ form.pers4_nom(class="form-control") }}
+                  {{ form.pers4_prenom.label(class="form-label") }} {{ form.pers4_prenom(class="form-control") }}
             </div>
 
                 {% endif %}
 
             <div>
-                  {{ form.nom_card.label }} {{ form.nom_card() }}
-                  {{ form.card_number.label }} {{ form.card_number() }}
-                  {{ form.expiration_card.label }} {{ form.expiration_card() }}
-                  {{ form.CVV_card.label }} {{ form.CVV_card() }}
+                  {{ form.nom_card.label(class="form-label") }} {{ form.nom_card(class="form-control") }}
+                  {{ form.card_number.label(class="form-label") }} {{ form.card_number(class="form-control") }}
+                  {{ form.expiration_card.label(class="form-label") }} {{ form.expiration_card(class="form-control") }}
+                  {{ form.CVV_card.label(class="form-label") }} {{ form.CVV_card(class="form-control") }}
             </div>
             {{ form.submit(class="btn btn-primary") }}
 

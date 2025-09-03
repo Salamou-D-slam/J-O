@@ -5,13 +5,7 @@
 {% block content %}
 <h1>Connexion</h1>
 <form method="POST">
-<!--  <label>Email :</label><br>-->
-<!--  <input type="email" name="email" required><br><br>-->
 
-<!--  <label>Mot de passe :</label><br>-->
-<!--  <input type="password" name="password" required><br><br>-->
-
-<!--  <button type="submit">Se connecter</button>-->
     {{ form.hidden_tag() }}  <!-- Important pour CSRF -->
     {{ form.email.label }}
     {{ form.email() }}
@@ -19,7 +13,6 @@
     {{ form.password.label }}
     {{ form.password() }}
 
-<!--    <button type="submit">Se connecter</button>-->
     {{ form.submit }}
 </form>
 {% endblock %}
