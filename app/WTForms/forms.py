@@ -62,9 +62,27 @@ class DeleteuserForm(FlaskForm):
     delete_user_user_id = HiddenField()
     delete = SubmitField("Supprimer")
 
-
+# ADMIN
 class UpdateinfoForm(FlaskForm):
     update_admin = HiddenField(default="update_admin")
+    update_info_user_id = HiddenField()
+    new_nom = StringField("Nouveau nom")
+    new_prenom = StringField("Nouveau prénom")
+    new_email = StringField("Nouvel email", validators=[Email()])
+    submit = SubmitField("Mettre à jour profil")
+
+# EMPLOYE
+class Updateinfo_employeForm(FlaskForm):
+    update_employe = HiddenField(default="update_employe")
+    update_info_user_id = HiddenField()
+    new_nom = StringField("Nouveau nom")
+    new_prenom = StringField("Nouveau prénom")
+    new_email = StringField("Nouvel email", validators=[Email()])
+    submit = SubmitField("Mettre à jour profil")
+
+# UTILISATEUR
+class Updateinfo_utilisateurForm(FlaskForm):
+    update_utilisateur = HiddenField(default="update_utilisateur")
     update_info_user_id = HiddenField()
     new_nom = StringField("Nouveau nom")
     new_prenom = StringField("Nouveau prénom")

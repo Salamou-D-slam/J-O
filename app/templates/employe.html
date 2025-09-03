@@ -16,22 +16,32 @@
     <td>{{ current_user.email }}</td>
 </tr>
         </table>
-            <form method="post" action="{{ url_for('employe.employe_dashboard_post') }}">
+<h2>Mettre à jour mon profil</h2>
+    <form method="POST" action="{{ url_for('employe.employe_dashboard') }}">
+      {{ form.hidden_tag() }}
+      {{ form.update_employe(value="update_employe") }}
+      {{ form.update_info_user_id(value=current_user.id) }}
+      {{ form.new_nom.label }} {{ form.new_nom() }}<br>
+      {{ form.new_prenom.label }} {{ form.new_prenom() }}<br>
+      {{ form.new_email.label }} {{ form.new_email() }}<br>
+      {{ form.submit() }}
+    </form>
+<!--            <form method="post" action="{{ url_for('employe.employe_dashboard') }}">-->
 
-                <input type="hidden" name="update_employe" value="1">
-                <input type="hidden" name="user_id" value="{{ current_user.id }}">
+<!--                <input type="hidden" name="update_employe" value="1">-->
+<!--                <input type="hidden" name="user_id" value="{{ current_user.id }}">-->
 
 
-              <label>Nouveau Email:</label><br>
-              <input type="email" name="new_email"><br>
+<!--              <label>Nouveau Email:</label><br>-->
+<!--              <input type="email" name="new_email"><br>-->
 
-              <label>Nouveau Nom:</label><br>
-              <input type="text" name="new_nom"><br>
+<!--              <label>Nouveau Nom:</label><br>-->
+<!--              <input type="text" name="new_nom"><br>-->
 
-              <label>Nouveau Prenom:</label><br>
-              <input type="text" name="new_prenom"><br><br>
+<!--              <label>Nouveau Prenom:</label><br>-->
+<!--              <input type="text" name="new_prenom"><br><br>-->
 
-              <button type="submit">Modifier</button>
+<!--              <button type="submit">Modifier</button>-->
             </form>
 <br>
 <hr>
