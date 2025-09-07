@@ -13,7 +13,7 @@ from app.utilisateur.routes import utilisateur_routes
 
 
 
-def create_app():
+def create_app(test_config=None):
     load_dotenv()  # Charge des variables du .env
 
     app = Flask(__name__)
@@ -24,6 +24,15 @@ def create_app():
 
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI') # Config la bdd
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # Désactiver le système de signal de modification de SQLAlchemy
+
+    # Si on passe une config de test, on écrase
+    if test_config:
+        app.config.update(test_config)
+
+    print("👉 DB utilisée :", app.config["SQLALCHEMY_DATABASE_URI"])  # Debug
+
+    db.init_app(app)
+
 
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
@@ -41,7 +50,7 @@ def create_app():
     # intialise CSRF pour WTForms
     csrf.init_app(app)
 
-    db.init_app(app)
+
     login_manager.init_app(app) # Un gestionnaire d’authentification fourni par Flask-Login
     bootstrap = Bootstrap(app) # Pour utiliser le boostrap dans les templates Jinja2
 
