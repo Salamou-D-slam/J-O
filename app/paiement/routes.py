@@ -34,7 +34,7 @@ def paiement_epreuve(type_offre):
         montant = offre.prix
 
         # Création du mock
-        gateway = FakePaymentGateway() # " force_result="success" " Pour forcer le resultat en success
+        gateway = FakePaymentGateway(force_result="success") # " force_result="success" " Pour forcer le resultat en success
         result = gateway.process_paiement(card_number, montant) # Prend le prix direct de la bdd
 
 
