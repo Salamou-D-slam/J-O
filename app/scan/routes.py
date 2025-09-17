@@ -9,7 +9,6 @@ scan_routes = Blueprint("scan", __name__)
 
 @scan_routes.route("/scan")
 def scan():
-
     return render_template("scan.html")
 
 
@@ -34,11 +33,11 @@ def validate_ticket(ticket_id):
 
     # Si le ticket n'existe pas
     if not ticket:
-        return jsonify({"valid": False, "message": "Ticket inexistant"}), 404
+        return jsonify({"valid": False, "message": "Ticket inexistant, accès refusé"}), 404
 
     # Si le ticket a déja été utilisé
     if ticket.status == "invalide":
-        return jsonify({"valid": False, "message": "Ticket déjà utilisé"}), 400
+        return jsonify({"valid": False, "message": "expiration: Ticket déjà utilisé, accès refusé"}), 400
 
     # Si le ticket est valide -> on le rend invalide
     ticket.status = "invalide"
