@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Mon espace: Employé{% endblock %}
 
 {% block content %}
+
+<nav class="navbar bg-body-tertiary">
+  <form class="container-fluid justify-content-start">
+    <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
+      <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
+  </form>
+</nav>
+
   <h2>Informations personnelles</h2>
     <table border="1" cellpadding="5" cellspacing="0">
   <tr>
@@ -27,6 +35,32 @@
       {{ form.submit() }}
     </form>
             </form>
+
+<br>
+<hr>
+<br>
+
+<h2>Epreuves</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>ID</th>
+    <th>Nom de l'offre (type_offre)</th>
+    <th>Nombre de personne maximum</th>
+    <th>Prix</th>
+    <th>Billet restant</th>
+  </tr>
+  {% for offre in offres %}
+  <tr>
+    <td>{{ offre.id }}</td>
+    <td>{{ offre.type_offre }}</td>
+    <td>{{ offre.nombre_personne }} personne(s)</td>
+    <td>{{ offre.prix }} euro</td>
+    <td>{{ offre.bi_restant }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
 <br>
 <hr>
   <h2>Mes Billets</h2>

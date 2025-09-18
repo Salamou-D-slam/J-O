@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request,abort, redirect, url_for, flash
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from ..models import User, Ticket, Offre
@@ -26,85 +26,6 @@ def admin_dashboard():
     user_info = db.session.query(User).filter_by(id=current_user.id).scalar()
     tickets = Ticket.query.filter_by(user_id=current_user.id).all()
     offres = Offre.query.order_by(Offre.bi_vendu.desc()).all()
-
-    # Recherche utilisateur
-    search_query = admin_recherche_form.query.data or ""
-    if search_query:
-        users = db.session.execute(
-            db.select(User).where(
-                (User.nom.ilike(f"%{search_query}%"))
-                | (User.prenom.ilike(f"%{search_query}%"))
-                | (User.email.ilike(f"%{search_query}%"))
-            )
-        ).scalars().all()
-    else:
-        users = db.session.execute(db.select(User)).scalars().all()
-
-    # Formulaires dynamiques par utilisateur
-    update_role_forms = {u.id: UpdateroleForm(prefix=f"role_{u.id}") for u in users}
-    delete_user_forms = {u.id: DeleteuserForm(prefix=f"delete_{u.id}") for u in users}
-
-    # Création d'utilisateurs
-    if "create_user" in request.form and create_user_form.validate_on_submit():
-        nom = create_user_form.nom.data
-        prenom = create_user_form.prenom.data
-        email = create_user_form.email.data
-        password = create_user_form.password.data
-        role = create_user_form.role.data
-
-        existing_user = db.session.execute(db.select(User).where(User.email == email)).scalar()
-        if existing_user:
-            flash("Email déjà utilisé.")
-            return redirect(url_for("admin.admin_dashboard"))
-
-        hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=8)
-        new_user = User(email=email, nom=nom, prenom=prenom, password=hashed_password, role=role)
-        db.session.add(new_user)
-        db.session.commit()
-        flash(f"Utilisateur {nom} créé.")
-        return redirect(url_for("admin.admin_dashboard"))
-
-    # Mise à jour rôle utilisateur
-
-    # Création des formulaires pour chaque utilisateur
-    update_role_forms = {}
-    delete_user_forms = {}
-
-    for u in users:
-        # Formulaire changement rôle
-        role_form = UpdateroleForm(prefix=f"role_{u.id}")
-        role_form.new_role.data = u.role
-        update_role_forms[u.id] = role_form
-
-        # Formulaire suppression
-        del_form = DeleteuserForm(prefix=f"del_{u.id}")
-        del_form.delete_user_user_id.data = str(u.id)
-        delete_user_forms[u.id] = del_form
-
-    # Vérifie quel formulaire a été soumis
-    if request.method == "POST":
-        # Check suppression
-        for u in users:
-            form = delete_user_forms[u.id]
-            if form.delete.data and form.validate():
-                if u.id == current_user.id:
-                    flash("Vous ne pouvez pas supprimer votre propre compte.")
-                else:
-                    db.session.delete(u)
-                    db.session.commit()
-                    flash(f"Utilisateur {u.nom} {u.prenom} supprimé.")
-                return redirect(url_for("admin.admin_dashboard"))
-
-        # Vérifie changement rôle
-        for u in users:
-            form = update_role_forms[u.id]
-            if form.submit.data and form.validate():
-                new_role = form.new_role.data
-                if new_role in ["admin", "employe", "utilisateur"]:
-                    u.role = new_role
-                    db.session.commit()
-                    flash(f"Rôle de {u.nom} {u.prenom} mis à jour en {new_role}.")
-                return redirect(url_for("admin.admin_dashboard"))
 
     # Mise à jour profil admin
     if "update_admin" in request.form and update_admin_form.validate_on_submit():
@@ -134,6 +55,125 @@ def admin_dashboard():
             db.session.commit()
             flash("Profil mis à jour.")
         return redirect(url_for("admin.admin_dashboard"))
+
+    # Recherche utilisateur
+    search_query = admin_recherche_form.query.data or ""
+    if search_query:
+        users = db.session.execute(
+            db.select(User).where(
+                (User.nom.ilike(f"%{search_query}%"))
+                | (User.prenom.ilike(f"%{search_query}%"))
+                | (User.email.ilike(f"%{search_query}%"))
+                | (User.role.ilike(f"%{search_query}%"))
+            )
+        ).scalars().all()
+    else:
+        users = db.session.execute(db.select(User)).scalars().all()
+
+
+
+
+    # Création d'utilisateurs
+    if "create_user" in request.form and create_user_form.validate_on_submit():
+        nom = create_user_form.nom.data
+        prenom = create_user_form.prenom.data
+        email = create_user_form.email.data
+        password = create_user_form.password.data
+        role = create_user_form.role.data
+
+        existing_user = db.session.execute(db.select(User).where(User.email == email)).scalar()
+        if existing_user:
+            flash("Email déjà utilisé.")
+            return redirect(url_for("admin.admin_dashboard"))
+
+        hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=8)
+        new_user = User(email=email, nom=nom, prenom=prenom, password=hashed_password, role=role)
+        db.session.add(new_user)
+        db.session.commit()
+        flash(f"Utilisateur {nom} créé.")
+        return redirect(url_for("admin.admin_dashboard"))
+
+
+
+    # # Création des formulaires pour chaque utilisateur
+    # update_role_forms = {}
+    # delete_user_forms = {}
+
+    # Mise à jour rôle utilisateur
+    update_role_forms = {u.id: UpdateroleForm() for u in users}
+    delete_user_forms = {u.id: DeleteuserForm() for u in users}
+    for u in users:
+        # Formulaire changement rôle
+        role_form = UpdateroleForm()
+        role_form.new_role.data = u.role
+        role_form.update_role_user_id.data = str(u.id)
+        update_role_forms[u.id] = role_form
+
+        # Formulaire suppression
+        del_form = DeleteuserForm()
+        del_form.delete_user_user_id.data = str(u.id)
+        delete_user_forms[u.id] = del_form
+
+    # Vérifie quel formulaire a été soumis
+    if request.method == "POST":
+        # # Check suppression
+        # for u in users:
+        #     form = delete_user_forms[u.id]
+        #     if form.delete.data and form.validate():
+        #         if u.id == current_user.id:
+        #             flash("Vous ne pouvez pas supprimer votre propre compte.")
+        #         else:
+        #             db.session.delete(u)
+        #             db.session.commit()
+        #             flash(f"Utilisateur {u.nom} {u.prenom} supprimé.")
+        #         return redirect(url_for("admin.admin_dashboard"))
+
+        # Vérifie changement rôle
+        # for u in users:
+        #     form = update_role_forms[u.id]
+        #     if form.submit.data and form.validate():
+        #         new_role = form.new_role.data
+        #         new_role = request.form.get(form.new_role.name)
+        #         user_id = request.form.get('update_role_user_id')
+        #
+        #         if new_role in ["admin", "employe", "utilisateur"]:
+        #             u.role = new_role
+        #             db.session.commit()
+        #             flash(f"Rôle de {u.nom} {u.prenom} mis à jour en {new_role}.")
+        #         break
+        # return redirect(url_for("admin.admin_dashboard"))
+
+        # Check suppression
+        if "delete_user" in request.form:
+            user_id = request.form.get("delete_user_user_id")
+            user = db.session.get(User, int(user_id))
+
+            if user.id == current_user.id:
+                flash("Vous ne pouvez pas supprimer votre propre compte.")
+            else:
+                db.session.delete(user)
+                db.session.commit()
+                flash(f"Utilisateur {user.nom} {user.prenom} supprimé.")
+
+            return redirect(url_for("admin.admin_dashboard"))
+
+        # Vérifie changement rôle
+        user_id = request.form.get('update_role_user_id')
+        form = update_role_forms[int(user_id)]
+        new_role = request.form.get(form.new_role.name)
+        if new_role in ['admin', 'employe', 'utilisateur']:
+            user = db.session.get(User, int(user_id))
+            if user:
+                user.role = new_role
+                db.session.commit()
+                flash(f"Rôle de {user.nom} {user.prenom} mis à jour en {new_role}.")
+            else:
+                flash("Utilisateur non trouvé.")
+        else:
+            flash("Rôle invalide.")
+        return redirect(url_for('admin.admin_dashboard'))
+
+
 
     return render_template(
         "admin_dashboard.html",
@@ -250,6 +290,8 @@ def admin_dashboard():
 @login_required
 def ticket_detail(ticket_id):
     ticket = Ticket.query.get_or_404(ticket_id)
+    if ticket.user_id != current_user.id:
+        abort(403)
     return render_template('ticket_details.html', ticket=ticket)
 # @admin_routes.route('/', methods=['POST', 'GET'])
 # @login_required

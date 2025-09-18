@@ -118,19 +118,41 @@ def logout():
 #     return "✅ Admin créé avec succès !"
 
 
-#-------------------------------------------------EPREUVES-------------------------------
+#-------------------------------------------------EPREUVES FRONT-------------------------------
+
 # PAGE ALL EPREUVES
 @main_routes.route('/epreuves')
+def all_epreuve_front():
+    epreuves = Epreuve.query.all()
+    return render_template('all_epreuve_front.html', epreuves=epreuves)
+
+
+#PAGE D'EPREUVE DETAILS
+@main_routes.route('/epreuves-<nom_epreuve>', methods=['GET', 'POST'])
+def epreuve_details_front(nom_epreuve):
+    form = EpreuvedetailForm()
+    epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
+    if not epreuve:
+        return "Epreuve non trouvée", 404
+    return render_template('epreuve_front.html', epreuve=epreuve, form=form)
+
+
+
+#-------------------------------------------------EPREUVES BACK-------------------------------
+
+# PAGE ALL EPREUVES
+@main_routes.route('/epreuvesback')
 @login_required
-#@roles_required('admin', 'employe')
+@roles_required('admin', 'employe')
 def all_epreuve():
     epreuves = Epreuve.query.all()
     return render_template('all_epreuve.html', epreuves=epreuves)
 
+
 #PAGE ADD epreuves
 @main_routes.route('/add_epreuves', methods=["GET", "POST"])
 @login_required
-#roles_required('admin', 'employe')
+@roles_required('admin', 'employe')
 def add_epreuves():
     form = AddepreuvesForm()
     # if request.method == "POST":
@@ -175,9 +197,9 @@ def add_epreuves():
 
 #PAGE D'EPREUVE DETAILS
 
-@main_routes.route('/epreuves-<nom_epreuve>', methods=['GET', 'POST'])
+@main_routes.route('/epreuvesback-<nom_epreuve>', methods=['GET', 'POST'])
 @login_required
-#@roles_required('admin', 'employe')
+@roles_required('admin', 'employe')
 def epreuve_details(nom_epreuve):
     form = EpreuvedetailForm()
     epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -185,6 +207,7 @@ def epreuve_details(nom_epreuve):
         return "Epreuve non trouvée", 404
 
     return render_template('epreuve.html', epreuve=epreuve, form=form)
+
 
 
 #PAGE DE UPADATE
@@ -218,6 +241,10 @@ def update(epreuve_id):
         new_prix_duo = float(new_prix_duo) if new_prix_duo else None
         new_prix_family = float(new_prix_family) if new_prix_family else None
 
+        new_nbr_place_solo = form.new_nbr_place_solo.data
+        new_nbr_place_duo = form.new_nbr_place_duo.data
+        new_nbr_place_family = form.new_nbr_place_family.data
+
 
 
         update_epreuve(
@@ -227,8 +254,10 @@ def update(epreuve_id):
             new_filename,
             new_prix_solo,
             new_prix_duo,
-            new_prix_family
-
+            new_prix_family,
+            new_nbr_place_solo,
+            new_nbr_place_duo,
+            new_nbr_place_family
         )
         return redirect(url_for('main.all_epreuve'))
     return render_template('update.html', epreuve=epreuve, form=form)

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Scan QR code</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Scan des billets{% endblock %}
+
+{% block content %}
+
+
     <h2>Contrôle des tickets</h2>
 
 <input type="text" id="ticket_id" placeholder="Colle ou scanne le QR code" name="scan">
@@ -22,6 +22,5 @@
         });
   }
 </script>
-</body>
 
-</html>
+{% endblock %}

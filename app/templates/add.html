@@ -1,9 +1,9 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <title>Ajouter une épreuve</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Ajouter une épreuve{% endblock %}
+
+{% block content %}
+
     <h1>Nouvelle épreuve</h1>
     <form method="POST" enctype="multipart/form-data">
 
@@ -39,5 +39,4 @@
 
         {{ form.submit }}
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from ..models import User, Ticket
@@ -56,6 +56,8 @@ def utilisateur_dashboard():
 @login_required
 def ticket_detail(ticket_id):
     ticket = Ticket.query.get_or_404(ticket_id)
+    if ticket.user_id != current_user.id:
+        abort(403)  # Interdit d'y acceder si le ticket_id n'appartient pas au bon user_id
     return render_template('ticket_details.html', ticket=ticket)
 
 # @utilisateur_routes.route('/', methods=['POST'])

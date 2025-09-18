@@ -48,12 +48,13 @@ class CreateuserForm(FlaskForm):
 
 
 class UpdateroleForm(FlaskForm):
-    update_role = HiddenField(default="change_role")
+    update_role = HiddenField()
     update_role_user_id = HiddenField()
     new_role = SelectField("Nouveau rôle", choices=[
-        ("utilisateur", "Utilisateur"),
+        ("admin", "Administrateur"),
         ("employe", "Employe"),
-        ("admin", "Administrateur")], validators=[DataRequired()])
+        ("utilisateur", "Utilisateur")
+        ], validators=[DataRequired()])
     submit = SubmitField("Changer rôle")
 
 
@@ -68,7 +69,7 @@ class UpdateinfoForm(FlaskForm):
     update_info_user_id = HiddenField()
     new_nom = StringField("Nouveau nom")
     new_prenom = StringField("Nouveau prénom")
-    new_email = StringField("Nouvel email", validators=[Email()])
+    new_email = StringField("Nouvel email", validators=[Optional(),Email()])
     submit = SubmitField("Mettre à jour profil")
 
 # EMPLOYE
@@ -77,7 +78,7 @@ class Updateinfo_employeForm(FlaskForm):
     update_info_user_id = HiddenField()
     new_nom = StringField("Nouveau nom")
     new_prenom = StringField("Nouveau prénom")
-    new_email = StringField("Nouvel email", validators=[Email()])
+    new_email = StringField("Nouvel email", validators=[Optional(),Email()])
     submit = SubmitField("Mettre à jour profil")
 
 # UTILISATEUR
@@ -86,7 +87,7 @@ class Updateinfo_utilisateurForm(FlaskForm):
     update_info_user_id = HiddenField()
     new_nom = StringField("Nouveau nom")
     new_prenom = StringField("Nouveau prénom")
-    new_email = StringField("Nouvel email", validators=[Email()])
+    new_email = StringField("Nouvel email", validators=[Optional(),Email()])
     submit = SubmitField("Mettre à jour profil")
 
 

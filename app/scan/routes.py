@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, jsonify
+from flask_login import login_user, logout_user, login_required, current_user
+from ..routes import roles_required
 from ..models import Ticket
 from app.extensions import db, login_manager
 
@@ -8,11 +10,15 @@ from app.extensions import db, login_manager
 scan_routes = Blueprint("scan", __name__)
 
 @scan_routes.route("/scan")
+@login_required
+@roles_required('admin', 'employe')
 def scan():
     return render_template("scan.html")
 
 
 @scan_routes.route("/api/validate_ticket/<ticket_id>")
+@login_required
+@roles_required('admin', 'employe')
 def validate_ticket(ticket_id):
 
     ticket = Ticket.query.filter_by(id=ticket_id).first()

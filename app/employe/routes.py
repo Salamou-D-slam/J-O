@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template,abort, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from ..models import User, Ticket
+from ..models import User, Ticket, Offre
 from ..extensions import db
 from ..routes import roles_required
 from ..WTForms.forms import Updateinfo_employeForm
@@ -17,6 +17,7 @@ def employe_dashboard():
     form.update_info_user_id.data = str(current_user.id)
 
     ticket = Ticket.query.filter_by(user_id=current_user.id).all()
+    offres = Offre.query.order_by(Offre.bi_vendu.desc()).all()
     if "update_employe" in request.form and form.validate_on_submit():
         user_id = form.update_info_user_id.data
         new_nom = form.new_nom.data
@@ -39,12 +40,12 @@ def employe_dashboard():
                 user.email = new_email
             if new_nom:
                 user.nom = new_nom
-            if new_prenom:
+            if new_prenom :
                 user.prenom = new_prenom
             db.session.commit()
             flash("Profil mis à jour.")
         return redirect(url_for("employe.employe_dashboard"))
-    return render_template('employe.html', nom=current_user.nom, prenom=current_user.prenom, role=current_user.role,tickets=ticket, form=form)
+    return render_template('employe.html', nom=current_user.nom, prenom=current_user.prenom, role=current_user.role,tickets=ticket, form=form, offres=offres)
 
 #
 # @employe_routes.route('/', methods=['POST'])
@@ -84,4 +85,6 @@ def employe_dashboard():
 @login_required
 def ticket_detail(ticket_id):
     ticket = Ticket.query.get_or_404(ticket_id)
+    if ticket.user_id != current_user.id:
+        abort(403)
     return render_template('ticket_details.html', ticket=ticket)

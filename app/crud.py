@@ -111,7 +111,9 @@ def get_epreuve_by_nom_epreuve(nom_epreuve):
 
 
 #UPDATE
-def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_filename=None, new_prix_solo=None, new_prix_duo=None, new_prix_family=None):
+def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_filename=None, new_prix_solo=None,
+                   new_prix_duo=None, new_prix_family=None, new_nbr_place_solo=None,
+                   new_nbr_place_duo=None, new_nbr_place_family=None,):
     epreuve = Epreuve.query.get(epreuve_id)
 
     if epreuve:
@@ -141,6 +143,17 @@ def update_epreuve(epreuve_id, new_nom_epreuve=None, new_date_epreuve=None, new_
                 offre.prix = new_prix_duo
             elif 'family' in offre.type_offre and new_prix_family is not None:
                 offre.prix = new_prix_family
+
+        # Mise à jour des places des offres liées
+        for offre in epreuve.offres:
+            if 'solo' in offre.type_offre and new_nbr_place_solo is not None:
+                offre.bi_restant = new_nbr_place_solo
+            elif 'duo' in offre.type_offre and new_nbr_place_duo is not None:
+                offre.bi_restant = new_nbr_place_duo
+            elif 'family' in offre.type_offre and new_nbr_place_family is not None:
+                offre.bi_restant = new_nbr_place_family
+
+
 
 
         db.session.commit()
@@ -191,12 +204,13 @@ def get_all_offres():
 
 
 # UPDATE
-def update_offre(offre_id, new_type_offre=None, new_nombre_personne=None, new_prix=None):
+def update_offre(offre_id, new_type_offre=None, new_nombre_personne=None, new_prix=None, new_bi_restant=None):
     offre = Epreuve.query.get(Offre, offre_id)
     if offre:
         if new_type_offre: offre.type_offre = new_type_offre
         if new_nombre_personne: offre.nombre_personne = new_nombre_personne
         if new_prix: offre.priw = new_prix
+        if new_bi_restant: offre.bi_restant = new_bi_restant
         db.session.commit()
         print(f"Mise à jour du offre ID {offre_id}")
     else:

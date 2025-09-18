@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard epreuves - {{ epreuve.nom_epreuve }} {% endblock %}
+{% block title %}Epreuves - {{ epreuve.nom_epreuve }} {% endblock %}
 
 {% block content %}
-
     <h1>{{ epreuve.nom_epreuve }}</h1>
 
     <p>Date de l'épreuve : {{ epreuve.date_epreuve.strftime('%d/%m/%Y') }}</p>
@@ -21,16 +20,11 @@
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </li>
 
+        <a href="{{ url_for('paiement.paiement_epreuve', type_offre=offre.type_offre) }}">
+            Acheter
+        </a>
         {% endfor %}
     </ul>
-
-    <a href="{{ url_for('main.update', epreuve_id=epreuve.id) }}">Modifier</a>
-       <form action="{{ url_for('main.delete', epreuve_id=epreuve.id) }}" method="post" style="display:inline;">
-           {{ form.hidden_tag() }}
-           {{ form.submit() }}
-      </form>
-
-
 
 
 {% endblock %}

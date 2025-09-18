@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Epreuves{% endblock %}
+
+{% block header %}{% endblock %}
+{% block content %}
+    <h1>Epreuves</h1>
+    <ul>
+        {% for epreuve in epreuves %}
+        <li>
+            <strong>{{ epreuve.nom_epreuve }}</strong> ({{ epreuve.date_epreuve}})
+
+            {% if epreuve.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/image/' + epreuve.image_filename) }}" width="150">
+            {% endif %}
+        </li>
+        <a href="{{ url_for('main.epreuve_details_front', nom_epreuve=epreuve.nom_epreuve) }}">Plus de détails</a>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

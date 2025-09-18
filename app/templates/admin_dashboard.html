@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard Admin{% endblock %}
+{% block title %}Mon espace: Administrateur{% endblock %}
 
 {% block content %}
+<nav class="navbar bg-body-tertiary">
+  <form class="container-fluid justify-content-start">
+    <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
+      <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
+  </form>
+</nav>
+
+<br>
+
+
     <h1>Dashboard Admin</h1>
 
+<br>
     <h2>Informations personnelles</h2>
+<br>
+
     <table border="1" cellpadding="5" cellspacing="0">
       <tr><th>Nom</th><th>Prénom</th><th>Email</th></tr>
       <tr>
@@ -14,9 +27,10 @@
         <td>{{ user_info.email }}</td>
       </tr>
     </table>
-
+<br>
+<hr>
     <h2>Mettre à jour mon profil</h2>
-    <form method="POST">
+    <form method="POST" action="{{ url_for('admin.admin_dashboard') }}">
       {{ update_admin_form.hidden_tag() }}
       {{ update_admin_form.update_admin(value="update_admin") }}
       {{ update_admin_form.update_info_user_id(value=current_user.id) }}
@@ -25,7 +39,8 @@
       {{ update_admin_form.new_email.label }} {{ update_admin_form.new_email() }}<br>
       {{ update_admin_form.submit() }}
     </form>
-
+<br>
+<hr>
     <h2>Créer un utilisateur</h2>
     <form method="POST">
       {{ create_user_form.hidden_tag() }}
@@ -37,8 +52,18 @@
       {{ create_user_form.role.label }} {{ create_user_form.role() }}<br>
       {{ create_user_form.submit() }}
     </form>
-
+<br>
+<hr>
     <h2>Liste des utilisateurs</h2>
+<br>
+<h4>Rechercher un utilisateur</h4>
+<form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
+    {{ admin_recherche_form.hidden_tag() }}
+    {{ admin_recherche_form.query(size=30, placeholder="Nom, prénom, email ou rôle") }}
+    <button type="submit">Rechercher</button>
+</form>
+<br>
+
     <table border="1" cellpadding="5" cellspacing="0">
       <tr>
         <th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th>
@@ -53,13 +78,16 @@
         <td>{{ user.role }}</td>
         <td>
       <td>
+          {% if user.id != current_user.id %}
+
       <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
           {{ update_role_forms[user.id].hidden_tag() }}
           {{ update_role_forms[user.id].update_role() }}
-          {{ update_role_forms[user.id].update_role_user_id() }}
+          {{ update_role_forms[user.id].update_role_user_id(value=user.id) }}
           {{ update_role_forms[user.id].new_role() }}
           {{ update_role_forms[user.id].submit() }}
       </form>
+          {% endif %}
     </td>
     <td>
       {% if user.id != current_user.id %}
@@ -78,6 +106,8 @@
 <br>
 <hr>
 <br>
+
+<h2>Epreuves</h2>
 <table border="1" cellpadding="5" cellspacing="0">
   <tr>
     <th>ID</th>
