@@ -12,9 +12,10 @@ from app.models import Offre, Epreuve, User, Ticket
 def test_scan(client):
     with client.application.app_context():
         # Créer un utilisateur + offre + simulation paiement
-        unique_email = f"test{+1}@test.com"  # Pour avoir un mail unique
+        import time
+        unique_email = f"test{int(time.time())}@test.com"  # Pour avoir un mail unique
 
-        user = User(nom="test", prenom="user", email=unique_email)
+        user = User(nom="test", prenom="user", email=unique_email, role="admin")
         user.password = generate_password_hash("test19000", method='pbkdf2:sha256', salt_length=8)  # Hash direct
         db.session.add(user)
         db.session.commit()

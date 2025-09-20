@@ -12,11 +12,11 @@ from app.models import Offre, Epreuve, User, Ticket
 
 
 def test_register(client):
-    unique_email = f"test{datetime.datetime.now().timestamp()}@test.com" # Pour avoir un mail unique
+    email = f"test@test.com"
     response = client.post("/register", data={
         "nom": "test",
         "prenom": "user",
-        "email": unique_email,
+        "email": email,
         "password": "test19000",
         "confirm_password": "test19000"
     }, follow_redirects=True)
@@ -26,7 +26,7 @@ def test_register(client):
 
     # Vérifie que l'utilisateur est bien en base
     with client.application.app_context():
-        user = User.query.filter_by(email=unique_email).first()
+        user = User.query.filter_by(email=email).first()
         assert user is not None
 
 

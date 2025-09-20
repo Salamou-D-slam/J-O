@@ -109,13 +109,19 @@ def logout():
 
 # CREATION D'UN ADMIN (a faire qu'une fois)
 
-# @main_routes.route('/create-admin')
-# def create_admin():
-#     hashed_password = generate_password_hash("joadmin2024", method='pbkdf2:sha256', salt_length=8)
-#     admin = User(email="jose@gmail.com", nom="Jose", prenom="Admin", password=hashed_password, role="admin")
-#     db.session.add(admin)
-#     db.session.commit()
-#     return "✅ Admin créé avec succès !"
+@main_routes.route('/create-admin')
+def create_admin():
+    hashed_password = generate_password_hash("joadmin2024", method='pbkdf2:sha256', salt_length=8)
+    admin = User(email="jose@gmail.com", nom="Jose", prenom="Admin", password=hashed_password, role="admin")
+
+    existing_user = db.session.execute(db.select(User).where(User.email == "jose@gmail.com")).scalar()
+    # Pour vérifier si le compte existe déja pour éviter des erreurs
+    if existing_user:
+        flash("Compte déja existant, connecte-toi plutôt.")
+        return redirect(url_for('main.login'))
+    db.session.add(admin)
+    db.session.commit()
+    return "✅ Admin créé avec succès !"
 
 
 #-------------------------------------------------EPREUVES FRONT-------------------------------
