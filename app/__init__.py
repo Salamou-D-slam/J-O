@@ -22,12 +22,7 @@ def create_app(test_config=None):
     app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads/image') # Config le chemin des envoi des images
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # La taille maximal (max 16MB)
 
-    # app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI') # Config la bdd
-
-    if os.getenv("DOCKER"):  # une variable qu’on définit uniquement dans docker-compose
-        app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI_DOCKER")
-    else:
-        app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI') # Config la bdd
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # Désactiver le système de signal de modification de SQLAlchemy
 
     # Si on passe une config de test, on écrase

@@ -8,21 +8,7 @@ services:
       - "5000:5000"
     environment:
       - DOCKER=1
-      - DATABASE_URL=${DATABASE_URI_DOCKER}
-    depends_on:
-      - db
-
-  db:
-    image: postgres:15
-    container_name: jo-postgres
-    environment:
-      POSTGRES_USER: ${DATABASE_USER}
-      POSTGRES_PASSWORD: ${DATABASE_MDP}
-      POSTGRES_DB: Jeux-Olympique
-    ports:
-      - "5432:5432"
-    volumes:
-      - db_data:/var/lib/postgresql/data
+      - DATABASE_URI=${DATABASE_URI}
 
 volumes:
   db_data:
