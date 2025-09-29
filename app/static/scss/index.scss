@@ -1,0 +1,86 @@
+/*--------------------------------SASS--------------------------*/
+
+
+/*-----COLOR--------*/
+
+$color-navbar: #0900E0;
+
+/*------SIZE---------*/
+
+$carousel-img-width: 448px;
+$carousel-img-height: 275px;
+*/
+
+/*-----FONT------*/
+
+$font-text: 'Kameron';
+$font-size-title: 64px;
+$font-size-p: 24px;*/
+
+
+@mixin title-style {
+    $font-text: 'Kameron';
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+@mixin text-style {
+    $font-text: 'Kameron';
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #ffffff
+}
+
+@mixin img-carousel {
+    width: 3000px;
+    height: 952px;
+    margin: 0px 0px auto;
+}
+
+
+
+/*--------------------------------------------------------------*/
+/*---------------------------------------------- Header------------------------------------------ */
+
+/*navbar*/
+
+#navbarSupportedContent{
+    @include title-style
+}
+
+#logo {
+
+position: relative;
+width: 250px;
+height: 50px;
+left: 40px;
+top: -20px;
+line-height: 76px;
+font-family: 'Kameron';
+
+
+font-size: 40px;
+
+}
+
+nav {
+    background-color: #048a21;
+ /*   background-color: linear-gradient(90deg, #005E09 0%, #00920F 100%); */
+}
+
+/*
+#connexion-button {
+    position: absolute;
+    width: 123px;
+    height: 30px;
+    left: 1700px;
+    top: 38px;
+}*/
+
+/*---------------------------------------------------------------------------------*/

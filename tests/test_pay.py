@@ -16,7 +16,7 @@ def test_payment(client):
             nom="test",
             prenom="user",
             email="test@test.com",
-            password=generate_password_hash("test19000", method='pbkdf2:sha256', salt_length=8)
+            password=generate_password_hash("testusertest", method='pbkdf2:sha256', salt_length=8)
         )
         db.session.add(user)
         db.session.commit()
@@ -24,7 +24,7 @@ def test_payment(client):
         # Connexion de l'utilisateur
         client.post("/login", data={
             "email": "test@test.com",
-            "password": "test19000"
+            "password": "testusertest"
         })
 
         # Créer une épreuve de test

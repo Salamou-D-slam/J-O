@@ -1,5 +1,6 @@
 from flask import Flask
 import os
+from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from flask_bootstrap import Bootstrap
 from app.extensions import db, login_manager, mail, csrf
@@ -24,6 +25,15 @@ def create_app(test_config=None):
 
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URI') # Config la bdd
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # Désactiver le système de signal de modification de SQLAlchemy
+
+    # Options de pool pour éviter trop d’erreurs sous charge
+    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+        "pool_size": 5,  # connexions gardées ouvertes
+        "max_overflow": 10,  # connexions supplémentaires si nécessaire
+        "pool_timeout": 30,  # temps d’attente max avant erreur
+        "pool_recycle": 1800  # recycle les connexions toutes les 30 min
+    }
+
 
     # Si on passe une config de test, on écrase
     if test_config:
