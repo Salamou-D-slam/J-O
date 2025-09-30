@@ -1,66 +1,28 @@
 {% extends "base.html" %}
 
-{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">{% endblock %}
 
 
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      A LIRE AVANT DE VISITER LE SITE
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">A LIRE AVANT DE VISITER LE SITE</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p> ATTENTION: Ceci n'est pas le site officiel, ce n'est qu'un projet d'étude.
-            Toutes transactions ne sont que des simulations donc fausses, tout comme les billets/tickets avec les QR codes
-            pour votre sécurité évitez de mettre des vraies coordonnées bancaires. Merci pour votre compréhension</p>
-          </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-              <label class="form-check-label radio-disc" for="defaultCheck1">
-                J'ai bien pris connaissance et j'accepte
-              </label>
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Compris</button>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="container intro">
+     <div id="img-fond" ><!-- image de fond --></div>
+     <div id="degrader"><!-- dégrader --></div>
 
-  <h1>Bienvenue sur la billetterie des Jeux-Olympiques</h1>
-    <p>Merci de vous connecter ou de vous inscrire pour pouvoir acheter des billets.</p>
+     <div class="bienvenue">
+        <h1>Bienvenue sur la billetterie des Jeux-Olympiques</h1>
+        <p>Merci de vous connecter ou de vous inscrire pour pouvoir acheter des billets.</p>
+     </div>
+ </div>
 
-                <!--------------------------CAROUSEL-------------------------------->
+ <div class="card text-bg-dark  w-50 mx-auto my-5">
+  <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
+  <div class="card-img-overlay">
+    <h5 class="card-title">Epreuves</h5>
+    <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
+  </div>
+</div>
 
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{ url_for('static', filename='images/course.jpg') }}" class="d-block w-100 img-carousel" alt="Image d'une piste de course">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="d-block w-100 img-carousel" alt="image de teddy">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/bolt.jpg') }}" class="d-block w-100 img-carousel" alt="image de Bolt">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
 {% endblock %}

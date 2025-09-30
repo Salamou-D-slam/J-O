@@ -1,0 +1,69 @@
+#img-fond {
+
+    width: 149.8%;
+    height: 750px;
+    margin: -118px -317px auto;
+    background: url("/static/images/course2.jpg") no-repeat bottom;
+    background-size: cover;
+    background-color: blue;
+}
+
+#degrader {
+    width: 149.8%;
+    height: 750px;
+    margin: -744px -317px auto;
+
+
+    background: linear-gradient(180deg, rgba(1, 0, 65, 0) 0%, rgb(6, 0, 94) 100%); 
+}
+
+.bienvenue {
+    position: absolute;
+    width: 1900px;
+    height: 300px;
+    margin: -500px -320px auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    /*background-color: #FFFFFF;*/
+}
+
+.bienvenue h1 {
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 64px;
+    line-height: 76px;
+
+    color: #ffffff;
+
+
+    text-decoration-line: underline;
+    text-transform: uppercase ; 
+    font-weight: bold;
+
+    text-shadow: 30px 4px 30px rgb(0, 4, 255);
+
+}
+.bienvenue p {
+    margin: 100px auto 0 auto;
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 32px;
+    line-height: 76px;
+    font-weight: bold;
+
+
+    color: #FFFFFF;
+
+
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 10px rgb(25, 0, 255);
+
+}
