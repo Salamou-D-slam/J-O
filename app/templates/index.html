@@ -7,22 +7,71 @@
 
 {% block content %}
 
- <div class="container intro">
-     <div id="img-fond" ><!-- image de fond --></div>
-     <div id="degrader"><!-- dégrader --></div>
+<div class="container intro ">
+      <div id="img-fond" > <!--image de fond --></div>
+      <div id="degrader"><!--dégrader --></div>
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="image du logo des jeux olympiques" class="logo logo-intro ">
 
-     <div class="bienvenue">
+      <div class="bienvenue">
         <h1>Bienvenue sur la billetterie des Jeux-Olympiques</h1>
         <p>Merci de vous connecter ou de vous inscrire pour pouvoir acheter des billets.</p>
      </div>
- </div>
+ </div> 
 
- <div class="card text-bg-dark  w-50 mx-auto my-5">
-  <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
+<!-- 
+
+ <div class="card text-bg-dark card-index">
+  <img src="{{ url_for('static', filename='images/course2.jpg') }}" class="card-img" alt="image d'une piste de course">
   <div class="card-img-overlay">
-    <h5 class="card-title">Epreuves</h5>
-    <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small>Last updated 3 mins ago</small></p>
   </div>
 </div>
+  -->
+
+  
+ <div class="card text-bg-dark  card-epreuves">
+  <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
+  <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
+    <h5 class="card-title">Epreuves</h5>
+    <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
+    <a type="button" class="btn btn-primary btn-lg" href="{{ url_for('main.all_epreuve_front')}}">Voir les épreuves</a>
+  </div>
+</div>
+
+
+    <div class="card-offre">
+        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+          <div class="card-header">
+              <h5 class="card-title">Offre solo</h5>
+          </div>
+          <div class="card-body">
+              <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
+          </div>
+          </div>
+
+        <div class="card text-bg-success  mb-3" style="max-width: 18rem;">
+          <div class="card-header">
+              <h5 class="card-title">Offre duo</h5>
+          </div>
+          <div class="card-body">
+              <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
+          </div>
+          </div>
+
+
+        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-header">
+                  <h5 class="card-title">Offre family</h5>
+          </div>
+          <div class="card-body">
+              <p class="card-text">L'offre family d'une épreuve est une offre qui contentient quatre personnes. Parfait pour une famille de ou un groupe d'ami.e.s </p>
+          </div>
+          </div>
+    </div>
+
+
+
 
 {% endblock %}

@@ -1,16 +1,10 @@
-html, body {
-
-  margin: 0;
-}
 
 body {
   display: flex;
-  flex-direction: column; /* empile les enfants verticalement */
+  flex-direction: column; 
 }
 
-.container{
 
-}
 
       /*----------------------------------------------FOOTER-----------------------------------------------*/
 

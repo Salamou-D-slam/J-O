@@ -1,7 +1,7 @@
 #img-fond {
 
     width: 149.8%;
-    height: 750px;
+    height: 943px;
     margin: -118px -317px auto;
     background: url("/static/images/course2.jpg") no-repeat bottom;
     background-size: cover;
@@ -17,14 +17,26 @@
     background: linear-gradient(180deg, rgba(1, 0, 65, 0) 0%, rgb(6, 0, 94) 100%); 
 }
 
+/* .card-index{
+    display: flex;
+    flex-direction: column;
+
+    width: 147.99%;
+    height: 150px;
+    margin: 0px -317px auto;
+    background-size: cover;
+    background-color: blue;
+} */
+
 .bienvenue {
     position: absolute;
     width: 1900px;
     height: 300px;
-    margin: -500px -320px auto;
+    margin: -750px -320px auto;
     
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
@@ -33,6 +45,7 @@
 }
 
 .bienvenue h1 {
+    
     font-family: 'Kameron';
     font-style: normal;
     font-weight: 547;
@@ -50,6 +63,9 @@
 
 }
 .bienvenue p {
+    display: flex;
+    flex-direction: column;
+    
     margin: 100px auto 0 auto;
     font-family: 'Kameron';
     font-style: normal;
@@ -66,4 +82,45 @@
     text-transform: uppercase;
     text-shadow: 0px 4px 10px rgb(25, 0, 255);
 
+}
+
+.logo{
+    width: 300px;
+    height: 300px;
+    margin: -500px 480px auto;
+
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+
+.card-epreuves {
+    width: 50%;
+    margin: 200px -200px auto;
+    border-radius: 100px;
+
+
+    display: flex;
+  justify-content: center;
+
+}
+
+.content-epreuves {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;  
+}
+
+.content-epreuves h5 {
+
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 32px;
+    line-height: 76px;
+    font-weight: bold; 
+}
+
+.card-offre{
+    display: flex;
 }
