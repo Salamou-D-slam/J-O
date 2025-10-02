@@ -7,7 +7,8 @@
 
 {% block content %}
 
-<div class="container intro ">
+<section class="section">
+  <div class="container intro ">
       <div id="img-fond" > <!--image de fond --></div>
       <div id="degrader"><!--dégrader --></div>
       <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="image du logo des jeux olympiques" class="logo logo-intro ">
@@ -17,6 +18,9 @@
         <p>Merci de vous connecter ou de vous inscrire pour pouvoir acheter des billets.</p>
      </div>
  </div> 
+</section>
+
+
 
 <!-- 
 
@@ -30,47 +34,71 @@
 </div>
   -->
 
-  
- <div class="card text-bg-dark  card-epreuves">
-  <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
-  <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
-    <h5 class="card-title">Epreuves</h5>
-    <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
-    <a type="button" class="btn btn-primary btn-lg" href="{{ url_for('main.all_epreuve_front')}}">Voir les épreuves</a>
-  </div>
-</div>
+  <section class="section">
+      <div class="card text-bg-dark  card-epreuves">
+        <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
+        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
+          <h5 class="card-title">Epreuves</h5>
+          <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
+          <a type="button" class="btn btn-primary btn-lg" href="{{ url_for('main.all_epreuve_front')}}">Voir les épreuves</a>
+        </div>
+      </div>
+  </section>
+ 
+
+    <section class="section container-card">
+
+        <div class="card-offre">
+            <div class="card text-bg-info mb-3" style="max-width: 26rem; border-radius: 100%;">
+              <div class="card-body">
+                <h5 class="card-title">Offre solo</h5>
+                <hr>
+                  <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
+              </div>
+              </div>
+
+            <div class="card text-bg-dark mb-3" style="max-width: 26rem; border-radius: 100%;">
+              <div class="card-body">
+                <h5 class="card-title">Offre duo</h5>
+                                <hr>
+
+                  <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
+              </div>
+              </div>
 
 
-    <div class="card-offre">
-        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-          <div class="card-header">
-              <h5 class="card-title">Offre solo</h5>
-          </div>
-          <div class="card-body">
-              <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
-          </div>
-          </div>
-
-        <div class="card text-bg-success  mb-3" style="max-width: 18rem;">
-          <div class="card-header">
-              <h5 class="card-title">Offre duo</h5>
-          </div>
-          <div class="card-body">
-              <p class="card-text">L'offre duo d'une épreuve est une offre contenient deux personnes. Parfait pour deux ami.e.s</p>
-          </div>
-          </div>
-
-
-        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
-          <div class="card-header">
+            <div class="card text-bg-danger mb-3" style="max-width: 26rem; border-radius: 100%;">
+              <div class="card-body">
                   <h5 class="card-title">Offre family</h5>
-          </div>
-          <div class="card-body">
-              <p class="card-text">L'offre family d'une épreuve est une offre qui contentient quatre personnes. Parfait pour une famille de ou un groupe d'ami.e.s </p>
-          </div>
-          </div>
-    </div>
+                                  <hr>
 
+                  <p class="card-text">L'offre family d'une épreuve est une offre qui contentient quatre personnes. Parfait pour une famille de ou un groupe d'ami.e.s </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="card-info">
+            <div class="card text-bg-warning  mb-3" style="max-width: 26rem; border-radius: 100%;">
+              <div class="card-body">
+                  <h5 class="card-title">Nous contacter</h5> 
+                  <hr>
+                  <p class="card-text">Vous pouvez nous contacter via la page de contact, veillez mettre un email valide pour qu'on puisse vous répondre. </p>
+              </div>
+              </div>
+
+            <div class="card text-bg-success  mb-3" style="max-width: 26rem; border-radius: 100%;">
+              <div class="card-body jour-epreuve">
+                  <h5 class="card-title">Le jour de l'épreuve</h5>
+                    <hr>
+                  <p class="card-text">veuillez vous munir de vos pieces d'identié ainsi que le QR code présent dans le ticket. 
+                    Notez que le QR code ne peut être scanner qu'une seule fois, donc les personnes qui ont un billet d'une offre duo ou family doivent entrer TOUS en même temps.</p>
+                    <a href="{{ url_for('main.contact')}}" type="button" class="btn btn-outline-primary btn-card-contact">Voir Contact</a>
+
+              </div>
+            </div>
+        </div>
+
+    </section>
 
 
 

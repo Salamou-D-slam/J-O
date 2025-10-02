@@ -96,8 +96,9 @@
 
 .card-epreuves {
     width: 50%;
-    margin: 200px -200px auto;
+    margin: 200px auto;
     border-radius: 100px;
+    
 
 
     display: flex;
@@ -121,6 +122,97 @@
     font-weight: bold; 
 }
 
+.container-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 83%;
+    height: 700px;
+    margin: 150px 120px auto;
+}
+
+.card{
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+
+}
 .card-offre{
     display: flex;
+
+    width: 150%;
+    height: 400px;
+    gap: 50px;
+    
+    justify-content: center;
+
+}
+
+.card-info{
+    display: flex;
+    gap: 50px;
+    height: 400px;
+
+}
+
+.card-offre h5{
+    text-align: center;
+    justify-content: center;
+
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 26px;
+    line-height: 76px;
+    font-weight: bold; 
+}
+
+.card-offre p{
+    text-align: center;
+
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 20px;
+
+}
+
+.card-info h5{
+    text-align: center;
+    justify-content: center;
+
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 26px;
+    line-height: 76px;
+    font-weight: bold; 
+
+
+}
+
+.card-info p{
+    justify-content: center;
+    text-align: center;
+
+    font-family: 'Kameron';
+    font-style: normal;
+    font-weight: 547;
+    font-size: 20px;
+
+}
+
+.jour-epreuve hr{
+    margin: -2px auto;
+
+}
+
+.card-header{
+    width: 350px;
+    margin: 20px auto 0 auto;
+}
+
+.btn-card-contact{
+    margin: -70px -330px auto;
 }
