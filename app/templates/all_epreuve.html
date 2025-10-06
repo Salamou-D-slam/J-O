@@ -6,7 +6,10 @@
 
 {% block content %}
 
+<br>
+
     <h1>Epreuves</h1>
+<br>
     <div class="d-grid gap-2 col-6 mx-auto">
     <a href="{{ url_for('main.add_epreuves') }}" class="btn btn-primary btn-lg">Ajouter une épreuve</a>
     </div>
@@ -26,7 +29,7 @@
                     <h5 class="card-title">{{ epreuve.nom_epreuve }}</h5> 
                     <p class="card-text">Date de l'épreuve: ({{ epreuve.date_epreuve}})</p>
 
-                <a href="{{ url_for('main.epreuve_details_front', nom_epreuve=epreuve.nom_epreuve) }}" class="btn btn-primary">Plus de détails</a>
+                <a href="{{ url_for('main.epreuve_details', nom_epreuve=epreuve.nom_epreuve) }}" class="btn btn-primary">Plus de détails</a>
                 </div>
                 
                 

@@ -1,14 +1,29 @@
 {% extends "base.html" %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Contact{% endblock %}
+
 {% block content %}
 
-<h2>Contactez-nous</h2>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.nom.label }} {{ form.nom() }}
-    {{ form.email.label }} {{ form.email() }}
-    {{ form.message.label }} {{ form.message() }}
-    {{ form.submit() }}
-</form>
+<section class="form-section">
+
+    <h1>Contactez-nous</h1>
+
+    <div class="mb-3">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.nom.label }} {{ form.nom(class="form-control") }}
+            <br>
+            {{ form.email.label }} {{ form.email(class="form-control") }}
+            <br>
+            {{ form.message.label }} {{ form.message(class="form-control") }}
+            <br>
+            {{ form.submit(class="form-control btn btn-success") }}
+        </form>
+    </div>
+
+</section>
+
 
 {% endblock %}

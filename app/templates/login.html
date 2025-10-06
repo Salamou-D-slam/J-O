@@ -1,20 +1,31 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
-<h1>Connexion</h1>
-<form method="POST">
+<section class="form-section">
+        <h1>Connexion</h1>
 
-    {{ form.hidden_tag() }}  <!-- Important pour CSRF -->
-    {{ form.email.label }}
-    {{ form.email() }}
+    <div class="mb-3 form-container">
+        <form method="POST"  class="log-form">
 
-    {{ form.password.label }}
-    {{ form.password() }}
+            {{ form.hidden_tag() }}  <!-- Important pour CSRF -->
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
 
-    {{ form.submit }}
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+                <br>
 
-    <a href="{{ url_for('main.register') }}">Se créer un compte</a>
-</form>
+            {{ form.submit(class="form-control btn btn-success") }}
+            <br>
+
+            <a href="{{ url_for('main.register') }}" class="form-control btn btn-info">Se créer un compte</a>
+        </form>
+    </div>
+</section>
+
+
 {% endblock %}

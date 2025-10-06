@@ -1,42 +1,58 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Ajouter une épreuve{% endblock %}
 
 {% block content %}
 
+<section class="form-section">
     <h1>Nouvelle épreuve</h1>
-    <form method="POST" enctype="multipart/form-data">
 
-        {{ form.hidden_tag() }}
+    <div class="mb-3">
+        <form method="POST" enctype="multipart/form-data">
 
-        {{ form.nom_epreuve.label }}
-        {{ form.nom_epreuve() }}
+            {{ form.hidden_tag() }}
 
+            {{ form.nom_epreuve.label }}
+            {{ form.nom_epreuve(class="form-control") }}
 
-        {{ form.date_epreuve.label }}
-        {{ form.date_epreuve() }}
+            <br>
 
+            {{ form.date_epreuve.label }}
+            {{ form.date_epreuve(class="form-control") }}
 
-        {{ form.prix_solo.label }}
-        {{ form.prix_solo() }}
-        {{ form.nbr_place_solo.label }}
-        {{ form.nbr_place_solo() }}
+            <br>
 
-        {{ form.prix_duo.label }}
-        {{ form.prix_duo() }}
-        {{ form.nbr_place_duo.label }}
-        {{ form.nbr_place_duo() }}
+            {{ form.prix_solo.label }}
+            {{ form.prix_solo(class="form-control") }}
+            {{ form.nbr_place_solo.label }}
+            {{ form.nbr_place_solo(class="form-control") }}
 
-        {{ form.prix_family.label }}
-        {{ form.prix_family() }}
-        {{ form.nbr_place_family.label }}
-        {{ form.nbr_place_family() }}
+            <br>
 
+            {{ form.prix_duo.label }}
+            {{ form.prix_duo(class="form-control") }}
+            {{ form.nbr_place_duo.label }}
+            {{ form.nbr_place_duo(class="form-control") }}
 
-        {{ form.image.label }}
-        {{ form.image() }}
+            <br>
 
+            {{ form.prix_family.label }}
+            {{ form.prix_family(class="form-control") }}
+            {{ form.nbr_place_family.label }}
+            {{ form.nbr_place_family(class="form-control") }}
 
-        {{ form.submit }}
-    </form>
+            <br>
+
+            {{ form.image.label }}
+            {{ form.image(class="form-control") }}
+
+            <br>
+
+            {{ form.submit(class="form-control btn btn-success") }}
+        </form>
+    </div>
+</section>
+
 {% endblock %}

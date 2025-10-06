@@ -48,4 +48,36 @@
 
 }
 
+.offres{
+    gap: 50px;
+}
+
+.admin-actions {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 2px solid rgb(38, 0, 255);
+    border-radius: 10px;
+    text-align: center;
+
+
+    font-family: 'Kameron', serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    border-radius: 100px;
+}
+
+.icone-gear{
+    justify-content: center;
+
+    display: flex;  
+}
+
 

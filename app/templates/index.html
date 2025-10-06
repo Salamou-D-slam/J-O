@@ -9,8 +9,8 @@
 
 <section class="section">
   <div class="container intro ">
-      <div id="img-fond" > <!--image de fond --></div>
-      <div id="degrader"><!--dégrader --></div>
+      <div id="img-fond" class="img-fluid" > <!--image de fond --></div>
+      <div id="degrader" class="img-fluid"><!--dégrader --></div>
       <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="image du logo des jeux olympiques" class="logo logo-intro ">
 
       <div class="bienvenue">
@@ -36,7 +36,7 @@
 
   <section class="section">
       <div class="card text-bg-dark  card-epreuves">
-        <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img" alt="Image de teddy riner.">
+        <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img img-fluid" alt="Image de teddy riner.">
         <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
           <h5 class="card-title">Epreuves</h5>
           <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
