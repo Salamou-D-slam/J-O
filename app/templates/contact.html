@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<section class="form-section">
+<section class="form-section section-form-add">
 
     <h1>Contactez-nous</h1>
 
@@ -17,9 +17,9 @@
             <br>
             {{ form.email.label }} {{ form.email(class="form-control") }}
             <br>
-            {{ form.message.label }} {{ form.message(class="form-control") }}
+            {{ form.message.label }} {{ form.message(class="form-control msg-form") }}
             <br>
-            {{ form.submit(class="form-control btn btn-success") }}
+            {{ form.submit(class="form-control btn btn-primary") }}
         </form>
     </div>
 

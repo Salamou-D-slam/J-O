@@ -23,8 +23,11 @@
 <br>
 
     <table border="1" cellpadding="5" cellspacing="0" class="table">
-      <tr><th>Nom</th><th>Prénom</th><th>Email</th></tr>
-      <tr>
+      <tr class="table-primary">
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th></tr>
+      <tr class="table-success">
         <td>{{ user_info.nom }}</td>
         <td>{{ user_info.prenom }}</td>
         <td>{{ user_info.email }}</td>
@@ -35,7 +38,7 @@
 <br>
 <hr>
 
-<section class="form-section admin-actions">
+<section class="form-section admin-actions section-form-add">
 
   <h2>Mettre à jour mon profil</h2>
 
@@ -54,7 +57,7 @@
     
 <br>
 <hr>
-<section class="form-section admin-actions">
+<section class="form-section admin-actions section-form-add">
 
     <h2>Créer un utilisateur</h2>
     <form method="POST">
@@ -64,53 +67,57 @@
       {{ create_user_form.prenom.label }} {{ create_user_form.prenom(class="form-control") }}<br>
       {{ create_user_form.email.label }} {{ create_user_form.email(class="form-control") }}<br>
       {{ create_user_form.password.label }} {{ create_user_form.password(class="form-control") }}<br>
-      {{ create_user_form.role.label }} {{ create_user_form.role(class="form-control") }}<br>
+      {{ create_user_form.role.label }} {{ create_user_form.role(class="form-control form-select") }}<br>
       {{ create_user_form.submit(class="form-control btn btn-outline-success") }}
     </form>
 </section>
 
 <br>
 <hr>
+
     <h2>Liste des utilisateurs</h2>
 <br>
+
 <h4>Rechercher un utilisateur</h4>
+
 <form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
     {{ admin_recherche_form.hidden_tag() }}
     {{ admin_recherche_form.query(size=30, placeholder="Nom, prénom, email ou rôle") }}
-    <button type="submit">Rechercher</button>
+    <button type="submit" class="btn btn-warning">Rechercher</button>
 </form>
+
 <br>
 
     <table border="1" cellpadding="5" cellspacing="0" class="table">
       <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Email</th>
-        <th>Rôle</th>
-        <th>Changer rôle</th>
-        <th>Supprimer</th>
+        <th class="table-primary">ID</th>
+        <th class="table-primary">Nom</th>
+        <th class="table-primary">Prénom</th>
+        <th class="table-primary">Email</th>
+        <th class="table-primary">Rôle</th>
+        <th class="table-primary">Changer rôle</th>
+        <th class="table-primary">Supprimer</th>
       </tr>
       {% for user in users %}
       <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.nom }}</td>
-        <td>{{ user.prenom }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.role }}</td>
-      <td>
+        <td class="table-success">{{ user.id }}</td>
+        <td class="table-success">{{ user.nom }}</td>
+        <td class="table-success">{{ user.prenom }}</td>
+        <td class="table-success">{{ user.email }}</td>
+        <td class="table-success">{{ user.role }}</td>
+      <td class="table-success">
           {% if user.id != current_user.id %}
 
       <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
           {{ update_role_forms[user.id].hidden_tag() }}
           {{ update_role_forms[user.id].update_role(class="form-control") }}
           {{ update_role_forms[user.id].update_role_user_id(value=user.id) }}
-          {{ update_role_forms[user.id].new_role(class="form-control") }}
+          {{ update_role_forms[user.id].new_role(class="form-control form-select") }}
           {{ update_role_forms[user.id].submit(class="form-control btn btn-outline-info") }}
       </form>
           {% endif %}
     </td>
-    <td>
+    <td class="table-success">
       {% if user.id != current_user.id %}
       <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
           {{ delete_user_forms[user.id].hidden_tag() }}
@@ -134,27 +141,24 @@
 
 <table border="1" cellpadding="5" cellspacing="0" class="table">
   <tr>
-    <th>ID</th>
-    <th>Nom de l'offre (type_offre)</th>
-    <th>Nombre de personne maximum</th>
-    <th>Prix</th>
-    <th>Billet restant</th>
-    <th>Billet vendu</th>
+    <th class="table-primary">ID</th>
+    <th class="table-primary">Nom de l'offre (type_offre)</th>
+    <th class="table-primary">Nombre de personne maximum</th>
+    <th class="table-primary">Prix</th>
+    <th class="table-primary">Billet restant</th>
+    <th class="table-primary">Billet vendu</th>
   </tr>
   {% for offre in offres %}
   <tr>
-    <td>{{ offre.id }}</td>
-    <td>{{ offre.type_offre }}</td>
-    <td>{{ offre.nombre_personne }} personne(s)</td>
-    <td>{{ offre.prix }} euro</td>
-    <td>{{ offre.bi_restant }}</td>
-    <td>{{ offre.bi_vendu }}</td>
+    <td class="table-success">{{ offre.id }}</td>
+    <td class="table-success">{{ offre.type_offre }}</td>
+    <td class="table-success">{{ offre.nombre_personne }} personne(s)</td>
+    <td class="table-success">{{ offre.prix }} euro</td>
+    <td class="table-success">{{ offre.bi_restant }}</td>
+    <td class="table-success">{{ offre.bi_vendu }}</td>
   </tr>
   {% endfor %}
 </table>
-
-
-
 
 
 <br>
@@ -164,7 +168,7 @@
 <ul>
   {% for ticket in tickets %}
     <li>
-      <a href="{{ url_for('admin.ticket_detail', ticket_id=ticket.id) }}" target="_blank">
+      <a href="{{ url_for('admin.ticket_detail', ticket_id=ticket.id) }}" target="_blank" class="btn btn-dark">
         Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>

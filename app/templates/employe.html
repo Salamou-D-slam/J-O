@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Mon espace: Employé{% endblock %}
 
 {% block content %}
@@ -11,38 +13,46 @@
   </form>
 </nav>
 
+<br>
+
   <h2>Informations personnelles</h2>
-    <table border="1" cellpadding="5" cellspacing="0">
-  <tr>
+  <br>
+    <table border="1" cellpadding="5" cellspacing="0" class="table">
+  <tr class="table-primary">
     <th>Nom</th>
     <th>Prenom</th>
     <th>Email</th>
   </tr>
-        <tr>
+        <tr class="table-success">
     <td>{{ current_user.nom }}</td>
     <td>{{ current_user.prenom }}</td>
     <td>{{ current_user.email }}</td>
 </tr>
         </table>
-<h2>Mettre à jour mon profil</h2>
+<br>
+
+<section class="form-section admin-actions section-form-add">
+  <h2>Mettre à jour mon profil</h2>
+
     <form method="POST" action="{{ url_for('employe.employe_dashboard') }}">
       {{ form.hidden_tag() }}
       {{ form.update_employe(value="update_employe") }}
       {{ form.update_info_user_id(value=current_user.id) }}
-      {{ form.new_nom.label }} {{ form.new_nom() }}<br>
-      {{ form.new_prenom.label }} {{ form.new_prenom() }}<br>
-      {{ form.new_email.label }} {{ form.new_email() }}<br>
-      {{ form.submit() }}
+      {{ form.new_nom.label }} {{ form.new_nom(class="form-control") }}<br>
+      {{ form.new_prenom.label }} {{ form.new_prenom(class="form-control") }}<br>
+      {{ form.new_email.label }} {{ form.new_email(class="form-control") }}<br>
+      {{ form.submit(class="form-control btn btn-outline-info") }}
     </form>
             </form>
+</section>
 
 <br>
 <hr>
 <br>
 
 <h2>Epreuves</h2>
-<table border="1" cellpadding="5" cellspacing="0">
-  <tr>
+<table border="1" cellpadding="5" cellspacing="0" class="table">
+  <tr class="table-primary">
     <th>ID</th>
     <th>Nom de l'offre (type_offre)</th>
     <th>Nombre de personne maximum</th>
@@ -50,7 +60,7 @@
     <th>Billet restant</th>
   </tr>
   {% for offre in offres %}
-  <tr>
+  <tr class="table-success">
     <td>{{ offre.id }}</td>
     <td>{{ offre.type_offre }}</td>
     <td>{{ offre.nombre_personne }} personne(s)</td>
@@ -64,11 +74,12 @@
 <br>
 <hr>
   <h2>Mes Billets</h2>
+<br>
 
 <ul>
   {% for ticket in tickets %}
     <li>
-      <a href="{{ url_for('employe.ticket_detail', ticket_id=ticket.id) }}" target="_blank">
+      <a href="{{ url_for('employe.ticket_detail', ticket_id=ticket.id) }}" target="_blank" class="btn btn-dark">
          Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>

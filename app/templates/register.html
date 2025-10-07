@@ -30,7 +30,15 @@
                 {{ form.confirm_password(class="form-control") }}
                 <br>
                 
-                {{ form.submit(class="form-control btn btn-success") }}
+                {{ form.submit(class="form-control btn btn-primary") }}
+
+                <br>
+                <br>
+                
+                
+
+                <a href="{{ url_for('main.login') }}" class="form-control btn btn-outline-warning">Vous avez déja un compte? Se connecter</a>
+
 
             </form> 
         </div>
