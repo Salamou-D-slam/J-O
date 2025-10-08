@@ -4,7 +4,6 @@ body {
 
 
 #img-fond {
-
     width: 149.8%;
     height: 943px;
     margin: -118px -317px auto;
@@ -236,12 +235,8 @@ body {
 
 
 @media (max-width: 1468px) {
-    #img-fond {
-        width: 200%;
-    }
-
-    #degrader {
-        width: 200%;
+    #img-fond, #degrader {
+        width: 100%;
     }
 
     .bienvenue {
