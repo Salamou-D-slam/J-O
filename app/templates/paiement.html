@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body class="container my-4" style="background-color: rgb(230, 230, 250);">
 
 
 <div class="container py-5">
@@ -31,6 +31,7 @@
             {{ form.hidden_tag() }}
 
             <h4>Personne n°1:</h4>
+<br>
 
                 <div  class="mb-3">
                       {{ form.pers1_nom.label(class="form-label") }} {{ form.pers1_nom(class="form-control") }}
@@ -42,10 +43,11 @@
                     {{ form.pers1_email.label(class="form-label") }} {{ form.pers1_email(class="form-control", placeholder="vous@example.com") }}
                 </div>
 
+
+            {% if offre.nombre_personne == 2 %}
 <br>
 <hr class="my-3">
 <br>
-            {% if offre.nombre_personne == 2 %}
                         <h4>Personne n°2:</h4>
 <br>
                 <div class="mb-3">
@@ -53,12 +55,12 @@
                       {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
                 </div>
 
+
+          
+            {% elif offre.nombre_personne == 4 %}
 <br>
 <hr class="my-3">
 <br>
-          
-            {% elif offre.nombre_personne == 4 %}
-
             <h4>Personne n°2:</h4>
 
 <br>

@@ -17,24 +17,30 @@ h1, h2, h3, h4, h5, h6 {
     height: 700px;
     background: #0900E0;
 
+    display: flex;
+    flex-wrap: wrap;
+    
+
     margin:200px 0 -24px -310px;
 
 }
 
 
 #div-footer{
-    width: 460px;
+    width: 260px;
     height: 206px;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
 }
 
 #div-footer a{
     margin:100px auto;
 }
-
-
 
 #attention {
     font-family: 'Kameron';
@@ -47,3 +53,123 @@ h1, h2, h3, h4, h5, h6 {
     margin: -60px auto;
     color: #ffffff;
 }
+
+
+
+@media (max-width: 1920px) {
+    #footer {
+        width: 1910px;
+        height: 700px;
+        
+        margin:200px 0 -24px -310px;
+        box-sizing: border-box;
+        left: 0;
+        right: auto;
+        position: relative;
+        justify-content: flex-start;
+    }
+
+    #div-footer {
+        width: 60%;
+        height: auto;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        box-sizing: border-box;
+        padding: 10px;
+        
+    }
+
+    #attention {
+        font-size: 22px;
+        line-height: 32px;
+        margin: 20px 0 20px 20px;
+    }
+}
+
+
+@media (max-width: 991px) {
+    #footer {
+        width: 911px;
+        height: 700px;
+        margin: 200px 0 -24px -137px;
+
+    }
+
+    #div-footer {
+        width: 95%;
+        height: auto;
+        margin: 20px 0 20px 10px;
+    }
+
+    #attention {
+        font-size: 20px;
+        line-height: 30px;
+        margin: 20px 0 20px 10px;
+    }
+}
+
+/* @media (max-width: 1920px) {
+    #footer {
+        width: 1910px;
+        height: 700px;
+        
+        margin:200px 0 -24px -310px;
+        box-sizing: border-box;
+        left: 0;
+        right: auto;
+        position: relative;
+        justify-content: flex-start;
+    }
+
+    #div-footer {
+        width: 60%;
+        height: auto;
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        box-sizing: border-box;
+        padding: 10px;
+        
+    }
+
+    #attention {
+        font-size: 22px;
+        line-height: 32px;
+        margin: 20px 0 20px 20px;
+    }
+}
+
+
+@media (max-width: 991px) {
+    #footer {
+        width: 911px;
+        height: 700px;
+        margin: 200px 0 -24px -137px;
+
+    }
+
+    #div-footer {
+        width: 95%;
+        height: auto;
+        margin: 20px 0 20px 10px;
+    }
+
+    #attention {
+        font-size: 20px;
+        line-height: 30px;
+        margin: 20px 0 20px 10px;
+    }
+} */

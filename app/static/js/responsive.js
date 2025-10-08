@@ -1,55 +1,8 @@
-{% extends "base.html" %}
-
-{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">{% endblock %}
-
-
-{% block title %}Accueil{% endblock %}
-
-{% block content %}
-
-<section class="section">
-  <div class="container intro text-center">
-      <div id="img-fond" > <!--image de fond --></div>
-      <div id="degrader"><!--dégrader --></div>
-      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="image du logo des jeux olympiques" class="logo logo-intro">
-
-      <div class="bienvenue container">
-        <h1>Bienvenue sur la billetterie des Jeux-Olympiques</h1>
-        <p>Merci de vous connecter ou de vous inscrire pour pouvoir acheter des billets.</p>
-     </div>
- </div> 
-</section>
-
-
-
-<!-- 
-
- <div class="card text-bg-dark card-index">
-  <img src="{{ url_for('static', filename='images/course2.jpg') }}" class="card-img" alt="image d'une piste de course">
-  <div class="card-img-overlay">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small>Last updated 3 mins ago</small></p>
-  </div>
-</div>
-  -->
-
-  <section class="section">
-      <div class="card text-bg-dark  card-epreuves">
-        <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img img-fluid" alt="Image de teddy riner.">
-        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
-          <h5 class="card-title">Epreuves</h5>
-          <p class="card-text">Visulaisez toutes les épreuves disponibles avec leurs détails </p>
-          <a type="button" class="btn btn-primary btn-lg" href="{{ url_for('main.all_epreuve_front')}}">Voir les épreuves</a>
-        </div>
-      </div>
-  </section>
-
-
-  <br>
-  <section id="section-card-zone"></section>
-
-    <!-- <section class="section container-card section-infos">
+function responsiveSection() {
+  const zone = document.getElementById("section-card-zone");
+  if (window.innerWidth > 1316) {
+    zone.innerHTML = `
+    <section class="section container-card section-infos">
 
         <div class="card-offre">
             <div class="card text-bg-info mb-3" style="max-width: 26rem; border-radius: 100%;">
@@ -101,9 +54,12 @@
             </div>
         </div>
 
-    </section> -->
-
-<!-- <section>
+    </section>
+    `;
+  } else {
+    zone.innerHTML = ` 
+    <section>
+        <h1 class="text-center"><strong>Informations</strong></h1>
       
       <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -172,10 +128,9 @@
       </div>
     </div>
   </div>
-</section> -->
-  
-
-
-{% block js %}<script src="{{ url_for('static', filename='js/responsive.js') }}"></script>{% endblock %}
-
-{% endblock %}
+</section>
+    `;
+  }
+}
+responsiveSection();
+window.addEventListener("resize", responsiveSection);

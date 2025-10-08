@@ -34,8 +34,8 @@ body {
 } */
 
 .bienvenue {
+
     position: absolute;
-    width: 1900px;
     height: 300px;
     margin: -750px -320px auto;
     
@@ -44,15 +44,10 @@ body {
 
     align-items: center;
     justify-content: center;
-
-
-    /*background-color: #FFFFFF;*/
 }
 
 .bienvenue h1 {
-    
-    font-family: 'Kameron';
-    font-style: normal;
+    display: flex;
     font-weight: 547;
     font-size: 64px;
     line-height: 76px;
@@ -60,9 +55,11 @@ body {
     color: #ffffff;
 
 
+
     text-decoration-line: underline;
     text-transform: uppercase ; 
     font-weight: bold;
+
 
     text-shadow: 30px 4px 30px rgb(0, 4, 255);
 
@@ -92,7 +89,7 @@ body {
 .logo{
     width: 300px;
     height: 300px;
-    margin: -500px 480px auto;
+    margin: -400px 480px auto;
 
     background-color: #ffffff;
     border-radius: 50%;
@@ -220,4 +217,127 @@ body {
 
 .btn-card-contact{
     margin: -70px -330px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------MEDIA QUERY-----------------------------------------------*/
+
+
+@media (max-width: 1468px) {
+    #img-fond {
+        width: 200%;
+    }
+
+    #degrader {
+        width: 200%;
+    }
+
+    .bienvenue {
+        width: 200%;
+    }
+
+    .logo{
+        margin: -400px 300px auto;
+    }
+    .card-epreuves {
+        width: 70%;
+    }
+
+    .container-card{
+        width: 90%;
+        height: 800px;
+        margin: 150px 50px auto;
+    }
+
+    .card-offre{
+        width: 180%;
+        height: 400px;
+        gap: 20px;
+    }
+
+    .card-info{
+        gap: 20px;
+    }
+
+    .card-header{
+        width: 300px;
+        margin: 20px auto 0 auto;
+    }
+
+    .btn-card-contact{
+        margin: -70px -250px auto;
+    }
+
+}
+
+
+
+@media (max-width: 991px) {
+    #img-fond {
+        width: 300%;
+    }
+
+    #degrader {
+        width: 300%;
+    }
+
+    .bienvenue {
+        width: 300%;
+    }
+
+    .bienvenue h1 {
+        font-size: 48px;
+        line-height: 58px;
+        margin: 0 20px;
+    }
+
+    .bienvenue p {
+        font-size: 24px;
+        line-height: 58px;
+        margin: 50px 20px 0 20px;
+    }
+
+    .logo{
+        width: 200px;
+        height: 200px;
+        margin: -400px 100px auto;
+    }
+
+    .card-epreuves {
+        width: 90%;
+    }
+
+ 
+
+    .card-offre{
+        width: 250%;
+        height: 400px;
+        gap: 20px;
+    }
+
+    .card-info{
+        gap: 20px;
+    }
+
+    .card-header{
+        width: 250px;
+        margin: 20px auto 0 auto;
+    }
+
+    .btn-card-contact{
+        margin: -70px -150px auto;
+    }
+
 }
