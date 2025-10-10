@@ -2,8 +2,8 @@ body {
     background-color: blanchedalmond;
 }
 
-
 #img-fond {
+
     width: 149.8%;
     height: 943px;
     margin: -118px -317px auto;
@@ -218,26 +218,18 @@ body {
     margin: -70px -330px auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*----------------------------------------------MEDIA QUERY-----------------------------------------------*/
 
 
 @media (max-width: 1468px) {
-    #img-fond, #degrader {
-        width: 100%;
+    /* #img-fond {
+        width: 190%;
+        background-position: center;
     }
+
+    #degrader {
+        width: 190%;
+    } */
 
     .bienvenue {
         width: 200%;
@@ -256,25 +248,7 @@ body {
         margin: 150px 50px auto;
     }
 
-    .card-offre{
-        width: 180%;
-        height: 400px;
-        gap: 20px;
-    }
-
-    .card-info{
-        gap: 20px;
-    }
-
-    .card-header{
-        width: 300px;
-        margin: 20px auto 0 auto;
-    }
-
-    .btn-card-contact{
-        margin: -70px -250px auto;
-    }
-
+   
 }
 
 
@@ -312,27 +286,6 @@ body {
 
     .card-epreuves {
         width: 90%;
-    }
-
- 
-
-    .card-offre{
-        width: 250%;
-        height: 400px;
-        gap: 20px;
-    }
-
-    .card-info{
-        gap: 20px;
-    }
-
-    .card-header{
-        width: 250px;
-        margin: 20px auto 0 auto;
-    }
-
-    .btn-card-contact{
-        margin: -70px -150px auto;
     }
 
 }
