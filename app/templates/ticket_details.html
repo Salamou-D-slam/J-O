@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Détails du Ticket</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 1rem; }
-        h1 { text-align: center; }
-        .ticket-info { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-        .section { margin-bottom: 1.5rem; }
-        .section h2 { border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; margin-bottom: 0.5rem; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 0.5rem; border-bottom: 1px solid #eee; text-align: left; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ticket.css') }}">
 </head>
 <body>
 
@@ -74,6 +66,7 @@
 
     </div>
 
+<br>
 
 <a href="{{ url_for('ticket.ticket_pdf', ticket_id=ticket.id) }}">
     Télécharger PDF

@@ -1,0 +1,14 @@
+// 1️⃣ Personnalise les couleurs
+$theme-colors: (
+  "primary": #395dfc,
+  "secondary": #19f776,
+  "success": #00c853,
+  "danger": #d50000,
+  "warning": #ffd600,
+  "info": #00b8d4,
+  "light": #f8f9fa,
+  "dark": #212121
+);
+
+// 2️⃣ Importe Bootstrap après tes changements
+@import "bootstrap";

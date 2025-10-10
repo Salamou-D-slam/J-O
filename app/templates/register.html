@@ -1,29 +1,48 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
-<h1>Inscription</h1>
-<form method="POST">
 
-    {{ form.hidden_tag() }}
+<section class="form-section">
+        <h1>Inscription</h1>
 
-    {{ form.nom.label }}
-    {{ form.nom() }}
+        <div class="mb-3 form-container">
+            <form method="POST" class="log-form">
 
-    {{ form.prenom.label }}
-    {{ form.prenom() }}
+                {{ form.hidden_tag() }}
 
-    {{ form.email.label }}
-    {{ form.email() }}
+                {{ form.nom.label }}
+                {{ form.nom(class="form-control") }}
 
-    {{ form.password.label }}
-    {{ form.password() }}
+                {{ form.prenom.label }}
+                {{ form.prenom(class="form-control") }}
 
-    {{ form.confirm_password.label }}
-    {{ form.confirm_password() }}
+                {{ form.email.label }}
+                {{ form.email(class="form-control") }}
 
-    {{ form.submit }}
+                {{ form.password.label }}
+                {{ form.password(class="form-control") }}
 
-</form>
+                {{ form.confirm_password.label }}
+                {{ form.confirm_password(class="form-control") }}
+                <br>
+                
+                {{ form.submit(class="form-control btn btn-primary") }}
+
+                <br>
+                <br>
+                
+                
+
+                <a href="{{ url_for('main.login') }}" class="form-control btn btn-outline-warning">Vous avez déja un compte? Se connecter</a>
+
+
+            </form> 
+        </div>
+
+</section>
+
 {% endblock %}

@@ -1,34 +1,80 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/epreuve_details.css') }}">{% endblock %}
+
+
 {% block title %}Dashboard epreuves - {{ epreuve.nom_epreuve }} {% endblock %}
 
 {% block content %}
 
-    <h1>{{ epreuve.nom_epreuve }}</h1>
+    <section class="section-epreuves">
+ 
 
-    <p>Date de l'épreuve : {{ epreuve.date_epreuve.strftime('%d/%m/%Y') }}</p>
+        
+            <div class="card card-epreuve" style="width: 60rem;">
 
-    {% if epreuve.image_filename %}
-        <img src="{{ url_for('static', filename='uploads/image/' ~ epreuve.image_filename) }}" alt="Image de l'épreuve" style="max-width: 400px;">
-    {% else %}
-        <p>Aucune image disponible</p>
-    {% endif %}
+                {% if epreuve.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/image/' ~ epreuve.image_filename) }}" alt="Image de l'épreuve" class="img-fluid">
+                {% else %}
+                    <p>Aucune image disponible</p>
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="card-title">{{ epreuve.nom_epreuve }}</h3> 
+                    <p class="card-text">Date de l'épreuve : {{ epreuve.date_epreuve.strftime('%d/%m/%Y') }}</p>
+                </div>
+                                    <hr>
+                <div class="card-body jour-epreuve">
+                    <h6 class="card-title">Le jour de l'épreuve</h6>
+                    <p class="card-text">Veuillez vous munir de vos pieces d'identié ainsi que le QR code présent dans le ticket. 
+                    Notez que le QR code ne peut être scanner qu'une seule fois, donc les personnes qui ont un billet d'une offre duo ou family doivent entrer TOUS en même temps.</p>
+                </div>
+            </div>
+            
+    </section>
 
-    <h2>Offres disponibles :</h2>
-    <ul>
-        {% for offre in epreuve.offres %}
-            <li>
-                {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
-            </li>
+    <hr>
+<br>
 
-        {% endfor %}
-    </ul>
+    <h2 class="offre-title">Offres disponibles :</h2>
 
-    <a href="{{ url_for('main.update', epreuve_id=epreuve.id) }}">Modifier</a>
-       <form action="{{ url_for('main.delete', epreuve_id=epreuve.id) }}" method="post" style="display:inline;">
-           {{ form.hidden_tag() }}
-           {{ form.submit() }}
-      </form>
+    <section class="section-epreuves offres">
+            
+
+            {% for offre in epreuve.offres %}
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                                    <h5 class="card-title"> <strong>{{ offre.type_offre }} :</strong> </h5>
+                                    <p  class="card-text">Nombre de Personne(s) : {{ offre.nombre_personne }}</p>
+                                    <p  class="card-text">Prix : {{ offre.prix }} €</p>
+                                    <p  class="card-text">Nombres de place restante : {{offre.bi_restant}}</p>
+
+                            <a href="{{ url_for('paiement.paiement_epreuve', type_offre=offre.type_offre) }}" class="btn btn-outline-primary">
+                                Acheter </a>           
+                
+                    </div>
+                </div>
+            {% endfor %}
+    </section>
+<hr>
+            <br>
+    <section class="admin-actions container">
+            
+        <h2>Actions administrateur :</h2>
+
+            <br>
+
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" >
+                <a href="{{ url_for('main.update', epreuve_id=epreuve.id) }}" class="btn btn-info">Modifier</a>
+
+                <form action="{{ url_for('main.delete', epreuve_id=epreuve.id) }}" method="post" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette épreuve ?');">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(class="btn btn-danger btn-lg") }}
+                </form>
+          </div>  
+        
+    </section>
+    
 
 
 

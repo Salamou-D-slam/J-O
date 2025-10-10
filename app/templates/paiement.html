@@ -4,130 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Paiement</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/paiement.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      background: linear-gradient(-45deg, #1f1f1f, #121212, #1a1a1a, #111);
-      background-size: 400% 400%;
-      animation: gradientMove 10s ease infinite;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', sans-serif;
-      transition: background 0.8s, color 0.8s;
-    }
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    .card {
-      background: rgba(40, 40, 40, 0.6);
-      border: none;
-      border-radius: 1rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      transition: background 0.8s, box-shadow 0.8s;
-    }
-    h2, h5 {
-      color: #ffffff;
-    }
-    .text-muted {
-      color: #bbbbbb !important;
-    }
-    .form-label {
-      font-size: 0.9rem;
-      color: #cccccc;
-    }
-    .form-control, .form-select {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #f1f1f1;
-      transition: background 0.3s, border-color 0.3s, color 0.3s;
-    }
-    .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-    .form-control:focus {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #0d6efd;
-      color: #fff;
-    }
-    .btn-primary {
-      background-color: #0d6efd;
-      border: none;
-      transition: transform 0.1s, background-color 0.3s;
-    }
-    .btn-primary:hover {
-      background-color: #0b5ed7;
-      transform: scale(1.02);
-    }
-    .btn-primary:active {
-      transform: scale(0.98);
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 999;
-    }
-    .light-mode {
-      background: linear-gradient(-45deg, #f0f0f0, #e2e2e2, #ffffff, #dcdcdc);
-      color: #222;
-    }
-    .light-mode .card {
-      background: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .light-mode .form-label {
-      color: #333;
-    }
-    .light-mode .form-control,
-    .light-mode .form-select {
-      background: rgba(0, 0, 0, 0.05);
-      color: #222;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-    }
-    .light-mode .form-control::placeholder {
-      color: rgba(0, 0, 0, 0.4);
-    }
-    .light-mode .form-control:focus {
-      background: rgba(0, 0, 0, 0.1);
-      color: #000;
-    }
-    .form-icon {
-      margin-right: 6px;
-      color: #0d6efd;
-    }
-    .logo {
-      display: block;
-      margin: 0 auto 10px;
-      width: 50px;
-      height: 50px;
-    }
-  </style>
 </head>
-<body>
+<body class="container my-4" style="background-color: rgb(230, 230, 250);">
 
-<!-- Bouton toggle -->
-<button class="btn btn-sm btn-secondary theme-toggle">
-  <i class="fa fa-moon"></i> / <i class="fa fa-sun"></i>
-</button>
 
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
       <div class="card p-4">
-        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" class="logo" alt="Logo">
         <h2 class="mb-4 text-center"><i class="fa fa-lock form-icon"></i>Paiement sécurisé</h2>
+
+<br>
 
             <h3>
                 {{ offre.type_offre }} : {{ offre.nombre_personne }} personne(s) - {{ offre.prix }} €
             </h3>
+
+<br>
+
         <form method="POST" action="{{ url_for('paiement.paiement_epreuve', type_offre = offre.type_offre) }}" class="needs-validation" novalidate>
 
             {{ form.hidden_tag() }}
 
             <h4>Personne n°1:</h4>
+<br>
 
                 <div  class="mb-3">
                       {{ form.pers1_nom.label(class="form-label") }} {{ form.pers1_nom(class="form-control") }}
@@ -138,36 +42,52 @@
                 <div  class="mb-3">
                     {{ form.pers1_email.label(class="form-label") }} {{ form.pers1_email(class="form-control", placeholder="vous@example.com") }}
                 </div>
-            <hr class="my-3">
-
 
 
             {% if offre.nombre_personne == 2 %}
+<br>
+<hr class="my-3">
+<br>
                         <h4>Personne n°2:</h4>
+<br>
                 <div class="mb-3">
                       {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
                       {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
                 </div>
 
-          <hr class="my-3">
 
+          
             {% elif offre.nombre_personne == 4 %}
-
+<br>
+<hr class="my-3">
+<br>
             <h4>Personne n°2:</h4>
+
+<br>
 
             <div class="mb-3">
                   {{ form.pers2_nom.label(class="form-label") }} {{ form.pers2_nom(class="form-control") }}
                   {{ form.pers2_prenom.label(class="form-label") }} {{ form.pers2_prenom(class="form-control") }}
             </div>
 
+<br>
+<hr class="my-3">
+<br>
             <h4>Personne n°3:</h4>
+
+            <br>
 
             <div class="mb-3">
                   {{ form.pers3_nom.label(class="form-label") }} {{ form.pers3_nom(class="form-control") }}
                   {{ form.pers3_prenom.label(class="form-label") }} {{ form.pers3_prenom(class="form-control") }}
             </div>
 
+<br>
+<hr class="my-3">
+<br>
             <h4>Personne n°4:</h4>
+
+<br>
 
             <div class="mb-3">
                   {{ form.pers4_nom.label(class="form-label") }} {{ form.pers4_nom(class="form-control") }}
@@ -176,12 +96,21 @@
 
                 {% endif %}
 
+<br>
+<hr class="my-3">
+<br>
+            <h4>Informations de paiement:</h4>
+        
+<br>
             <div>
                   {{ form.nom_card.label(class="form-label") }} {{ form.nom_card(class="form-control") }}
                   {{ form.card_number.label(class="form-label") }} {{ form.card_number(class="form-control") }}
                   {{ form.expiration_card.label(class="form-label") }} {{ form.expiration_card(class="form-control") }}
                   {{ form.CVV_card.label(class="form-label") }} {{ form.CVV_card(class="form-control") }}
             </div>
+
+            <br>
+
             {{ form.submit(class="btn btn-primary") }}
 
             {% if error %}

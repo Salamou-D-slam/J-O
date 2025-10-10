@@ -1,35 +1,48 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Mon espace{% endblock %}
 
 {% block header %}header{% endblock %}
 
 {% block content %}
 
-</div>
+<br>
+
   <h1>Informations personnelles</h1>
-    <table border="1" cellpadding="5" cellspacing="0">
-  <tr>
+
+<br>
+    <table border="1" cellpadding="5" cellspacing="0" class="table">
+  <tr class="table-primary">
     <th>Nom</th>
     <th>Prenom</th>
     <th>Email</th>
   </tr>
-        <tr>
+        <tr class="table-success">
     <td>{{ current_user.nom }}</td>
     <td>{{ current_user.prenom }}</td>
     <td>{{ current_user.email }}</td>
 </tr>
         </table>
-            <form method="post" action="{{ url_for('utilisateur.utilisateur_dashboard') }}">
 
-              {{ form.hidden_tag() }}
-              {{ form.update_utilisateur(value="update_utilisateur") }}
-              {{ form.update_info_user_id(value=current_user.id) }}
-              {{ form.new_nom.label }} {{ form.new_nom() }}<br>
-              {{ form.new_prenom.label }} {{ form.new_prenom() }}<br>
-              {{ form.new_email.label }} {{ form.new_email() }}<br>
-              {{ form.submit() }}
-            </form>
+<br>
+
+<section class="form-section admin-actions section-form-add">
+
+  <h2>Mettre à jour mon profil</h2>
+        <form method="post" action="{{ url_for('utilisateur.utilisateur_dashboard') }}">
+
+          {{ form.hidden_tag() }}
+          {{ form.update_utilisateur(value="update_utilisateur") }}
+          {{ form.update_info_user_id(value=current_user.id) }}
+          {{ form.new_nom.label }} {{ form.new_nom(class="form-control") }}<br>
+          {{ form.new_prenom.label }} {{ form.new_prenom(class="form-control") }}<br>
+          {{ form.new_email.label }} {{ form.new_email(class="form-control") }}<br>
+          {{ form.submit(class="form-control btn btn-outline-info") }}
+        </form>
+</section>
+
 <br>
 <hr>
 
@@ -38,10 +51,12 @@
 <ul>
   {% for ticket in tickets %}
     <li>
-      <a href="{{ url_for('utilisateur.ticket_detail', ticket_id=ticket.id) }}" target="_blank">
+      <a href="{{ url_for('utilisateur.ticket_detail', ticket_id=ticket.id) }}" target="_blank" class="btn btn-dark">
         Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>
+        <br>
+
   {% else %}
     <li>Aucun billet acheté.</li>
   {% endfor %}

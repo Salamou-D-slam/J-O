@@ -1,47 +1,67 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Modifier l'épreuve{% endblock %}
 
 {% block content %}
 
-    <h1>Modifier l'épreuve</h1>
+<section class="form-section section-form-add">
+     <h1>Modifier l'épreuve</h1>
 
-    <form method="post" enctype="multipart/form-data">
-
-
-        {{ form.hidden_tag() }}
-
-        {{ form.new_nom_epreuve.label }}
-        {{ form.new_nom_epreuve() }}
+    <div class="mb-3">
+        <form method="post" enctype="multipart/form-data" >
 
 
-        {{ form.new_date_epreuve.label }}
-        {{ form.new_date_epreuve() }}
+            {{ form.hidden_tag() }}
+
+            {{ form.new_nom_epreuve.label }}
+            {{ form.new_nom_epreuve(class="form-control") }}
+
+            <br>
+
+            {{ form.new_date_epreuve.label }}
+            {{ form.new_date_epreuve(class="form-control") }}
+
+            <br>
 
 
-        {{ form.new_prix_solo.label }}
-        {{ form.new_prix_solo() }}
-        {{ form.new_nbr_place_solo.label }}
-        {{ form.new_nbr_place_solo() }}
+            {{ form.new_prix_solo.label }}
+            {{ form.new_prix_solo(class="form-control") }}
+            {{ form.new_nbr_place_solo.label }}
+            {{ form.new_nbr_place_solo(class="form-control") }}
 
-        {{ form.new_prix_duo.label }}
-        {{ form.new_prix_duo() }}
-        {{ form.new_nbr_place_duo.label }}
-        {{ form.new_nbr_place_duo() }}
+            <br>
 
-        {{ form.new_prix_family.label }}
-        {{ form.new_prix_family() }}
-        {{ form.new_nbr_place_family.label }}
-        {{ form.new_nbr_place_family() }}
+            {{ form.new_prix_duo.label }}
+            {{ form.new_prix_duo(class="form-control") }}
+            {{ form.new_nbr_place_duo.label }}
+            {{ form.new_nbr_place_duo(class="form-control") }}
+
+            <br>
+
+            {{ form.new_prix_family.label }}
+            {{ form.new_prix_family(class="form-control") }}
+            {{ form.new_nbr_place_family.label }}
+            {{ form.new_nbr_place_family(class="form-control") }}
+
+            <br>
 
 
-        {{ form.new_image.label }}
-        {{ form.new_image() }}
+            {{ form.new_image.label }}
+            {{ form.new_image(class="form-control") }}
 
-        {{ form.new_submit() }}
-    </form>
+            <br>
 
-    <a href="{{ url_for('main.all_epreuve') }}">Retour</a>
+            {{ form.new_submit(class="form-control btn btn-info") }}
+            
+        </form>
+    </div>
+    
+
+    <a href="{{ url_for('main.all_epreuve') }}" class="btn btn-outline-light">Annuler</a>
+</section>
+   
 
 
 {% endblock %}

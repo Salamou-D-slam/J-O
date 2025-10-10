@@ -1,0 +1,67 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* évite le scroll horizontal */
+}
+
+/* Section plein écran */
+#img-fond {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* hauteur de la fenêtre */
+  background: url("/static/images/course2.jpg") no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Dégradé par-dessus */
+#degrader {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(1, 0, 65, 0) 0%, rgb(6, 0, 94) 100%);
+  z-index: 1;
+}
+
+/* Contenu au-dessus du dégradé */
+#img-fond .logo,
+#img-fond .bienvenue {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+/* Style du logo et du texte */
+.logo-intro {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.bienvenue h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.bienvenue p {
+  font-size: 1.2rem;
+}
+
+/* Option : header par-dessus l'image */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}

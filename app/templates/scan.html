@@ -4,13 +4,17 @@
 
 {% block content %}
 
-
+<br>
     <h2>Contrôle des tickets</h2>
+    <br>
 
-<input type="text" id="ticket_id" placeholder="Colle ou scanne le QR code" name="scan">
-<button onclick="simulateScan()">Vérifier</button>
+<input class="form-control" type="text" id="ticket_id" placeholder="Colle ou scanne le QR code" name="scan">
 
-<div id="result"></div>
+<br>
+
+<button onclick="simulateScan()" class="btn btn-primary">Vérifier</button>
+
+<div id="result" class="alert"></div>
 
 <script>
   function simulateScan() {

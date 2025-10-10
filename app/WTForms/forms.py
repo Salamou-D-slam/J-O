@@ -131,7 +131,7 @@ class UpdateepreuvesForm(FlaskForm):
         FileAllowed(['jpg', 'png', 'jpeg'], "Seulement des images JPG/PNG"),
     ])
 
-    new_submit = SubmitField("Modifier")
+    new_submit = SubmitField("Soumettre la Modification")
 
 class EpreuvedetailForm(FlaskForm):
     submit = SubmitField("Suprrimer")

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
 {% block title %}Mon espace: Administrateur{% endblock %}
 
 {% block content %}
@@ -16,85 +18,115 @@
     <h1>Dashboard Admin</h1>
 
 <br>
-    <h2>Informations personnelles</h2>
+
+  <h2>Informations personnelles</h2>
 <br>
 
-    <table border="1" cellpadding="5" cellspacing="0">
-      <tr><th>Nom</th><th>Prénom</th><th>Email</th></tr>
-      <tr>
+<div class="table-responsive">
+  <table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
+      <tr class="table-primary">
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th></tr>
+      <tr class="table-success">
         <td>{{ user_info.nom }}</td>
         <td>{{ user_info.prenom }}</td>
         <td>{{ user_info.email }}</td>
       </tr>
     </table>
+</div>
+    
+
+
 <br>
 <hr>
-    <h2>Mettre à jour mon profil</h2>
+
+<section class="form-section admin-actions section-form-add">
+
+  <h2>Mettre à jour mon profil</h2>
+
     <form method="POST" action="{{ url_for('admin.admin_dashboard') }}">
       {{ update_admin_form.hidden_tag() }}
       {{ update_admin_form.update_admin(value="update_admin") }}
       {{ update_admin_form.update_info_user_id(value=current_user.id) }}
-      {{ update_admin_form.new_nom.label }} {{ update_admin_form.new_nom() }}<br>
-      {{ update_admin_form.new_prenom.label }} {{ update_admin_form.new_prenom() }}<br>
-      {{ update_admin_form.new_email.label }} {{ update_admin_form.new_email() }}<br>
-      {{ update_admin_form.submit() }}
-    </form>
+      {{ update_admin_form.new_nom.label }} {{ update_admin_form.new_nom(class="form-control") }}<br>
+      {{ update_admin_form.new_prenom.label }} {{ update_admin_form.new_prenom(class="form-control") }}<br>
+      {{ update_admin_form.new_email.label }} {{ update_admin_form.new_email(class="form-control") }}<br>
+      {{ update_admin_form.submit(class="form-control btn btn-outline-info") }}
+    </form> 
+</section>
+
+
+    
 <br>
 <hr>
+<section class="form-section admin-actions section-form-add">
+
     <h2>Créer un utilisateur</h2>
     <form method="POST">
       {{ create_user_form.hidden_tag() }}
       {{ create_user_form.create_user(value="create_user") }}
-      {{ create_user_form.nom.label }} {{ create_user_form.nom() }}<br>
-      {{ create_user_form.prenom.label }} {{ create_user_form.prenom() }}<br>
-      {{ create_user_form.email.label }} {{ create_user_form.email() }}<br>
-      {{ create_user_form.password.label }} {{ create_user_form.password() }}<br>
-      {{ create_user_form.role.label }} {{ create_user_form.role() }}<br>
-      {{ create_user_form.submit() }}
+      {{ create_user_form.nom.label }} {{ create_user_form.nom(class="form-control") }}<br>
+      {{ create_user_form.prenom.label }} {{ create_user_form.prenom(class="form-control") }}<br>
+      {{ create_user_form.email.label }} {{ create_user_form.email(class="form-control") }}<br>
+      {{ create_user_form.password.label }} {{ create_user_form.password(class="form-control") }}<br>
+      {{ create_user_form.role.label }} {{ create_user_form.role(class="form-control form-select") }}<br>
+      {{ create_user_form.submit(class="form-control btn btn-outline-success") }}
     </form>
+</section>
+
 <br>
 <hr>
+
     <h2>Liste des utilisateurs</h2>
 <br>
+
 <h4>Rechercher un utilisateur</h4>
+
 <form method="GET" action="{{ url_for('admin.admin_dashboard') }}">
     {{ admin_recherche_form.hidden_tag() }}
     {{ admin_recherche_form.query(size=30, placeholder="Nom, prénom, email ou rôle") }}
-    <button type="submit">Rechercher</button>
+    <button type="submit" class="btn btn-warning">Rechercher</button>
 </form>
+
 <br>
 
-    <table border="1" cellpadding="5" cellspacing="0">
+<div class="table-responsive">
+    <table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
       <tr>
-        <th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th>
-        <th>Rôle</th><th>Changer rôle</th><th>Supprimer</th>
+        <th class="table-primary">ID</th>
+        <th class="table-primary">Nom</th>
+        <th class="table-primary">Prénom</th>
+        <th class="table-primary">Email</th>
+        <th class="table-primary">Rôle</th>
+        <th class="table-primary">Changer rôle</th>
+        <th class="table-primary">Supprimer</th>
       </tr>
       {% for user in users %}
       <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.nom }}</td>
-        <td>{{ user.prenom }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.role }}</td>
-        <td>
-      <td>
+        <td class="table-success">{{ user.id }}</td>
+        <td class="table-success">{{ user.nom }}</td>
+        <td class="table-success">{{ user.prenom }}</td>
+        <td class="table-success">{{ user.email }}</td>
+        <td class="table-success">{{ user.role }}</td>
+      <td class="table-success">
           {% if user.id != current_user.id %}
 
       <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
           {{ update_role_forms[user.id].hidden_tag() }}
-          {{ update_role_forms[user.id].update_role() }}
+          {{ update_role_forms[user.id].update_role(class="form-control") }}
           {{ update_role_forms[user.id].update_role_user_id(value=user.id) }}
-          {{ update_role_forms[user.id].new_role() }}
-          {{ update_role_forms[user.id].submit() }}
+          {{ update_role_forms[user.id].new_role(class="form-control form-select") }}
+          {{ update_role_forms[user.id].submit(class="form-control btn btn-outline-info") }}
       </form>
           {% endif %}
     </td>
-    <td>
+    <td class="table-success">
       {% if user.id != current_user.id %}
       <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
           {{ delete_user_forms[user.id].hidden_tag() }}
-          {{ delete_user_forms[user.id].delete_user() }}
-          {{ delete_user_forms[user.id].delete_user_user_id() }}
+          {{ delete_user_forms[user.id].delete_user(class="form-control") }}
+          {{ delete_user_forms[user.id].delete_user_user_id(class="form-control") }}
           {{ delete_user_forms[user.id].delete(class="btn btn-danger") }}
       </form>
       {% endif %}
@@ -102,35 +134,36 @@
       </tr>
       {% endfor %}
     </table>
+    </div>
 
 <br>
 <hr>
 <br>
 
 <h2>Epreuves</h2>
-<table border="1" cellpadding="5" cellspacing="0">
+
+<br>
+
+<table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
   <tr>
-    <th>ID</th>
-    <th>Nom de l'offre (type_offre)</th>
-    <th>Nombre de personne maximum</th>
-    <th>Prix</th>
-    <th>Billet restant</th>
-    <th>Billet vendu</th>
+    <th class="table-primary">ID</th>
+    <th class="table-primary">Nom de l'offre (type_offre)</th>
+    <th class="table-primary">Nombre de personne maximum</th>
+    <th class="table-primary">Prix</th>
+    <th class="table-primary">Billet restant</th>
+    <th class="table-primary">Billet vendu</th>
   </tr>
   {% for offre in offres %}
   <tr>
-    <td>{{ offre.id }}</td>
-    <td>{{ offre.type_offre }}</td>
-    <td>{{ offre.nombre_personne }} personne(s)</td>
-    <td>{{ offre.prix }} euro</td>
-    <td>{{ offre.bi_restant }}</td>
-    <td>{{ offre.bi_vendu }}</td>
+    <td class="table-success">{{ offre.id }}</td>
+    <td class="table-success">{{ offre.type_offre }}</td>
+    <td class="table-success">{{ offre.nombre_personne }} personne(s)</td>
+    <td class="table-success">{{ offre.prix }} euro</td>
+    <td class="table-success">{{ offre.bi_restant }}</td>
+    <td class="table-success">{{ offre.bi_vendu }}</td>
   </tr>
   {% endfor %}
 </table>
-
-
-
 
 
 <br>
@@ -140,10 +173,11 @@
 <ul>
   {% for ticket in tickets %}
     <li>
-      <a href="{{ url_for('admin.ticket_detail', ticket_id=ticket.id) }}" target="_blank">
+      <a href="{{ url_for('admin.ticket_detail', ticket_id=ticket.id) }}" target="_blank" class="btn btn-dark">
         Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>
+    <br>
   {% else %}
     <li>Aucun billet acheté.</li>
   {% endfor %}

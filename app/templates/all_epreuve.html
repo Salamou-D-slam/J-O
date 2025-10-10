@@ -1,26 +1,41 @@
 {% extends "base.html" %}
 
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/epreuves.css') }}">{% endblock %}
+
 {% block title %}Dashboard Epreuves{% endblock %}
 
 {% block content %}
 
-    <h1>Epreuves</h1>
-    <a href="{{ url_for('main.add_epreuves') }}">Ajouter une épreuve</a>
-    <ul>
+<br>
+
+    <h1>Epreuves (coté administration)</h1>
+<br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+    <a href="{{ url_for('main.add_epreuves') }}" class="btn btn-primary btn-lg">Ajouter une épreuve</a>
+    </div>
+
+    <section class="section-epreuves">
+ 
         {% for epreuve in epreuves %}
-        <li>
-            <strong>{{ epreuve.nom_epreuve }}</strong> ({{ epreuve.date_epreuve}})
-            <ul>
-<!--                {% for offre in epreuve.offres %}-->
-<!--                <li>{{ offre.type_offre }} - {{ offre.nombre_personne }} pers - {{ offre.prix }} €</li>-->
-<!--                {% endfor %}-->
-            </ul>
-            {% if epreuve.image_filename %}
-            <img src="{{ url_for('static', filename='uploads/image/' + epreuve.image_filename) }}" width="150">
-            {% endif %}
-        </li>
-        <a href="{{ url_for('main.epreuve_details', nom_epreuve=epreuve.nom_epreuve) }}">Plus de détails</a>
-        {% endfor %}
-    </ul>
+
+        
+            <div class="card card-epreuve" style="width: 29rem;">
+
+                {% if epreuve.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/image/' + epreuve.image_filename) }}"  alt="Image de l'épreuve">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ epreuve.nom_epreuve }}</h5> 
+                    <p class="card-text">Date de l'épreuve: ({{ epreuve.date_epreuve}})</p>
+
+                <a href="{{ url_for('main.epreuve_details', nom_epreuve=epreuve.nom_epreuve) }}" class="btn btn-primary">Plus de détails</a>
+                </div>
+                
+                
+            </div>
+            
+            {% endfor %}
+    </section>
 
 {% endblock %}
