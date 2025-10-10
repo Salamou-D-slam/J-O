@@ -25,7 +25,8 @@ h4 {
 }
 
 .section-form-add{
-    width: 600px;
+    width: 100%;
+    max-width: 400px; /* empêche qu’il devienne trop large */
     padding: 40px;
 
     
@@ -51,6 +52,7 @@ h4 {
 }
 
 
+/*------------------Tableaux----------------*/
 
 td, th, tr {
     padding: 10px;

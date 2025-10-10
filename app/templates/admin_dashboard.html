@@ -22,7 +22,8 @@
   <h2>Informations personnelles</h2>
 <br>
 
-    <table border="1" cellpadding="5" cellspacing="0" class="table">
+<div class="table-responsive">
+  <table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
       <tr class="table-primary">
         <th>Nom</th>
         <th>Prénom</th>
@@ -33,6 +34,8 @@
         <td>{{ user_info.email }}</td>
       </tr>
     </table>
+</div>
+    
 
 
 <br>
@@ -88,7 +91,8 @@
 
 <br>
 
-    <table border="1" cellpadding="5" cellspacing="0" class="table">
+<div class="table-responsive">
+    <table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
       <tr>
         <th class="table-primary">ID</th>
         <th class="table-primary">Nom</th>
@@ -130,6 +134,7 @@
       </tr>
       {% endfor %}
     </table>
+    </div>
 
 <br>
 <hr>
@@ -139,7 +144,7 @@
 
 <br>
 
-<table border="1" cellpadding="5" cellspacing="0" class="table">
+<table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
   <tr>
     <th class="table-primary">ID</th>
     <th class="table-primary">Nom de l'offre (type_offre)</th>
@@ -172,6 +177,7 @@
         Voir mon ticket n°{{ ticket.id }} - {{ ticket.offre.type_offre }}
       </a>
     </li>
+    <br>
   {% else %}
     <li>Aucun billet acheté.</li>
   {% endfor %}
