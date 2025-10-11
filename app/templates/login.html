@@ -5,7 +5,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
-<section class="form-section">
+<section class="form-section box-shadow">
         <h1>Connexion</h1>
 
     <div class="mb-3 form-container">
@@ -15,10 +15,11 @@
             {{ form.email.label }}
             {{ form.email(class="form-control") }}
 
+            <br>
+
             {{ form.password.label }}
             {{ form.password(class="form-control") }}
             <br>
-
             {{ form.submit(class="form-control btn btn-primary") }}
             <br>
             <br>
@@ -29,3 +30,8 @@
 
 
 {% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
+

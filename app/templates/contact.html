@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<section class="form-section section-form-add">
+<section class="form-section section-form-add  box-shadow">
 
     <h1>Contactez-nous</h1>
 
@@ -19,11 +19,24 @@
             <br>
             {{ form.message.label }} {{ form.message(class="form-control msg-form") }}
             <br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkDefault" required>
+                <label class="form-check-label" for="checkDefault">
+                    Les informations recueillies sont nécessaires pour traiter votre message et ne seront pas utilisées à d'autres fins.
+                </label>
+            </div>
+
+            <br>
             {{ form.submit(class="form-control btn btn-primary") }}
+
         </form>
     </div>
 
 </section>
 
 
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}

@@ -71,7 +71,14 @@
       {{ create_user_form.email.label }} {{ create_user_form.email(class="form-control") }}<br>
       {{ create_user_form.password.label }} {{ create_user_form.password(class="form-control") }}<br>
       {{ create_user_form.role.label }} {{ create_user_form.role(class="form-control form-select") }}<br>
-      {{ create_user_form.submit(class="form-control btn btn-outline-success") }}
+      {{ create_user_form.submit(class="form-control btn btn-outline-success") }}<br> <br>
+      <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkDefault" required>
+                <label class="form-check-label" for="checkDefault">
+                    Ces données sont enregistrées dans la base de données du site et traitées conformément au RGPD. 
+                    Ne pas utiliser les adresses e-mail à des fins commerciales sans consentement explicite.
+                </label>
+            </div>
     </form>
 </section>
 

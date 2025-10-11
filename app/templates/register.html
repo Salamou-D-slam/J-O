@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<section class="form-section">
+<section class="form-section box-shadow">
         <h1>Inscription</h1>
 
         <div class="mb-3 form-container">
@@ -17,25 +17,40 @@
                 {{ form.nom.label }}
                 {{ form.nom(class="form-control") }}
 
+                <br>
+
                 {{ form.prenom.label }}
                 {{ form.prenom(class="form-control") }}
+
+                <br>
 
                 {{ form.email.label }}
                 {{ form.email(class="form-control") }}
 
+                <br>
+
                 {{ form.password.label }}
                 {{ form.password(class="form-control") }}
 
+                <br>
+                
                 {{ form.confirm_password.label }}
                 {{ form.confirm_password(class="form-control") }}
                 <br>
-                
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkDefault" required>
+                    <label class="form-check-label" for="checkDefault">
+                        J’accepte que mes données soient utilisées uniquement pour le traitement de ma demande,
+                        conformément à la politique de confidentialité
+                    </label>
+                </div>
+
+            <br>
                 {{ form.submit(class="form-control btn btn-primary") }}
 
                 <br>
                 <br>
-                
-                
 
                 <a href="{{ url_for('main.login') }}" class="form-control btn btn-outline-warning">Vous avez déja un compte? Se connecter</a>
 
@@ -45,4 +60,8 @@
 
 </section>
 
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}

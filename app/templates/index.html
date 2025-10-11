@@ -39,7 +39,7 @@
   -->
 
   <section class="section section-card-epreuves">
-      <div class="card text-bg-dark  card-epreuves">
+      <div class="card text-bg-dark  card-epreuves box-shadow">
         <img src="{{ url_for('static', filename='images/tedy.jpg') }}" class="card-img img-fluid" alt="Image de teddy riner.">
         <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center content-epreuves">
           <h5 class="card-title">Epreuves</h5>
@@ -180,6 +180,14 @@
   
 
 
-{% block js %}<script src="{{ url_for('static', filename='js/responsive.js') }}"></script>{% endblock %}
+
+
 
 {% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock %}
+

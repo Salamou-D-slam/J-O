@@ -155,11 +155,12 @@ body {
 
 }
 
-.card{
+/* .card{
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 
-}
+} */
+
 .card-offre{
     display: flex;
     flex-wrap: wrap; /* Permet aux cartes de passer à la ligne sur petits écrans */
