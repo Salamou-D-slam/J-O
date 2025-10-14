@@ -1,17 +1,20 @@
-{% extends "base.html" %}
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.querySelector("#epreuves-card");
+  const loader = document.querySelector("#loading");
 
-{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/epreuves.css') }}">{% endblock %}
+  try {
+    const res = await fetch("/api/epreuves");
+    const epreuves = await res.json();
 
+    // Supprimer le spinner
+    loader.style.display = "none";
 
-{% block title %}Epreuves{% endblock %}
-
-{% block header %}{% endblock %}
-{% block content %}
-
-    <br>
-    <h1 class="card-title">Epreuves</h1>
-
-    <!-- <section class="section-epreuves">
+    // Afficher les cartes Bootstrap
+    epreuves.forEach(e => {
+      const card = document.createElement("div");
+      card.className = "col-md-4 mb-3";
+      card.innerHTML = `
+        <section class="section-epreuves">
  
         {% for epreuve in epreuves %}
 
@@ -36,24 +39,11 @@
             
             {% endfor %}
     </section>
-     -->
+      `;
+      container.appendChild(card);
+    });
 
-
-     <!-- Spinner de chargement -->
-  <div id="loading" class="text-center my-3">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Chargement...</span>
-    </div>
-  </div>
-
-    <section id="epreuves-card"></section>
-
-
-
-    {% block js %}
-        <script src="{{ url_for('static', filename='js/all_epreuves.js') }}"></script>
-    {% endblock %}
-
-{% endblock %}
-
-
+  } catch (error) {
+    loader.innerHTML = `<div class="alert alert-danger">Erreur de chargement 😢</div>`;
+  }
+});

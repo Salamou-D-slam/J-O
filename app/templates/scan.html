@@ -16,15 +16,10 @@
 
 <div id="result" class="alert"></div>
 
-<script>
-  function simulateScan() {
-      const ticketId = document.getElementById("ticket_id").value;
-      fetch(`/api/validate_ticket/${ticketId}`)
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("result").innerText = data.message;
-        });
-  }
-</script>
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/fetch.js') }}"></script>
+{% endblock %}
+
 
 {% endblock %}

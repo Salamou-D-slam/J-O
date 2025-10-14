@@ -129,8 +129,17 @@ def create_admin():
 # PAGE ALL EPREUVES
 @main_routes.route('/epreuves')
 def all_epreuve_front():
+    return render_template('all_epreuve_front.html')
+
+# PAGE ALL EPREUVES (FETCH)
+@app.route("/api/epreuves")
+def api_all_epreuves():
     epreuves = Epreuve.query.all()
-    return render_template('all_epreuve_front.html', epreuves=epreuves)
+    data = [
+        {"id": e.id, "nom": e.nom, "categorie": e.categorie, "date": e.date.strftime("%d/%m/%Y")}
+        for e in epreuves
+    ]
+    return jsonify(data)
 
 
 #PAGE D'EPREUVE DETAILS
