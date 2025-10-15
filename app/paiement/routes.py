@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, current_app, send_file, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 import os
+import logging
 import hashlib
 from ..models import Epreuve, Offre, User, Ticket
 from ..services.paiement_mock import FakePaymentGateway
@@ -70,18 +71,6 @@ def paiement_epreuve(type_offre):
                     offre_id=offre.id,
 
                     pers_data=participants,
-                    # pers1_nom = pers1_nom,
-                    # pers1_prenom = pers1_prenom,
-                    # pers1_email = pers1_email,
-                    #
-                    # pers2_nom = pers2_nom,
-                    # pers2_prenom = pers2_prenom,
-                    #
-                    # pers3_nom = pers3_nom,
-                    # pers3_prenom = pers3_prenom,
-                    #
-                    # pers4_nom = pers4_nom,
-                    # pers4_prenom = pers4_prenom,
                     qr_code=""
                 )
 
@@ -129,6 +118,10 @@ def paiement_epreuve(type_offre):
                 db.session.commit()
 
                 flash("Paiement accepté ✅")
+                #log
+                logging.info(
+                    f"Paiement mock effectué : ticket {ticket.id}, utilisateur {ticket.user_id}, montant {ticket.prix}")
+
                 #return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code)
                 if current_user.role == 'utilisateur':
                     return redirect(url_for('utilisateur.utilisateur_dashboard'))

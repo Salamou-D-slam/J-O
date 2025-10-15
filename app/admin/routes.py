@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request,abort, redirect, url_for, flash, jsonify
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
+import logging
 from ..models import User, Ticket, Offre
 from ..extensions import db
 from ..routes import roles_required
@@ -54,6 +55,9 @@ def admin_dashboard():
                 user.prenom = new_prenom
             db.session.commit()
             flash("Profil mis à jour.")
+
+            # Log
+            logging.info(f"Profil admin mis à jour : ID {user.id}, email {user.email}")
         return redirect(url_for("admin.admin_dashboard"))
 
     # Recherche utilisateur
@@ -69,8 +73,6 @@ def admin_dashboard():
         ).scalars().all()
     else:
         users = db.session.execute(db.select(User)).scalars().all()
-
-
 
 
     # Création d'utilisateurs
@@ -91,6 +93,9 @@ def admin_dashboard():
         db.session.add(new_user)
         db.session.commit()
         flash(f"Utilisateur {nom} créé.")
+
+        # Log
+        logging.info(f"Nouvel utilisateur créé : {email}, ID : {new_user.id}, rôle : {role}")
         return redirect(url_for("admin.admin_dashboard"))
 
 
@@ -124,6 +129,8 @@ def admin_dashboard():
                 db.session.commit()
                 flash(f"Utilisateur {user.nom} {user.prenom} supprimé.")
 
+                # Log
+                logging.info(f"Utilisateur supprimé : ID {user.id}, email : {user.email}")
             return redirect(url_for("admin.admin_dashboard"))
 
         # Vérifie changement rôle
@@ -136,10 +143,14 @@ def admin_dashboard():
                 user.role = new_role
                 db.session.commit()
                 flash(f"Rôle de {user.nom} {user.prenom} mis à jour en {new_role}.")
+                # Log
+                logging.info(f"Rôle utilisateur modifié : ID {user.id}, nouveau rôle : {new_role}")
             else:
                 flash("Utilisateur non trouvé.")
         else:
             flash("Rôle invalide.")
+
+
         return redirect(url_for('admin.admin_dashboard'))
 
 

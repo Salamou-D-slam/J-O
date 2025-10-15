@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from ..routes import roles_required
 from ..models import Ticket
 from app.extensions import db, login_manager
+import logging
 
 
 
@@ -48,5 +49,7 @@ def validate_ticket(ticket_id):
     # Si le ticket est valide -> on le rend invalide
     ticket.status = "invalide"
     db.session.commit()
+
+    logging.info(f"Ticket ID {ticket.id} validé pour l'utilisateur {ticket.user_id}, epreuve : {ticket.epreuve_id}")
 
     return jsonify({"valid": True, "message": "Ticket valide, accès autorisé"})
