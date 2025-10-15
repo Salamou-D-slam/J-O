@@ -10,8 +10,8 @@
 
     <br>
     <h1 class="card-title">Epreuves</h1>
-
-    <!-- <section class="section-epreuves">
+<!-- 
+    <section class="section-epreuves">
  
         {% for epreuve in epreuves %}
 
@@ -35,25 +35,26 @@
             </div>
             
             {% endfor %}
-    </section>
-     -->
+    </section> 
+    
 
 
      <!-- Spinner de chargement -->
-  <div id="loading" class="text-center my-3">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Chargement...</span>
-    </div>
+<div id="loader" class="text-center my-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Chargement...</span>
   </div>
+</div>
 
-    <section id="epreuves-card"></section>
+    <section class="section-epreuves" id="epreuves-card"></section>
 
 
 
-    {% block js %}
-        <script src="{{ url_for('static', filename='js/all_epreuves.js') }}"></script>
-    {% endblock %}
 
 {% endblock %}
 
 
+
+{% block js %}
+    <script src="{{ url_for('static', filename='js/all_epreuves_front.js') }}"></script>
+{% endblock %}
