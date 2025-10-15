@@ -4,13 +4,17 @@
 
 {% block title %}Mon espace: Administrateur{% endblock %}
 
+    {% block Dashboard_header %} 
+        <nav class="navbar bg-body-tertiary">
+          <form class="container-fluid justify-content-start">
+            <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
+              <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
+          </form>
+        </nav>
+    {% endblock %}
+
 {% block content %}
-<nav class="navbar bg-body-tertiary">
-  <form class="container-fluid justify-content-start">
-    <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
-      <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
-  </form>
-</nav>
+
 
 <br>
 
@@ -116,28 +120,28 @@
         <td class="table-success">{{ user.prenom }}</td>
         <td class="table-success">{{ user.email }}</td>
         <td class="table-success">{{ user.role }}</td>
-      <td class="table-success">
-          {% if user.id != current_user.id %}
+        <td class="table-success">
+            {% if user.id != current_user.id %}
 
-      <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
-          {{ update_role_forms[user.id].hidden_tag() }}
-          {{ update_role_forms[user.id].update_role(class="form-control") }}
-          {{ update_role_forms[user.id].update_role_user_id(value=user.id) }}
-          {{ update_role_forms[user.id].new_role(class="form-control form-select") }}
-          {{ update_role_forms[user.id].submit(class="form-control btn btn-outline-info") }}
-      </form>
+          <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;">
+              {{ update_role_forms[user.id].hidden_tag() }}
+              {{ update_role_forms[user.id].update_role(class="form-control") }}
+              {{ update_role_forms[user.id].update_role_user_id(value=user.id) }}
+              {{ update_role_forms[user.id].new_role(class="form-control form-select") }}
+              {{ update_role_forms[user.id].submit(class="form-control btn btn-outline-info") }}
+          </form>
           {% endif %}
-    </td>
-    <td class="table-success">
-      {% if user.id != current_user.id %}
-      <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
-          {{ delete_user_forms[user.id].hidden_tag() }}
-          {{ delete_user_forms[user.id].delete_user(class="form-control") }}
-          {{ delete_user_forms[user.id].delete_user_user_id(class="form-control") }}
-          {{ delete_user_forms[user.id].delete(class="btn btn-danger") }}
-      </form>
-      {% endif %}
-    </td>
+        </td>
+        <td class="table-success">
+          {% if user.id != current_user.id %}
+          <form method="POST" action="{{ url_for('admin.admin_dashboard') }}" style="display:inline;" onsubmit="return confirm('Confirmer la suppression ?');">
+              {{ delete_user_forms[user.id].hidden_tag() }}
+              {{ delete_user_forms[user.id].delete_user(class="form-control") }}
+              {{ delete_user_forms[user.id].delete_user_user_id(class="form-control") }}
+              {{ delete_user_forms[user.id].delete(class="btn btn-danger") }}
+          </form>
+          {% endif %}
+        </td>
       </tr>
       {% endfor %}
     </table>

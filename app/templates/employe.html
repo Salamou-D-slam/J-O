@@ -4,14 +4,18 @@
 
 {% block title %}Mon espace: Employé{% endblock %}
 
+   {% block Dashboard_header %} 
+        <nav class="navbar bg-body-tertiary">
+          <form class="container-fluid justify-content-start">
+            <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
+              <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
+          </form>
+        </nav>
+    {% endblock %}
+    
 {% block content %}
 
-<nav class="navbar bg-body-tertiary">
-  <form class="container-fluid justify-content-start">
-    <a class="btn btn-outline-success me-2" href="{{ url_for('main.all_epreuve') }}">Modifier Epreuves</a>
-      <a class="btn btn-outline-success me-2" href="{{ url_for('scan.scan') }}">Page de scan de billets</a>
-  </form>
-</nav>
+
 
 <br>
 
