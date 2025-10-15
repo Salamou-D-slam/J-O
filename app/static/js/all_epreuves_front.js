@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   section.innerHTML = '';
   if (loader) loader.style.display = 'block';
 
-  fetch('/api/epreuves_back')
+  fetch('/api/epreuves')
     .then(res => res.json())
     .then(epreuves => {
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h5 class="card-title"><strong>${epreuve.nom_epreuve}</strong></h5>
             <p class="card-text">Date : ${epreuve.date_epreuve}</p>
             <div class="d-grid gap-2 col-6 mx-auto">
-              <a href="/epreuvesback-${encodeURIComponent(epreuve.nom_epreuve)}" class="btn btn-primary">Plus de détails</a>
+              <a href="/epreuves-${encodeURIComponent(epreuve.nom_epreuve)}" class="btn btn-primary">Plus de détails</a>
             </div>
           </div>
         `;

@@ -39,7 +39,7 @@ function responsiveSection() {
                   <h5 class="card-title">Nous contacter</h5> 
                   <hr>
                   <p class="card-text">Vous pouvez nous contacter via la page de contact, veillez mettre un email valide pour qu'on puisse vous répondre. </p>
-                  <a href="{{ url_for('main.contact')}}" type="button" class="btn btn-outline-primary btn-card-contact text-center">Voir Contact</a>
+                  <a href="/contact" type="button" class="btn btn-outline-primary btn-card-contact text-center">Voir Contact</a>
               </div>
             </div>
 
@@ -110,6 +110,8 @@ function responsiveSection() {
         <div class="accordion-body">
             <p class="card-text">Vous pouvez nous contacter via la page de contact, veillez mettre un email valide pour qu'on puisse vous répondre. </p>
         </div>
+                  <a href="/contact" type="button" class="btn btn-outline-primary btn-card-contact text-center">Voir Contact</a>
+
       </div>
     </div>
 
@@ -123,7 +125,6 @@ function responsiveSection() {
         <div class="accordion-body">
               <p class="card-text">Veuillez vous munir de vos pieces d'identié ainsi que le QR code présent dans le ticket. 
                     Notez que le QR code ne peut être scanner qu'une seule fois, donc les personnes qui ont un billet d'une offre duo ou family doivent entrer TOUS en même temps.</p>
-              <a href="{{ url_for('main.contact')}}" type="button" class="btn btn-outline-primary">Voir Contact</a>
       </div>
     </div>
   </div>

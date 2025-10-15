@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app, abort
+from flask import Flask, render_template, request, redirect, url_for, Blueprint, flash, current_app, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -129,14 +129,20 @@ def create_admin():
 # PAGE ALL EPREUVES
 @main_routes.route('/epreuves')
 def all_epreuve_front():
-    return render_template('all_epreuve_front.html')
+    # epreuves = Epreuve.query.all()
+    return render_template('all_epreuve_front.html')#, epreuves=epreuves
 
 # PAGE ALL EPREUVES (FETCH)
-@app.route("/api/epreuves")
-def api_all_epreuves():
+@main_routes.route("/api/epreuves")
+def api_epreuves():
     epreuves = Epreuve.query.all()
     data = [
-        {"id": e.id, "nom": e.nom, "categorie": e.categorie, "date": e.date.strftime("%d/%m/%Y")}
+        {
+            "id": e.id,
+            "nom_epreuve": e.nom_epreuve,
+            "date_epreuve": e.date_epreuve.strftime('%d/%m/%Y'),
+            "image_filename": e.image_filename or ""
+        }
         for e in epreuves
     ]
     return jsonify(data)
@@ -160,9 +166,23 @@ def epreuve_details_front(nom_epreuve):
 @login_required
 @roles_required('admin', 'employe')
 def all_epreuve():
-    epreuves = Epreuve.query.all()
-    return render_template('all_epreuve.html', epreuves=epreuves)
+    #epreuves = Epreuve.query.all()
+    return render_template('all_epreuve.html')#, epreuves=epreuves
 
+# PAGE ALL EPREUVES BACK (FETCH)
+@main_routes.route("/api/epreuves_back")
+def api_epreuves_back():
+    epreuves = Epreuve.query.all()
+    data = [
+        {
+            "id": e.id,
+            "nom_epreuve": e.nom_epreuve,
+            "date_epreuve": e.date_epreuve.strftime('%d/%m/%Y'),
+            "image_filename": e.image_filename or ""
+        }
+        for e in epreuves
+    ]
+    return jsonify(data)
 
 #PAGE ADD epreuves
 @main_routes.route('/add_epreuves', methods=["GET", "POST"])
@@ -173,11 +193,14 @@ def add_epreuves():
     # if request.method == "POST":
     if form.validate_on_submit():
 
-
         nom_epreuve = form.nom_epreuve.data
         date_epreuve = form.date_epreuve.data
         image = form.image.data
 
+        existing_epreuve = db.session.execute(db.select(Epreuve).where(Epreuve.nom_epreuve == nom_epreuve)).scalar()
+
+        if existing_epreuve:
+            flash("Le nom de cette épreuve est déja utilisé") # Pour éviter les épreuve avec le même nom
 
         prix_solo = form.prix_solo.data
         prix_duo = form.prix_duo.data
@@ -239,6 +262,11 @@ def update(epreuve_id):
         new_nom_epreuve = form.new_nom_epreuve.data
         new_date_epreuve = form.new_date_epreuve.data
         new_image = form.new_image.data
+
+        existing_epreuve = db.session.execute(db.select(Epreuve).where(Epreuve.nom_epreuve == new_nom_epreuve)).scalar()
+
+        if existing_epreuve:
+            flash("Le nom de cette épreuve est déja utilisé")
 
         # Met la sécurité et le chemin des images uploads
         new_filename = None
