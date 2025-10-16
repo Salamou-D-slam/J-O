@@ -23,4 +23,4 @@ COPY . .
 EXPOSE 5000
 
 # Commande pour démarrer l'application
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "main:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "main:app"]

@@ -9,7 +9,7 @@ services:
     environment:
       - DOCKER=1
       - DATABASE_URI=${DATABASE_URI}
-    command: gunicorn -w 4 -b 0.0.0.0:5000 main:app
+    command: gunicorn -w 4 -b 0.0.0.0:8000 main:app
 
 volumes:
   db_data:
