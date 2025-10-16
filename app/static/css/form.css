@@ -54,6 +54,14 @@ h4 {
 
 /*------------------Tableaux----------------*/
 
+.table-responsive{
+    max-height: 600px;      /* hauteur maximale visible du tableau */
+    overflow-x: auto;       /* scroll horizontal si le tableau est trop large */
+    overflow-y: auto;       /* scroll vertical si le tableau est trop haut */
+
+}
+
+
 td, th, tr {
     padding: 10px;
     text-align: center;

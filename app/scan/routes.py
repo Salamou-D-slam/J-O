@@ -50,6 +50,5 @@ def validate_ticket(ticket_id):
     ticket.status = "invalide"
     db.session.commit()
 
-    logging.info(f"Ticket ID {ticket.id} validé pour l'utilisateur {ticket.user_id}, epreuve : {ticket.epreuve_id}")
 
     return jsonify({"valid": True, "message": "Ticket valide, accès autorisé"})

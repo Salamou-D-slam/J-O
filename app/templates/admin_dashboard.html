@@ -155,26 +155,29 @@
 
 <br>
 
-<table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
-  <tr>
-    <th class="table-primary">ID</th>
-    <th class="table-primary">Nom de l'offre (type_offre)</th>
-    <th class="table-primary">Nombre de personne maximum</th>
-    <th class="table-primary">Prix</th>
-    <th class="table-primary">Billet restant</th>
-    <th class="table-primary">Billet vendu</th>
-  </tr>
-  {% for offre in offres %}
-  <tr>
-    <td class="table-success">{{ offre.id }}</td>
-    <td class="table-success">{{ offre.type_offre }}</td>
-    <td class="table-success">{{ offre.nombre_personne }} personne(s)</td>
-    <td class="table-success">{{ offre.prix }} euro</td>
-    <td class="table-success">{{ offre.bi_restant }}</td>
-    <td class="table-success">{{ offre.bi_vendu }}</td>
-  </tr>
-  {% endfor %}
-</table>
+    <div class="table-responsive">
+          <table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
+              <tr>
+                <th class="table-primary">ID</th>
+                <th class="table-primary">Nom de l'offre (type_offre)</th>
+                <th class="table-primary">Nombre de personne maximum</th>
+                <th class="table-primary">Prix</th>
+                <th class="table-primary">Billet restant</th>
+                <th class="table-primary">Billet vendu</th>
+              </tr>
+              {% for offre in offres %}
+              <tr>
+                <td class="table-success">{{ offre.id }}</td>
+                <td class="table-success">{{ offre.type_offre }}</td>
+                <td class="table-success">{{ offre.nombre_personne }} personne(s)</td>
+                <td class="table-success">{{ offre.prix }} euro</td>
+                <td class="table-success">{{ offre.bi_restant }}</td>
+                <td class="table-success">{{ offre.bi_vendu }}</td>
+              </tr>
+              {% endfor %}
+        </table>
+    </div>
+    
 
 
 <br>

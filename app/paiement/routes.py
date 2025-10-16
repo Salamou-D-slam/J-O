@@ -35,7 +35,7 @@ def paiement_epreuve(type_offre):
         montant = offre.prix
 
         # Création du mock
-        gateway = FakePaymentGateway() # " force_result="success" " Pour forcer le resultat en success
+        gateway = FakePaymentGateway(force_result="success") # " force_result="success" " Pour forcer le resultat en success
         result = gateway.process_paiement(card_number, montant) # Prend le prix direct de la bdd
 
 
@@ -120,7 +120,7 @@ def paiement_epreuve(type_offre):
                 flash("Paiement accepté ✅")
                 #log
                 logging.info(
-                    f"Paiement mock effectué : ticket {ticket.id}, utilisateur {ticket.user_id}, montant {ticket.prix}")
+                    f"Paiement mock effectué : ticket {ticket.id}, utilisateur {ticket.user_id}, montant {offre.prix}")
 
                 #return render_template('paiement_success.html', status="success", ticket=ticket, ticket_id=ticket.id, qr_code=ticket.qr_code)
                 if current_user.role == 'utilisateur':

@@ -111,7 +111,7 @@ def logout():
 
 @main_routes.route('/create-admin')
 def create_admin():
-    hashed_password = generate_password_hash("joadmin2024", method='pbkdf2:sha256', salt_length=8)
+    hashed_password = generate_password_hash(os.getenv('ADMIN_MDP'), method='pbkdf2:sha256', salt_length=8)
     admin = User(email="jose@gmail.com", nom="Jose", prenom="Admin", password=hashed_password, role="admin")
 
     existing_user = db.session.execute(db.select(User).where(User.email == "jose@gmail.com")).scalar()

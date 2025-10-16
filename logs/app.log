@@ -252,3 +252,868 @@
 2025-10-15 16:31:39,882 - INFO - 127.0.0.1 - - [15/Oct/2025 16:31:39] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
 2025-10-15 16:31:40,211 - INFO - 127.0.0.1 - - [15/Oct/2025 16:31:40] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
 2025-10-15 16:31:40,211 - INFO - 127.0.0.1 - - [15/Oct/2025 16:31:40] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:58:35,647 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.34:5000
+2025-10-16 16:58:35,648 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-16 16:58:35,652 - INFO -  * Restarting with stat
+2025-10-16 16:58:36,870 - WARNING -  * Debugger is active!
+2025-10-16 16:58:36,875 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 16:58:43,092 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET / HTTP/1.1" 200 -
+2025-10-16 16:58:43,372 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/images/logo.svg HTTP/1.1" 200 -
+2025-10-16 16:58:43,388 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/css/index.css HTTP/1.1" 200 -
+2025-10-16 16:58:43,394 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/js/responsive.js HTTP/1.1" 200 -
+2025-10-16 16:58:43,399 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/images/tedy.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:43,411 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/css/base.css HTTP/1.1" 200 -
+2025-10-16 16:58:43,418 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/js/index.js HTTP/1.1" 200 -
+2025-10-16 16:58:43,436 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:58:43,483 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "GET /static/images/course2.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:43,548 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-16 16:58:49,302 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 16:58:49,342 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:58:49,351 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:58:49,353 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/css/epreuves.css HTTP/1.1" 200 -
+2025-10-16 16:58:49,359 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/js/all_epreuves_front.js HTTP/1.1" 200 -
+2025-10-16 16:58:49,404 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/js/all_epreuves_front.js HTTP/1.1" 200 -
+2025-10-16 16:58:49,463 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 16:58:49,486 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/uploads/image/dance.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:49,486 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/uploads/image/bascketball.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:49,488 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/uploads/image/handball.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:49,535 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:49] "GET /static/uploads/image/arc.jpg HTTP/1.1" 200 -
+2025-10-16 16:58:52,085 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:52] "GET /epreuves-dance HTTP/1.1" 200 -
+2025-10-16 16:58:52,124 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:52] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:58:52,132 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:52] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 16:58:52,132 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:52] "GET /static/css/epreuve_details.css HTTP/1.1" 200 -
+2025-10-16 16:58:52,133 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:52] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:58:59,498 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "GET /contact HTTP/1.1" 200 -
+2025-10-16 16:58:59,536 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:58:59,541 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:58:59,543 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:58:59,544 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 16:58:59,664 - INFO - 127.0.0.1 - - [16/Oct/2025 16:58:59] "GET /static/js/index.js HTTP/1.1" 200 -
+2025-10-16 16:59:00,484 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "GET /login HTTP/1.1" 200 -
+2025-10-16 16:59:00,520 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:00,524 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:00,528 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:00,529 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:00,629 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:00] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:02,103 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "GET /register HTTP/1.1" 200 -
+2025-10-16 16:59:02,140 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:02,145 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:02,146 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:02,149 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:02,175 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:02] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,289 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "GET / HTTP/1.1" 200 -
+2025-10-16 16:59:18,321 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,550 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,634 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,636 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,890 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,894 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:18,899 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:18] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:19,106 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:19] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:19,323 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-16 16:59:24,189 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:24,503 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "GET /login HTTP/1.1" 200 -
+2025-10-16 16:59:24,807 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:24,840 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:24,840 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:24,841 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:24] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:27,752 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:27] "GET /register HTTP/1.1" 200 -
+2025-10-16 16:59:28,067 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:28] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:28,100 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:28] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:28,101 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:28] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:28,102 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:28] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:30,745 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:30] "GET /register HTTP/1.1" 200 -
+2025-10-16 16:59:30,773 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:30] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:31,010 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:31] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:31,091 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:31] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:31,091 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:31] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:32,508 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:32] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:32,775 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:32] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:32,822 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:32] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:43,818 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:43] "GET /login HTTP/1.1" 200 -
+2025-10-16 16:59:43,958 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:43] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:44,081 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:44] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:44,166 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:44] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:44,166 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:44] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:44,183 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:44] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:49,617 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:49] "POST /login HTTP/1.1" 200 -
+2025-10-16 16:59:49,650 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:49] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:49,972 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:49] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:49,974 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:49] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:49,975 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:49] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:50,308 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:50] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 16:59:55,145 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 16:59:55,324 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:55] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 16:59:55,355 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:55] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 16:59:55,660 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:55] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 16:59:55,660 - INFO - 127.0.0.1 - - [16/Oct/2025 16:59:55] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:20,552 - INFO - Utilisateur supprimé : ID 6, email : islam@gmail.com
+2025-10-16 17:00:20,553 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:20] "[32mPOST /admin/ HTTP/1.1[0m" 302 -
+2025-10-16 17:00:20,701 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:20] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:00:20,729 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:20] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:21,097 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:21] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:21,106 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:21] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:28,867 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:28] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:00:28,916 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:28] "GET / HTTP/1.1" 200 -
+2025-10-16 17:00:29,073 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,245 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,257 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,258 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,268 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,281 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,581 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,598 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:29,915 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:29] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:30,899 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:30] "GET /login HTTP/1.1" 200 -
+2025-10-16 17:00:31,024 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:31] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:31,163 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:31] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:31,242 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:31] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:31,243 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:31] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:31,259 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:31] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:32,642 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:32] "GET /register HTTP/1.1" 200 -
+2025-10-16 17:00:32,954 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:32] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:32,987 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:32] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:00:32,987 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:32] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:00:32,988 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:32] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:00:33,313 - INFO - 127.0.0.1 - - [16/Oct/2025 17:00:33] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:01:24,528 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:24] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-10-16 17:01:24,633 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:24] "GET / HTTP/1.1" 200 -
+2025-10-16 17:01:24,693 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:24] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,014 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,015 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,016 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,337 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,338 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:01:25,350 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:25] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:01:34,862 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:34] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:01:35,088 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:35] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:01:35,219 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:35] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:01:35,219 - INFO - 127.0.0.1 - - [16/Oct/2025 17:01:35] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:35,497 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:35] "[35m[1mGET /logout HTTP/1.1[0m" 500 -
+2025-10-16 17:15:35,534 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:35] "GET /logout?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-10-16 17:15:35,695 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:35] "GET /logout?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-10-16 17:15:36,070 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:36] "GET /logout?__debugger__=yes&cmd=resource&f=console.png&s=ohxojk1z10BMcb95I8YE HTTP/1.1" 200 -
+2025-10-16 17:15:36,316 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:36] "GET /logout?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-10-16 17:15:37,978 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:37] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:15:37,993 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:37] "GET / HTTP/1.1" 200 -
+2025-10-16 17:15:38,330 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,332 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,332 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,333 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,591 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,653 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:15:38,654 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:38] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:15:40,343 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:40] "GET /login HTTP/1.1" 200 -
+2025-10-16 17:15:40,661 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:40] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:40,693 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:40] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:40,693 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:40] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:15:40,694 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:40] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:15:42,065 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:42] "GET /register HTTP/1.1" 200 -
+2025-10-16 17:15:42,188 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:42] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:42,308 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:42] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:42,418 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:42] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:15:42,419 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:42] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:15:55,242 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-10-16 17:15:55,476 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "GET /login HTTP/1.1" 200 -
+2025-10-16 17:15:55,863 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:15:55,864 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:55,865 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:15:55,866 - INFO - 127.0.0.1 - - [16/Oct/2025 17:15:55] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:18:39,950 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 17:18:40,085 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:40] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:18:40,127 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:40] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:18:40,445 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:40] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:18:40,445 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:40] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:18:43,424 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:18:43,438 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "GET / HTTP/1.1" 200 -
+2025-10-16 17:18:43,631 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:18:43,783 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:18:43,784 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:18:43,785 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:43] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:18:44,109 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:44] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:18:44,110 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:44] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:18:44,110 - INFO - 127.0.0.1 - - [16/Oct/2025 17:18:44] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:47,358 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 17:19:47,434 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:19:47,619 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 17:19:47,717 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:47,718 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 17:19:47,788 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:47] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 17:19:48,132 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:48] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:48,133 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:48] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:48,133 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:48] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:48,134 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:48] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:49,159 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:49] "GET /epreuves-handball HTTP/1.1" 200 -
+2025-10-16 17:19:49,398 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:49] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:19:49,509 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:49] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:49,509 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:49] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:19:49,510 - INFO - 127.0.0.1 - - [16/Oct/2025 17:19:49] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 17:21:38,130 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "[32mGET /paiement/handball%20duo HTTP/1.1[0m" 302 -
+2025-10-16 17:21:38,192 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "GET /login?next=/paiement/handball%2520duo HTTP/1.1" 200 -
+2025-10-16 17:21:38,395 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:21:38,538 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:21:38,538 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:21:38,539 - INFO - 127.0.0.1 - - [16/Oct/2025 17:21:38] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:23:17,074 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:17] "GET /epreuves-handball HTTP/1.1" 200 -
+2025-10-16 17:23:17,095 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:17] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:23:17,264 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:17] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 17:23:17,403 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:17] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:23:17,403 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:17] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:23:20,498 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "[32mGET /paiement/handball%20duo HTTP/1.1[0m" 302 -
+2025-10-16 17:23:20,623 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "GET /login?next=/paiement/handball%2520duo HTTP/1.1" 200 -
+2025-10-16 17:23:20,751 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:23:20,975 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:23:20,975 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:23:20,976 - INFO - 127.0.0.1 - - [16/Oct/2025 17:23:20] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:23:48,189 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 17:23:48,341 - INFO -  * Restarting with stat
+2025-10-16 17:24:00,968 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.34:5000
+2025-10-16 17:24:00,968 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-16 17:24:00,970 - INFO -  * Restarting with stat
+2025-10-16 17:24:02,207 - WARNING -  * Debugger is active!
+2025-10-16 17:24:02,212 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 17:24:03,351 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:03] "GET /login?next=/paiement/handball%2520duo HTTP/1.1" 200 -
+2025-10-16 17:24:03,451 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:03] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:24:03,602 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:03] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:24:03,696 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:03] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:24:03,696 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:03] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:24:07,694 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:07] "[32mGET /paiement/handball%20duo HTTP/1.1[0m" 302 -
+2025-10-16 17:24:07,710 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:07] "GET /login?next=/paiement/handball%2520duo HTTP/1.1" 200 -
+2025-10-16 17:24:07,958 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:07] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:24:08,068 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:08] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:24:08,069 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:08] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:24:08,070 - INFO - 127.0.0.1 - - [16/Oct/2025 17:24:08] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:25:09,820 - INFO - 127.0.0.1 - - [16/Oct/2025 17:25:09] "[32mPOST /login?next=/paiement/handball%2520duo HTTP/1.1[0m" 302 -
+2025-10-16 17:25:09,932 - INFO - 127.0.0.1 - - [16/Oct/2025 17:25:09] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:25:09,967 - INFO - 127.0.0.1 - - [16/Oct/2025 17:25:09] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:25:10,279 - INFO - 127.0.0.1 - - [16/Oct/2025 17:25:10] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:25:10,279 - INFO - 127.0.0.1 - - [16/Oct/2025 17:25:10] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:38,481 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:38] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 17:27:38,511 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:38] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:27:38,680 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:38] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 17:27:38,836 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:38] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 17:27:38,837 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:38] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:39,222 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:39] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 17:27:39,409 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:39] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:39,561 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:39] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:39,561 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:39] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:39,562 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:39] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:40,504 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:40] "GET /epreuves-handball HTTP/1.1" 200 -
+2025-10-16 17:27:40,703 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:40] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:27:40,863 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:40] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 17:27:40,864 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:40] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:40,865 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:40] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:27:43,976 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:43] "GET /paiement/handball%20solo HTTP/1.1" 200 -
+2025-10-16 17:27:44,008 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:44] "GET /static/css/paiement.css HTTP/1.1" 200 -
+2025-10-16 17:27:44,136 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:44] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:27:44,332 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:44] "GET /static/js/fetch.js HTTP/1.1" 200 -
+2025-10-16 17:27:57,616 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:57] "[35m[1mPOST /paiement/handball%20solo HTTP/1.1[0m" 500 -
+2025-10-16 17:27:57,648 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:57] "GET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-10-16 17:27:57,649 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:57] "GET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-10-16 17:27:57,989 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:57] "GET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png&s=ltRut3VhEXYjG9tEEELB HTTP/1.1" 200 -
+2025-10-16 17:27:58,253 - INFO - 127.0.0.1 - - [16/Oct/2025 17:27:58] "GET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-10-16 17:28:05,426 - INFO - 127.0.0.1 - - [16/Oct/2025 17:28:05] "[35m[1mPOST /paiement/handball%20solo HTTP/1.1[0m" 500 -
+2025-10-16 17:28:05,459 - INFO - 127.0.0.1 - - [16/Oct/2025 17:28:05] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-10-16 17:28:05,771 - INFO - 127.0.0.1 - - [16/Oct/2025 17:28:05] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-10-16 17:28:06,100 - INFO - 127.0.0.1 - - [16/Oct/2025 17:28:06] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png&s=ltRut3VhEXYjG9tEEELB HTTP/1.1[0m" 304 -
+2025-10-16 17:28:06,365 - INFO - 127.0.0.1 - - [16/Oct/2025 17:28:06] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-10-16 17:29:21,102 - INFO - 127.0.0.1 - - [16/Oct/2025 17:29:21] "POST /paiement/handball%20solo HTTP/1.1" 200 -
+2025-10-16 17:29:21,131 - INFO - 127.0.0.1 - - [16/Oct/2025 17:29:21] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:29:21,277 - INFO - 127.0.0.1 - - [16/Oct/2025 17:29:21] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:30:14,615 - INFO - 127.0.0.1 - - [16/Oct/2025 17:30:14] "[35m[1mPOST /paiement/handball%20solo HTTP/1.1[0m" 500 -
+2025-10-16 17:30:14,667 - INFO - 127.0.0.1 - - [16/Oct/2025 17:30:14] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-10-16 17:30:14,668 - INFO - 127.0.0.1 - - [16/Oct/2025 17:30:14] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-10-16 17:30:14,994 - INFO - 127.0.0.1 - - [16/Oct/2025 17:30:14] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png&s=ltRut3VhEXYjG9tEEELB HTTP/1.1[0m" 304 -
+2025-10-16 17:30:15,259 - INFO - 127.0.0.1 - - [16/Oct/2025 17:30:15] "[36mGET /paiement/handball%20solo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-10-16 17:32:03,702 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\paiement\\routes.py', reloading
+2025-10-16 17:32:03,846 - INFO -  * Restarting with stat
+2025-10-16 17:32:05,208 - WARNING -  * Debugger is active!
+2025-10-16 17:32:05,213 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 17:32:07,876 - INFO - Paiement mock effectué : ticket 12, utilisateur 8, montant 100.0
+2025-10-16 17:32:07,915 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:07] "[32mPOST /paiement/handball%20solo HTTP/1.1[0m" 302 -
+2025-10-16 17:32:08,053 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:08] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:32:08,161 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:08] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:08,399 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:08] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:08,400 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:08] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:32:38,999 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:38] "[32mPOST /utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 17:32:39,111 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:39] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:32:39,155 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:39] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:39,468 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:39] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:32:39,468 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:39] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:50,881 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:50] "[32mPOST /utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 17:32:50,990 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:50] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:32:51,041 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:51] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:51,370 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:51] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:32:51,371 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:51] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:32:58,016 - INFO - 127.0.0.1 - - [16/Oct/2025 17:32:58] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:33:01,410 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:01] "GET /paiement/handball%20solo HTTP/1.1" 200 -
+2025-10-16 17:33:06,009 - INFO - Paiement mock effectué : ticket 13, utilisateur 8, montant 100.0
+2025-10-16 17:33:06,045 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:06] "[32mPOST /paiement/handball%20solo HTTP/1.1[0m" 302 -
+2025-10-16 17:33:06,166 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:06] "GET /utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:33:06,535 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:06] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:33:06,537 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:06] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:33:06,538 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:06] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:33:54,377 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:54] "GET /utilisateur/ticket/13 HTTP/1.1" 200 -
+2025-10-16 17:33:54,575 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:54] "GET /static/css/ticket.css HTTP/1.1" 200 -
+2025-10-16 17:33:54,710 - INFO - 127.0.0.1 - - [16/Oct/2025 17:33:54] "GET /static/uploads/qrcodes/ticket_13.png HTTP/1.1" 200 -
+2025-10-16 17:39:11,578 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:39:11,594 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "GET / HTTP/1.1" 200 -
+2025-10-16 17:39:11,788 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:11,926 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:11,927 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:39:11,927 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:11] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:39:12,266 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:39:12,267 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:39:12,268 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:39:12,501 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "[32mGET /utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 17:39:12,738 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "GET /login?next=/utilisateur/ HTTP/1.1" 200 -
+2025-10-16 17:39:12,827 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:12] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:13,080 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:13] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:39:13,080 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:13] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:13,081 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:13] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:39:19,012 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:19] "[32mPOST /login?next=/utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 17:39:19,180 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:19] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:39:19,544 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:19] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:19,545 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:19] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:39:19,546 - INFO - 127.0.0.1 - - [16/Oct/2025 17:39:19] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:40:02,819 - INFO - 127.0.0.1 - - [16/Oct/2025 17:40:02] "GET /contact HTTP/1.1" 200 -
+2025-10-16 17:40:03,063 - INFO - 127.0.0.1 - - [16/Oct/2025 17:40:03] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:40:03,163 - INFO - 127.0.0.1 - - [16/Oct/2025 17:40:03] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:40:03,164 - INFO - 127.0.0.1 - - [16/Oct/2025 17:40:03] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:40:03,165 - INFO - 127.0.0.1 - - [16/Oct/2025 17:40:03] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:42:20,122 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "[32mPOST /contact HTTP/1.1[0m" 302 -
+2025-10-16 17:42:20,199 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "GET /contact HTTP/1.1" 200 -
+2025-10-16 17:42:20,226 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:42:20,553 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:42:20,554 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:42:20,556 - INFO - 127.0.0.1 - - [16/Oct/2025 17:42:20] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:45:06,821 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:06] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:45:06,935 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:06] "GET / HTTP/1.1" 200 -
+2025-10-16 17:45:07,030 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,270 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,271 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,272 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,288 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,614 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:45:07,616 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:07] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:45:10,347 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:10] "GET /login HTTP/1.1" 200 -
+2025-10-16 17:45:10,452 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:10] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:10,607 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:10] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:10,686 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:10] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:45:10,687 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:10] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:45:16,061 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 17:45:16,209 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:16] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:45:16,558 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:16] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:16,559 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:16] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:45:16,559 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:16] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:18,680 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:18] "GET /scan HTTP/1.1" 200 -
+2025-10-16 17:45:18,928 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:18] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:45:19,015 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:19] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 17:45:19,016 - INFO - 127.0.0.1 - - [16/Oct/2025 17:45:19] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:47:31,605 - INFO - 127.0.0.1 - - [16/Oct/2025 17:47:31] "[31m[1mGET /api/validate_ticket/8 HTTP/1.1[0m" 400 -
+2025-10-16 17:47:51,549 - INFO - 127.0.0.1 - - [16/Oct/2025 17:47:51] "[35m[1mGET /api/validate_ticket/10 HTTP/1.1[0m" 500 -
+2025-10-16 17:47:55,381 - INFO - 127.0.0.1 - - [16/Oct/2025 17:47:55] "[35m[1mGET /api/validate_ticket/11 HTTP/1.1[0m" 500 -
+2025-10-16 17:47:57,986 - INFO - 127.0.0.1 - - [16/Oct/2025 17:47:57] "[35m[1mGET /api/validate_ticket/12 HTTP/1.1[0m" 500 -
+2025-10-16 17:48:53,769 - INFO - 127.0.0.1 - - [16/Oct/2025 17:48:53] "[31m[1mGET /utilisateur/ticket/13 HTTP/1.1[0m" 403 -
+2025-10-16 17:49:01,192 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "GET / HTTP/1.1" 200 -
+2025-10-16 17:49:01,218 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,519 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,532 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,533 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,846 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,847 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:01,848 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:01] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:02,915 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 17:49:02,954 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:02] "GET / HTTP/1.1" 200 -
+2025-10-16 17:49:03,129 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:03,282 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:03,282 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:03,283 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:03,298 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:03,606 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:03] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:05,115 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "[32mGET /scan HTTP/1.1[0m" 302 -
+2025-10-16 17:49:05,133 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "GET /login?next=/scan HTTP/1.1" 200 -
+2025-10-16 17:49:05,381 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:05,477 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:05,477 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:05,478 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:05] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:26,572 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:26] "POST /login?next=/scan HTTP/1.1" 200 -
+2025-10-16 17:49:26,602 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:26] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:26,605 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:26] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:26,931 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:26] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:26,932 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:26] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:44,530 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:44] "[32mPOST /login?next=/scan HTTP/1.1[0m" 302 -
+2025-10-16 17:49:44,697 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:44] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:49:44,726 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:44] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:45,036 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:45] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:45,037 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:45] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:46,645 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:46] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 17:49:46,679 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:46] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:46,830 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:46] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:46,986 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:46] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:46,998 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:46] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:47,379 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:47] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 17:49:47,763 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:47] "GET /scan HTTP/1.1" 200 -
+2025-10-16 17:49:48,014 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:48] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:49:48,108 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:48] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 17:49:48,108 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:48] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:49:51,198 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:51] "[35m[1mGET /api/validate_ticket/9 HTTP/1.1[0m" 500 -
+2025-10-16 17:49:54,390 - INFO - 127.0.0.1 - - [16/Oct/2025 17:49:54] "[31m[1mGET /api/validate_ticket/9 HTTP/1.1[0m" 400 -
+2025-10-16 17:50:00,118 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:00] "[35m[1mGET /api/validate_ticket/13 HTTP/1.1[0m" 500 -
+2025-10-16 17:50:43,789 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\scan\\routes.py', reloading
+2025-10-16 17:50:43,918 - INFO -  * Restarting with stat
+2025-10-16 17:50:45,319 - WARNING -  * Debugger is active!
+2025-10-16 17:50:45,324 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 17:50:51,924 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:51] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 17:50:52,101 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,148 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,308 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,318 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,390 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 17:50:52,719 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,720 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,720 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:52,721 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:52] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:54,144 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:54] "GET /epreuves-tir%20a%20l'arc HTTP/1.1" 200 -
+2025-10-16 17:50:54,353 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:54] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:54,496 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:54] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:54,498 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:54] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:50:54,499 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:54] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:56,660 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:56] "GET /paiement/tir%20a%20l'arc%20solo HTTP/1.1" 200 -
+2025-10-16 17:50:56,689 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:56] "[36mGET /static/css/paiement.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:56,827 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:56] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:50:57,000 - INFO - 127.0.0.1 - - [16/Oct/2025 17:50:57] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 17:51:09,218 - INFO - Paiement mock effectué : ticket 14, utilisateur 1, montant 10.0
+2025-10-16 17:51:09,260 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:09] "[32mPOST /paiement/tir%20a%20l'arc%20solo HTTP/1.1[0m" 302 -
+2025-10-16 17:51:09,484 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:09] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:51:09,523 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:09] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:51:09,831 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:09] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:51:09,831 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:09] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:51:22,881 - INFO - 127.0.0.1 - - [16/Oct/2025 17:51:22] "GET /api/validate_ticket/14 HTTP/1.1" 200 -
+2025-10-16 17:51:28,847 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\scan\\routes.py', reloading
+2025-10-16 17:51:29,022 - INFO -  * Restarting with stat
+2025-10-16 17:51:30,278 - WARNING -  * Debugger is active!
+2025-10-16 17:51:30,283 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 17:52:05,229 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\scan\\routes.py', reloading
+2025-10-16 17:52:05,334 - INFO -  * Restarting with stat
+2025-10-16 17:52:06,555 - WARNING -  * Debugger is active!
+2025-10-16 17:52:06,560 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 17:52:08,427 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:08] "GET /scan HTTP/1.1" 200 -
+2025-10-16 17:52:08,521 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:08] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:08,619 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:08] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 17:52:08,760 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:08] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:15,861 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:15] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 17:52:15,898 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:15] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,061 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,201 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,212 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,589 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 17:52:16,796 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,927 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,927 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:16,928 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:16] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:18,216 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:18] "GET /epreuves-dance HTTP/1.1" 200 -
+2025-10-16 17:52:18,415 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:18] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:18,574 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:18] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:18,575 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:18] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:18,576 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:18] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:21,260 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:21] "GET /paiement/dance%20duo HTTP/1.1" 200 -
+2025-10-16 17:52:21,301 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:21] "[36mGET /static/css/paiement.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:21,439 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:21] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:21,610 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:21] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 17:52:32,777 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:32] "POST /paiement/dance%20duo HTTP/1.1" 200 -
+2025-10-16 17:52:32,807 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:32] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:32,924 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:32] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:37,398 - INFO - Paiement mock effectué : ticket 15, utilisateur 1, montant 16.0
+2025-10-16 17:52:37,439 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:37] "[32mPOST /paiement/dance%20duo HTTP/1.1[0m" 302 -
+2025-10-16 17:52:37,642 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:37] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 17:52:37,676 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:37] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:37,986 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:37] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 17:52:37,988 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:37] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 17:52:56,773 - INFO - 127.0.0.1 - - [16/Oct/2025 17:52:56] "GET /api/validate_ticket/15 HTTP/1.1" 200 -
+2025-10-16 17:53:10,764 - INFO - 127.0.0.1 - - [16/Oct/2025 17:53:10] "[31m[1mGET /api/validate_ticket/15 HTTP/1.1[0m" 400 -
+2025-10-16 17:53:29,857 - INFO - 127.0.0.1 - - [16/Oct/2025 17:53:29] "[33mGET /api/validate_ticket/16 HTTP/1.1[0m" 404 -
+2025-10-16 18:19:55,992 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\paiement\\routes.py', reloading
+2025-10-16 18:19:56,135 - INFO -  * Restarting with stat
+2025-10-16 18:55:39,037 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.34:5000
+2025-10-16 18:55:39,037 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-16 18:55:39,103 - INFO -  * Restarting with stat
+2025-10-16 18:55:40,362 - WARNING -  * Debugger is active!
+2025-10-16 18:55:40,367 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 18:55:42,950 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:42] "GET /scan HTTP/1.1" 200 -
+2025-10-16 18:55:43,047 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:43] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:43,108 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:43] "[36mGET /static/js/fetch.js HTTP/1.1[0m" 304 -
+2025-10-16 18:55:43,298 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:43] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:46,333 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 18:55:46,402 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "GET / HTTP/1.1" 200 -
+2025-10-16 18:55:46,532 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:46,978 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:46,979 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:46,981 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:46,990 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:46] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 18:55:47,318 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:47] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 18:55:47,320 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:47] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:50,882 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:50] "[32mGET /create-admin HTTP/1.1[0m" 302 -
+2025-10-16 18:55:50,905 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:50] "GET /login HTTP/1.1" 200 -
+2025-10-16 18:55:50,945 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:50] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:51,250 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:51] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 18:55:51,251 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:51] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:51,251 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:51] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:59,023 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 18:55:59,237 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:59] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 18:55:59,278 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:59] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:55:59,585 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:59] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:55:59,586 - INFO - 127.0.0.1 - - [16/Oct/2025 18:55:59] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:03,000 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:02] "[32mGET /create-admin HTTP/1.1[0m" 302 -
+2025-10-16 18:56:03,080 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:03] "GET /login HTTP/1.1" 200 -
+2025-10-16 18:56:03,120 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:03] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:03,446 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:03] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:03,447 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:03] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:56:03,447 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:03] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 18:56:12,023 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 18:56:12,153 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:12] "GET /employe/ HTTP/1.1" 200 -
+2025-10-16 18:56:12,196 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:12] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:12,507 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:12] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:56:12,508 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:12] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:16,837 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:16] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 18:56:16,876 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:16] "GET / HTTP/1.1" 200 -
+2025-10-16 18:56:17,047 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,224 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,224 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,225 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,244 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,561 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 18:56:17,561 - INFO - 127.0.0.1 - - [16/Oct/2025 18:56:17] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 18:57:52,366 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 18:57:52,513 - INFO -  * Restarting with stat
+2025-10-16 18:57:53,899 - WARNING -  * Debugger is active!
+2025-10-16 18:57:53,904 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 18:59:34,510 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 18:59:34,666 - INFO -  * Restarting with stat
+2025-10-16 18:59:35,952 - WARNING -  * Debugger is active!
+2025-10-16 18:59:35,957 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:38:07,046 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 19:38:07,167 - INFO -  * Restarting with stat
+2025-10-16 19:38:09,305 - WARNING -  * Debugger is active!
+2025-10-16 19:38:09,310 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:38:11,549 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 19:38:11,658 - INFO -  * Restarting with stat
+2025-10-16 19:38:12,891 - WARNING -  * Debugger is active!
+2025-10-16 19:38:12,896 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:38:35,428 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\app\\routes.py', reloading
+2025-10-16 19:38:35,546 - INFO -  * Restarting with stat
+2025-10-16 19:38:36,799 - WARNING -  * Debugger is active!
+2025-10-16 19:38:36,804 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:38:58,935 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:58] "GET / HTTP/1.1" 200 -
+2025-10-16 19:38:59,039 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,169 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,280 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,281 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,497 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,497 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:38:59,498 - INFO - 127.0.0.1 - - [16/Oct/2025 19:38:59] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:08,420 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:08] "GET /login HTTP/1.1" 200 -
+2025-10-16 19:39:08,516 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:08] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:08,654 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:08] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:08,766 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:08] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:39:08,766 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:08] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:13,322 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:13] "[35m[1mGET /create-admin HTTP/1.1[0m" 500 -
+2025-10-16 19:39:13,357 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:13] "GET /create-admin?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-10-16 19:39:13,676 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:13] "GET /create-admin?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-10-16 19:39:14,029 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:14] "GET /create-admin?__debugger__=yes&cmd=resource&f=console.png&s=YDDlSmcc9GG0wwhJoduN HTTP/1.1" 200 -
+2025-10-16 19:39:14,294 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:14] "GET /create-admin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-10-16 19:39:19,492 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:19] "[35m[1mGET /create-admin HTTP/1.1[0m" 500 -
+2025-10-16 19:39:19,527 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:19] "[36mGET /create-admin?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:19,839 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:19] "[36mGET /create-admin?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-10-16 19:39:20,165 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:20] "[36mGET /create-admin?__debugger__=yes&cmd=resource&f=console.png&s=YDDlSmcc9GG0wwhJoduN HTTP/1.1[0m" 304 -
+2025-10-16 19:39:20,430 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:20] "[36mGET /create-admin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-10-16 19:39:28,336 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:28] "GET /register HTTP/1.1" 200 -
+2025-10-16 19:39:28,364 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:28] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:28,683 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:28] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:39:28,684 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:28] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:28,684 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:28] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:40,907 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:40] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-10-16 19:39:40,940 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:40] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-10-16 19:39:41,030 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:41] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-10-16 19:39:41,391 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:41] "GET /register?__debugger__=yes&cmd=resource&f=console.png&s=YDDlSmcc9GG0wwhJoduN HTTP/1.1" 200 -
+2025-10-16 19:39:41,632 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:41] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-10-16 19:39:46,382 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.34:5000
+2025-10-16 19:39:46,383 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-16 19:39:46,384 - INFO -  * Restarting with stat
+2025-10-16 19:39:47,631 - WARNING -  * Debugger is active!
+2025-10-16 19:39:47,637 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:39:47,712 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:47] "GET / HTTP/1.1" 200 -
+2025-10-16 19:39:47,838 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:47] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:47,843 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:47] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 19:39:48,048 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:48] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:48,049 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:48] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 19:39:48,171 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:48] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:48,172 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:48] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:39:48,172 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:48] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:39:57,587 - INFO - 127.0.0.1 - - [16/Oct/2025 19:39:57] "GET /create-admin HTTP/1.1" 200 -
+2025-10-16 19:40:00,087 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "[32mGET /utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 19:40:00,104 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "GET /login?next=/utilisateur/ HTTP/1.1" 200 -
+2025-10-16 19:40:00,447 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:00,447 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:00,448 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:00,448 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:00] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:40:15,465 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:15] "[32mPOST /login?next=/utilisateur/ HTTP/1.1[0m" 302 -
+2025-10-16 19:40:15,656 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:15] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:40:16,009 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:16] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:16,010 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:16] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:16,011 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:16] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:22,709 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:22] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 19:40:22,948 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:22] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,045 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,045 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,046 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,434 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 19:40:23,644 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,778 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,780 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:40:23,781 - INFO - 127.0.0.1 - - [16/Oct/2025 19:40:23] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:41:55,087 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\tests\\test_scala.py', reloading
+2025-10-16 19:41:55,191 - INFO -  * Restarting with stat
+2025-10-16 19:41:56,452 - WARNING -  * Debugger is active!
+2025-10-16 19:41:56,456 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:42:10,335 - INFO -  * Detected change in 'C:\\Users\\salam\\OneDrive\\Documents\\Site Web\\Jeux Olympique\\tests\\test_scala.py', reloading
+2025-10-16 19:42:10,449 - INFO -  * Restarting with stat
+2025-10-16 19:42:11,915 - WARNING -  * Debugger is active!
+2025-10-16 19:42:11,921 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:42:14,680 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:14] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 19:42:14,769 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:14] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:14,870 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:14] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,012 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,012 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,387 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 19:42:15,586 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,717 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,718 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:15,719 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:15] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:17,036 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:17] "GET /epreuvesback-Test%20Epreuve HTTP/1.1" 200 -
+2025-10-16 19:42:17,231 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:17] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:17,373 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:17] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:17,374 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:17] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:20,070 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "[32mPOST /delete/14 HTTP/1.1[0m" 302 -
+2025-10-16 19:42:20,163 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 19:42:20,186 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:20,505 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:20,506 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:20,506 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:20,884 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:20] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 19:42:21,095 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:21] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:21,208 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:21] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:21,209 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:21] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:21,210 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:21] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:22,842 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:22] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-10-16 19:42:23,092 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "GET / HTTP/1.1" 200 -
+2025-10-16 19:42:23,435 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,435 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,436 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,437 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,696 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,757 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:23,769 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:23] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:44,421 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:44] "GET / HTTP/1.1" 200 -
+2025-10-16 19:42:44,442 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:44] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:44,686 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:44] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:44,750 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:44] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:44,750 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:44] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:45,023 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:45] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:45,024 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:45] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:47,758 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.34:5000
+2025-10-16 19:42:47,758 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-16 19:42:47,760 - INFO -  * Restarting with stat
+2025-10-16 19:42:49,006 - WARNING -  * Debugger is active!
+2025-10-16 19:42:49,011 - INFO -  * Debugger PIN: 124-807-948
+2025-10-16 19:42:52,772 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:52] "GET /create-admin HTTP/1.1" 200 -
+2025-10-16 19:42:55,302 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:55] "GET /login HTTP/1.1" 200 -
+2025-10-16 19:42:55,396 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:55] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:55,649 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:55] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:55,650 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:55] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:55,650 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:55] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:56,472 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 19:42:56,560 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:56,731 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:42:56,810 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:56,810 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 19:42:56,883 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:56] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 19:42:57,203 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:57] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:57,203 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:57] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:57,204 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:57] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:42:57,205 - INFO - 127.0.0.1 - - [16/Oct/2025 19:42:57] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:43:21,431 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:21] "GET /login HTTP/1.1" 200 -
+2025-10-16 19:43:21,745 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:21] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:21,776 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:21] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:43:21,777 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:21] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:43:21,777 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:21] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:31,318 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-16 19:43:31,495 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:31] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:43:31,535 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:31] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:31,839 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:31] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:31,840 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:31] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:43:38,318 - INFO - Profil admin mis à jour : ID 1, email jose@gmail.com
+2025-10-16 19:43:38,338 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:38] "[32mPOST /admin/ HTTP/1.1[0m" 302 -
+2025-10-16 19:43:38,502 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:38] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:43:38,532 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:38] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:38,850 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:38] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:43:38,851 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:38] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:42,394 - INFO - Profil admin mis à jour : ID 1, email jose@gmail.com
+2025-10-16 19:43:42,413 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:42] "[32mPOST /admin/ HTTP/1.1[0m" 302 -
+2025-10-16 19:43:42,571 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:42] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:43:42,600 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:42] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:42,922 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:42] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:43:42,924 - INFO - 127.0.0.1 - - [16/Oct/2025 19:43:42] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:44:11,972 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:11] "GET / HTTP/1.1" 200 -
+2025-10-16 19:44:12,004 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,167 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/css/index.css HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,322 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/js/responsive.js HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,323 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,507 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/images/course2.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,507 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/images/tedy.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:44:12,508 - INFO - 127.0.0.1 - - [16/Oct/2025 19:44:12] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+2025-10-16 19:45:19,195 - INFO - 127.0.0.1 - - [16/Oct/2025 19:45:19] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:45:19,234 - INFO - 127.0.0.1 - - [16/Oct/2025 19:45:19] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:45:19,311 - INFO - 127.0.0.1 - - [16/Oct/2025 19:45:19] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:45:19,546 - INFO - 127.0.0.1 - - [16/Oct/2025 19:45:19] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:47:56,075 - INFO - 127.0.0.1 - - [16/Oct/2025 19:47:56] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:47:56,099 - INFO - 127.0.0.1 - - [16/Oct/2025 19:47:56] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:47:56,161 - INFO - 127.0.0.1 - - [16/Oct/2025 19:47:56] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:47:56,406 - INFO - 127.0.0.1 - - [16/Oct/2025 19:47:56] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:48:11,235 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:11] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:48:11,266 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:11] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:48:11,337 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:11] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:48:11,573 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:11] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:48:33,882 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:33] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:48:33,905 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:33] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:48:34,017 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:34] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:48:34,219 - INFO - 127.0.0.1 - - [16/Oct/2025 19:48:34] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:49:22,783 - INFO - 127.0.0.1 - - [16/Oct/2025 19:49:22] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:49:22,806 - INFO - 127.0.0.1 - - [16/Oct/2025 19:49:22] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:49:22,913 - INFO - 127.0.0.1 - - [16/Oct/2025 19:49:22] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:49:23,113 - INFO - 127.0.0.1 - - [16/Oct/2025 19:49:23] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:50:18,639 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:18] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:50:18,662 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:18] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:50:18,765 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:18] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:50:18,969 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:18] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:50:21,302 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:21] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:50:21,325 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:21] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:50:21,433 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:21] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:50:21,645 - INFO - 127.0.0.1 - - [16/Oct/2025 19:50:21] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:51:07,627 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:07] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:51:07,656 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:07] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:51:07,703 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:07] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:51:07,959 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:07] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:51:21,654 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:21] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:51:21,682 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:21] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:51:21,753 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:21] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:51:21,996 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:21] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:51:50,617 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:50] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:51:50,641 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:50] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:51:50,732 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:50] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:51:50,951 - INFO - 127.0.0.1 - - [16/Oct/2025 19:51:50] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:52:04,622 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:04] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:52:04,647 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:04] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:52:04,730 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:04] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:52:04,966 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:04] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:52:26,551 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:26] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:52:26,578 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:26] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:52:26,680 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:26] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:52:26,891 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:26] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:52:38,111 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:38] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:52:38,133 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:38] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:52:38,246 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:38] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:52:38,446 - INFO - 127.0.0.1 - - [16/Oct/2025 19:52:38] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:06,022 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:06] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:06,045 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:06] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:06,152 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:06] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:06,354 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:06] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:13,183 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:13] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:13,206 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:13] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:13,315 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:13] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:13,518 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:13] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:19,494 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:19] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:19,517 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:19] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:19,627 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:19] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:19,837 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:19] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:24,690 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:24] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:24,716 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:24] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:24,823 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:24] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:25,025 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:25] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:32,055 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:32] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:32,075 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:32] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:32,183 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:32] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:32,392 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:32] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:53:56,837 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:56] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:53:56,862 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:56] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:53:56,962 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:56] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:53:57,183 - INFO - 127.0.0.1 - - [16/Oct/2025 19:53:57] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:54:25,495 - INFO - 127.0.0.1 - - [16/Oct/2025 19:54:25] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:54:25,517 - INFO - 127.0.0.1 - - [16/Oct/2025 19:54:25] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:54:25,577 - INFO - 127.0.0.1 - - [16/Oct/2025 19:54:25] "GET /static/css/form.css HTTP/1.1" 200 -
+2025-10-16 19:54:25,830 - INFO - 127.0.0.1 - - [16/Oct/2025 19:54:25] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:09,955 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:09] "GET /admin/ HTTP/1.1" 200 -
+2025-10-16 19:56:09,986 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:09] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:10,082 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:10] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:10,306 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:10] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:12,962 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:12] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 19:56:13,082 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,207 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,323 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,325 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,401 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 19:56:13,731 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,733 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,734 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:13,736 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:13] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:14,690 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:14] "GET /add_epreuves HTTP/1.1" 200 -
+2025-10-16 19:56:14,930 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:14] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:15,039 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:15] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:15,039 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:15] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:24,035 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:24] "GET /add_epreuves HTTP/1.1" 200 -
+2025-10-16 19:56:24,068 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:24] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:24,241 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:24] "[36mGET /static/css/form.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:24,386 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:24] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:41,143 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "[32mPOST /add_epreuves HTTP/1.1[0m" 302 -
+2025-10-16 19:56:41,248 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "GET /epreuvesback HTTP/1.1" 200 -
+2025-10-16 19:56:41,280 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:41,590 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:41,592 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "[36mGET /static/js/all_epreuves.js HTTP/1.1[0m" 304 -
+2025-10-16 19:56:41,592 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:41,978 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:41] "GET /api/epreuves_back HTTP/1.1" 200 -
+2025-10-16 19:56:42,183 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:42] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:42,322 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:42] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:42,322 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:42] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:42,323 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:42] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:42,324 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:42] "GET /static/uploads/image/Football.jpg HTTP/1.1" 200 -
+2025-10-16 19:56:44,359 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:44] "GET /epreuvesback-Football HTTP/1.1" 200 -
+2025-10-16 19:56:44,567 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:44] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:44,712 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:44] "[36mGET /static/css/epreuve_details.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:44,713 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:44] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:44,714 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:44] "[36mGET /static/uploads/image/Football.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:47,896 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:47] "GET /epreuves HTTP/1.1" 200 -
+2025-10-16 19:56:47,925 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:47] "[36mGET /static/css/base.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,088 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/css/epreuves.css HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,231 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/images/logo.svg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,232 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/js/all_epreuves_front.js HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,612 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "GET /api/epreuves HTTP/1.1" 200 -
+2025-10-16 19:56:48,806 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/uploads/image/handball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,970 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/uploads/image/arc.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:48,993 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:48] "[36mGET /static/uploads/image/bascketball.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:49,029 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:49] "[36mGET /static/uploads/image/Football.jpg HTTP/1.1[0m" 304 -
+2025-10-16 19:56:49,169 - INFO - 127.0.0.1 - - [16/Oct/2025 19:56:49] "[36mGET /static/uploads/image/dance.jpg HTTP/1.1[0m" 304 -

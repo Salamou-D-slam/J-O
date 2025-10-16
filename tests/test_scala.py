@@ -9,10 +9,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Config DB
-DATABASE_URI = os.getenv('DATABASE_URI')
+DATABASE_TEST_URI = os.getenv('DATABASE_TEST_URI')
 
 # Créer la session SQLAlchemy
-engine = create_engine(DATABASE_URI)
+engine = create_engine(DATABASE_TEST_URI)
 Session = sessionmaker(bind=engine)
 session = Session()
 
