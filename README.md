@@ -45,7 +45,7 @@ lien de l'application hébérgé: https://jeux-olympique.fly.dev/
 
 ### Cloner le projet
 ```bash
-git clone J-O
+git clone https://github.com/Salamou-D-slam/J-O.git
 cd "Jeux Olympique"
 
 
