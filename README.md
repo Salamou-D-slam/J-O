@@ -12,9 +12,9 @@ lien de l'application hébérgé: https://jeux-olympique.fly.dev/
   
 - Page d'une épreuve : Affichage des détails de l'épreuve et ses trois offre qu'on peut acheter avec leurs dtail (prix, place etc...).
   
-- Page de paiement: Un formulaire pour payer l'offre choisi (rappeleons que ce n'est qu'une simulation et pas un vrai paiement).
+- Page de paiement: Un formulaire pour payer l'offre choisi (rappelons que ce n'est qu'une simulation et pas un vrai paiement).
   
-- Fonctionnalité d'envoi de mail: Après avoir acheter une offre, on reçoit un mail qui contient les informations du ticket ainsi qu'un QR code. On peut envoyer un message à l'administration sous de mail grâce à la page de contact (vous pourrez vérifier vos mils envoyé depuis votre boite mail)
+- Fonctionnalité d'envoi de mail: Après avoir acheter une offre, on reçoit un mail qui contient les informations du ticket ainsi qu'un QR code. On peut envoyer un message à l'administration sous de mail grâce à la page de contact (vous pourrez vérifier vos mails envoyé depuis votre boite mail)
   
 - Page contact : le formulaire de contact .
 
@@ -28,7 +28,7 @@ lien de l'application hébérgé: https://jeux-olympique.fly.dev/
   
 ## Technologies utilisées
 - HTML5
-- CSS3 (avec un peu de SASS)
+- CSS3
 - BOOTSTRAP
 - JavaScript
 - Python avec Jinja2
