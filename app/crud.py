@@ -6,7 +6,7 @@ from app.extensions import db
 #------------------------------------------------EPREUVE----------------------------------------
 
 #CREATE une éprevue s'elle n'existe pas
-def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, prix_family, nbr_place_solo, nbr_place_duo, nbr_place_family, filename=None):
+def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, filename=None):
 
     # Vérifier si l’épreuve existe déjà
     existing_epreuve = Epreuve.query.filter_by(nom_epreuve=nom_epreuve).first()
@@ -24,11 +24,11 @@ def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, pr
 
     #Crée les offres liées
 
-    solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo, bi_restant=nbr_place_solo)
-    duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo, bi_restant=nbr_place_duo)
-    family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family, bi_restant=nbr_place_family)
+    # solo = Offre(type_offre=f'{nom_epreuve} solo', nombre_personne=1, prix=prix_solo, bi_restant=nbr_place_solo)
+    # duo = Offre(type_offre=f'{nom_epreuve} duo', nombre_personne=2, prix=prix_duo, bi_restant=nbr_place_duo)
+    # family = Offre(type_offre=f'{nom_epreuve} family', nombre_personne=4, prix=prix_family, bi_restant=nbr_place_family)
 
-    new_epreuve.offres.extend([solo, duo, family]) # Gestion de jointure
+    # new_epreuve.offres.extend([solo, duo, family]) # Gestion de jointure
 
     db.session.add(new_epreuve) # Formule de création dans la bdd
     db.session.commit() # Le commit --> l'éxecution
@@ -69,20 +69,22 @@ def add_epreuve_if_not_exists(nom_epreuve, date_epreuve, prix_solo, prix_duo, pr
 
 
 #CREATE une offre manuellement
-def add_offre_to_epreuve(epreuve_id, type_offre, nombre_personne, prix):
+def add_offre_to_epreuve(epreuve_id, nom_offre, nombre_personne, prix, nbr_place):
     epreuve = db.session.get(Epreuve, epreuve_id)
     if epreuve:
         new_offre = Offre(
-            type_offre=type_offre,
+            type_offre=f"{epreuve.nom_epreuve} - {nom_offre}",
             nombre_personne=nombre_personne,
             prix=prix,
-            epreuve=epreuve  # on lie l'offre directement à l'épreuve
+            bi_restant=nbr_place,
+            epreuve=epreuve
         )
         db.session.add(new_offre)
         db.session.commit()
-        print(f"Ajouté offre '{type_offre}' à l'épreuve '{epreuve.nom_epreuve}'")
+        print(f"Ajouté offre '{nom_offre}' à l'épreuve '{epreuve.nom_epreuve}'")
     else:
-        print("Epreuve non trouvée")
+        print("Épreuve non trouvée.")
+
 
 
 #READ ONE
@@ -178,10 +180,10 @@ def delete_epreuve(epreuve_id):
 # ------------------------------------------------OFFRE----------------------------------------
 
 # CREATE
-# def add_offre_if_not_exists(type_offre, nombre_personne, prix):
-#     existing_offre = Epreuve.query.filter_by(type_offre=type_offre).first()
+# def add_offre_if_not_exists(nom_offre, nombre_personne, prix, nbr_place_autre):
+#     existing_offre = Epreuve.query.filter_by(type_offre=f'{nom_epreuve} {nom_offre}').first()
 #     if not existing_offre:
-#         new_offre = Epreuve(type_offre=type_offre, nombre_personne=nombre_personne, prix=prix)
+#         new_offre = Epreuve(type_offre=nom_offre, nombre_personne=nombre_personne, prix=prix)
 #         db.session.add(new_offre)
 #         db.session.commit()
 #         print(f"Ajouté : {type_offre}")
@@ -204,21 +206,27 @@ def get_all_offres():
 
 
 # UPDATE
-def update_offre(offre_id, new_type_offre=None, new_nombre_personne=None, new_prix=None, new_bi_restant=None):
-    offre = Epreuve.query.get(Offre, offre_id)
+def update_offre_crud(offre_id, new_nom_offre=None, new_nombre_personne=None, new_prix=None, new_nbr_place=None):
+    offre = db.session.get(Offre, offre_id)
+    epreuve = Epreuve.query.get(offre_id)
     if offre:
-        if new_type_offre: offre.type_offre = new_type_offre
-        if new_nombre_personne: offre.nombre_personne = new_nombre_personne
-        if new_prix: offre.priw = new_prix
-        if new_bi_restant: offre.bi_restant = new_bi_restant
+        if new_nom_offre:
+            offre.type_offre = f'{offre.epreuve.nom_epreuve} {new_nom_offre}'
+        if new_nombre_personne:
+            offre.nombre_personne = new_nombre_personne
+        if new_prix:
+            offre.prix = new_prix
+        if new_nbr_place:
+            offre.bi_restant = new_nbr_place
         db.session.commit()
         print(f"Mise à jour du offre ID {offre_id}")
     else:
         print("offre non trouvé.")
 
 
+
 # DELETE
-def delete_offre(offre_id):
+def delete_offre_crud(offre_id):
     offre = Offre.query.get(offre_id)
     if offre:
         db.session.delete(offre)
@@ -226,6 +234,7 @@ def delete_offre(offre_id):
         print(f"offre ID {offre_id} supprimé.")
     else:
         print("offre non trouvé.")
+
 
 
 

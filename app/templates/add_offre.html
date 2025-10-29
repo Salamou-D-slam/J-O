@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
+{% block title %}Ajouter une offre{% endblock %}
+
+{% block content %}
+
+<section class="form-section section-form-add">
+    <h1>Nouvelle offre</h1>
+
+    <div class="mb-3 form-add">
+        <form method="POST" enctype="multipart/form-data">
+
+            {{ form.hidden_tag() }}
+
+            {{ form.nom_offre.label }}
+            {{ form.nom_offre(class="form-control") }}
+
+            <br>
+
+            {{ form.nombre_personne.label }}
+            {{ form.nombre_personne(class="form-control") }}
+
+            <br>
+
+
+            {{ form.prix.label }}
+            {{ form.prix(class="form-control") }}
+
+            <br>
+
+            {{ form.nbr_place.label }}
+            {{ form.nbr_place(class="form-control") }}
+
+
+            <br>
+
+            <br>
+
+            {{ form.submit(class="form-control btn btn-primary") }}
+        </form>
+    </div>
+</section>
+
+{% endblock %}

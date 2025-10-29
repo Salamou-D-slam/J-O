@@ -7,8 +7,10 @@ import os
 from flask_mail import Message
 from .models import Epreuve, Offre, User
 from .extensions import db, login_manager, mail
-from .crud import update_epreuve, add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve
-from .WTForms.forms import LoginForm, RegisterForm, AddepreuvesForm, UpdateepreuvesForm, ContactForm, EpreuvedetailForm
+from .crud import update_epreuve,add_offre_to_epreuve, update_offre_crud, delete_offre_crud, add_epreuve_if_not_exists, get_epreuve_by_id, update_epreuve, delete_epreuve
+from .WTForms.forms import (LoginForm, RegisterForm, AddepreuvesForm, UpdateepreuvesForm, ContactForm,
+                            EpreuvedetailForm, OffreUpdateForm, AddoffreForm)
+
 
 main_routes = Blueprint('main', __name__)
 
@@ -202,13 +204,6 @@ def add_epreuves():
         if existing_epreuve:
             flash("Le nom de cette épreuve est déja utilisé") # Pour éviter les épreuve avec le même nom
 
-        prix_solo = form.prix_solo.data
-        prix_duo = form.prix_duo.data
-        prix_family = form.prix_family.data
-
-        nbr_place_solo = form.nbr_place_solo.data
-        nbr_place_duo = form.nbr_place_duo.data
-        nbr_place_family = form.nbr_place_family.data
 
         #Met la sécurité et le chemin des images uploads
         filename = secure_filename(image.filename)
@@ -219,15 +214,9 @@ def add_epreuves():
             nom_epreuve= nom_epreuve,
             date_epreuve = date_epreuve,
             filename = filename,
-
-            prix_solo = prix_solo,
-            prix_duo = prix_duo,
-            prix_family = prix_family,
-
-            nbr_place_solo = nbr_place_solo,
-            nbr_place_duo =nbr_place_duo,
-            nbr_place_family = nbr_place_family
         )
+
+
 
         return redirect(url_for('main.all_epreuve'))
     return render_template('add.html', form=form)
@@ -258,7 +247,6 @@ def update(epreuve_id):
     # if request.method == 'POST':
     if form.validate_on_submit():
 
-
         new_nom_epreuve = form.new_nom_epreuve.data
         new_date_epreuve = form.new_date_epreuve.data
         new_image = form.new_image.data
@@ -275,32 +263,12 @@ def update(epreuve_id):
             new_image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], new_filename))
 
 
-        new_prix_solo = form.new_prix_solo.data
-        new_prix_duo = form.new_prix_duo.data
-        new_prix_family = form.new_prix_family.data
-
-        # Les convertir en float si présents
-        new_prix_solo = float(new_prix_solo) if new_prix_solo else None
-        new_prix_duo = float(new_prix_duo) if new_prix_duo else None
-        new_prix_family = float(new_prix_family) if new_prix_family else None
-
-        new_nbr_place_solo = form.new_nbr_place_solo.data
-        new_nbr_place_duo = form.new_nbr_place_duo.data
-        new_nbr_place_family = form.new_nbr_place_family.data
-
-
 
         update_epreuve(
             epreuve_id,
             new_nom_epreuve,
             new_date_epreuve,
             new_filename,
-            new_prix_solo,
-            new_prix_duo,
-            new_prix_family,
-            new_nbr_place_solo,
-            new_nbr_place_duo,
-            new_nbr_place_family
         )
         return redirect(url_for('main.all_epreuve'))
     return render_template('update.html', epreuve=epreuve, form=form)
@@ -312,6 +280,72 @@ def update(epreuve_id):
 def delete(epreuve_id):
     delete_epreuve(epreuve_id)
     return redirect(url_for('main.all_epreuve'))
+
+
+# Les Offres
+
+#PAGE ADD offre
+@main_routes.route('/epreuvesback-<epreuve_id>/add_offre', methods=["GET", "POST"])
+@login_required
+@roles_required('admin', 'employe')
+def add_offre(epreuve_id):
+    form = AddoffreForm()
+    epreuve = db.session.get(Epreuve, epreuve_id)
+    # if request.method == "POST":
+    if form.validate_on_submit():
+
+        nom_offre = form.nom_offre.data
+        nombre_personne = form.nombre_personne.data
+        prix = form.prix.data
+        nbr_place = form.nbr_place.data
+
+        add_offre_to_epreuve(
+            epreuve_id = epreuve_id,
+            nom_offre = nom_offre,
+            nombre_personne=nombre_personne,
+            prix=prix,
+            nbr_place=nbr_place,
+        )
+
+        return redirect(url_for('main.all_epreuve', id=epreuve.id))
+    return render_template('add_offre.html', form=form)
+
+#PAGE DE UPADATE
+@main_routes.route('/update_offre/<int:offre_id>', methods=['GET', 'POST'])
+@login_required
+@roles_required('admin', 'employe')
+def update_offre(offre_id):
+    form = OffreUpdateForm()
+    offre = db.session.get(Offre, offre_id)
+    # if request.method == 'POST':
+    if form.validate_on_submit():
+
+        # Vérifier si c'est une suppression
+        if form.new_submit.data:
+
+            new_nom_offre = form.new_nom_offre.data
+            new_nombre_personne = form.new_nombre_personne.data
+            new_prix = form.new_prix.data
+            new_nbr_place = form.new_nbr_place.data
+
+            # Les convertir en float si présents
+            new_prix = float(new_prix) if new_prix else None
+
+
+            update_offre_crud(
+                offre_id,
+                new_nom_offre,
+                new_nombre_personne,
+                new_prix,
+                new_nbr_place
+            )
+            return redirect(url_for('main.epreuve_details', nom_epreuve=offre.epreuve.nom_epreuve))
+
+        delete_offre_crud(offre_id)
+        return redirect(url_for('main.all_epreuve'))
+    return render_template('update_offre.html', offre=offre, form=form)
+
+
 
 
 # PAGE DE CONTACT

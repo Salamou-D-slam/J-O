@@ -49,8 +49,8 @@
                                     <p  class="card-text">Prix : {{ offre.prix }} €</p>
                                     <p  class="card-text">Nombres de place restante : {{offre.bi_restant}}</p>
 
-                            <!-- <a href="{{ url_for('paiement.paiement_epreuve', type_offre=offre.type_offre) }}" class="btn btn-outline-primary">
-                                Acheter </a>            -->
+                             <a href="{{ url_for('main.update_offre', offre_id=offre.id) }}" class="btn btn-outline-primary">
+                                Modifier l'offre </a>
                 
                     </div>
                 </div>
@@ -66,6 +66,8 @@
 
           <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" >
                 <a href="{{ url_for('main.update', epreuve_id=epreuve.id) }}" class="btn btn-info">Modifier</a>
+                <a href="{{ url_for('main.add_offre', epreuve_id=epreuve.id)}}" class="btn btn-info">Ajouter une offre</a>
+
 
                 <form action="{{ url_for('main.delete', epreuve_id=epreuve.id) }}" method="post" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette épreuve ?');">
                     {{ form.hidden_tag() }}

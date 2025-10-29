@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">{% endblock %}
+
+{% block title %}Modifier l'offre{% endblock %}
+
+{% block content %}
+
+<section class="form-section section-form-add">
+     <h1>Modifier l'offre</h1>
+
+    <div class="mb-3">
+        <form method="post">
+
+
+            {{ form.hidden_tag() }}
+
+            {{ form.new_nom_offre.label(class="form-label") }}
+            {{ form.new_nom_offre(class="form-control") }}
+
+            {{ form.new_nombre_personne.label(class="form-label") }}
+            {{ form.new_nombre_personne(class="form-control") }}
+
+            {{ form.new_prix.label }}
+            {{ form.new_prix(class="form-control") }}
+
+            {{ form.new_nbr_place.label }}
+            {{ form.new_nbr_place(class="form-control") }}
+
+            <br>
+
+
+            <br>
+
+            {{ form.new_submit(class="form-control btn btn-info") }}
+            <br><br>
+            {{ form.delete_submit(class="form-control btn btn-danger", onclick="return confirm('Voulez-vous vraiment supprimer cette offre ?');") }}
+
+        </form>
+    </div>
+
+
+    <a href="{{url_for('main.epreuve_details', nom_epreuve=offre.epreuve.nom_epreuve)}}" class="btn btn-outline-light">Annuler</a>
+</section>
+
+
+
+{% endblock %}

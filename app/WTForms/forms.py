@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, DateField, SubmitField, TextAreaField, SelectField, DecimalField,
                      DateTimeField, IntegerField, FileField, HiddenField, FormField)
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, optional
 from flask_wtf.file import FileAllowed, FileRequired
 
 
@@ -97,21 +97,13 @@ class AddepreuvesForm(FlaskForm):
     # date_epreuve = DateTimeField("Date de l'épreuve:", format="%Y-%m-%d %H:%M", validators=[DataRequired()])
     date_epreuve = DateField("Date de l'épreuve:", format="%Y-%m-%d", validators=[DataRequired()])
 
-    prix_solo = DecimalField("Prix solo:", validators=[DataRequired()])
-    nbr_place_solo = IntegerField("Nombre de place:", validators=[DataRequired()])
-
-    prix_duo = DecimalField("Prix duo:", validators=[DataRequired()])
-    nbr_place_duo = IntegerField("Nombre de place:", validators=[DataRequired()])
-
-    prix_family = DecimalField("Prix family:", validators=[DataRequired()])
-    nbr_place_family = IntegerField("Nombre de place:", validators=[DataRequired()])
-
     image = FileField("Image de l’epreuve:", validators=[
         FileAllowed(['jpg', 'png', 'jpeg'], "Seulement des images JPG/PNG"),
         FileRequired("Une image est obligatoire")
     ])
 
-    submit = SubmitField("Ajouter")
+    epreuve_submit = SubmitField("Ajouter l'épreuve")
+
 
 class UpdateepreuvesForm(FlaskForm):
     new_nom_epreuve = StringField("Nom de l'épreuve:", validators=[Optional()])
@@ -134,59 +126,46 @@ class UpdateepreuvesForm(FlaskForm):
     new_submit = SubmitField("Soumettre la Modification")
 
 class EpreuvedetailForm(FlaskForm):
-    submit = SubmitField("Suprrimer")
+    submit = SubmitField("Suprrimer l'épreuve")
 
-# FORMULAIRE DE PAIEMENT
-class ParticipantForm(FlaskForm):
-    # nom_pers1 = StringField("Nom", validators=[DataRequired()])
-    # prenom_pers1 = StringField("Prénom", validators=[DataRequired()])
-    # email_pers1 = StringField("Email", validators=[DataRequired(), Email()])
 
-    pers1_nom = StringField("Nom", validators=[DataRequired()])
-    pers1_prenom = StringField("Prénom", validators=[DataRequired()])
-    pers1_email = StringField("Email", validators=[DataRequired(), Email()])
+# Formulaire d'offres
+class AddoffreForm(FlaskForm):
+    nom_offre = StringField("Nom de l'offre:", validators=[DataRequired()])
+    nombre_personne = IntegerField("Nombre de personnes:", validators=[DataRequired()])
+    prix = DecimalField("Prix de l'offre:", validators=[DataRequired()])
+    nbr_place = IntegerField("Nombre de place disponibles:", validators=[DataRequired()])
 
-    pers2_nom = StringField("Nom")
-    pers2_prenom = StringField("Prénom")
+    submit = SubmitField("Ajouter l'offre")
 
-    pers3_nom = StringField("Nom")
-    pers3_prenom = StringField("Prénom")
+class OffreUpdateForm(FlaskForm):
+    new_nom_offre = StringField("Nom de l'offre:", validators=[Optional()])
+    new_nombre_personne = IntegerField("Nombre de personnes:", validators=[Optional()])
+    new_prix = DecimalField("Prix de l'offre:", validators=[Optional()])
+    new_nbr_place = IntegerField("Nombre de place disponibles:", validators=[Optional()])
 
-    pers4_nom = StringField("Nom")
-    pers4_prenom = StringField("Prénom")
+    new_submit = SubmitField("Ajouter l'offre")
+    delete_submit = SubmitField("Supprimer l'offre")
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, FormField, FieldList, SubmitField
+from wtforms.validators import DataRequired
+
+# Formulaire pour un participant
+class PersonForm(FlaskForm):
+    nom = StringField("Nom", validators=[DataRequired()])
+    prenom = StringField("Prénom", validators=[DataRequired()])
+    email = StringField("Email", validators=[Email()])  # facultatif
+
+# Formulaire de paiement complet
+class PaymentForm(FlaskForm):
+    participants = FieldList(FormField(PersonForm), min_entries=1)
     nom_card = StringField("Nom card:", validators=[DataRequired()])
     card_number = IntegerField("Card number:", validators=[DataRequired()])
     expiration_card = IntegerField("Expiration card number:", validators=[DataRequired()])
     CVV_card = IntegerField("CV card:", validators=[DataRequired()])
+    submit = SubmitField("Payer")
 
-
-    submit = SubmitField("Valider")
-
-    def validate(self, offre_nombre_personne):
-
-        # Validation dynamique selon le nombre de participants
-
-        valid = super().validate()
-        if not valid:
-            return False
-        # vérifier les champs supplémentaires selon le nombre de participants
-        if offre_nombre_personne >= 2:
-            if not self.pers2_nom.data or not self.pers2_prenom.data:
-                self.pers2_nom.errors.append("Requis pour cette offre")
-                self.pers2_prenom.errors.append("Requis pour cette offre")
-                return False
-        if offre_nombre_personne >= 3:
-            if not self.pers3_nom.data or not self.pers3_prenom.data:
-                self.pers3_nom.errors.append("Requis pour cette offre")
-                self.pers3_prenom.errors.append("Requis pour cette offre")
-                return False
-        if offre_nombre_personne == 4:
-            if not self.pers4_nom.data or not self.pers4_prenom.data:
-                self.pers4_nom.errors.append("Requis pour cette offre")
-                self.pers4_prenom.errors.append("Requis pour cette offre")
-                return False
-        return True
 
 # TICKET PDF DL
 class TicketForm(FlaskForm):
